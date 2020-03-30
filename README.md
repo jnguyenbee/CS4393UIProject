@@ -12,6 +12,10 @@
 
 <a name="start"></a>
 ## Set-up :computer:
+- [ ] [NodeJS LST](https://nodejs.org/en/)
+- [ ] [Visual Studio Code](https://code.visualstudio.com/download)
+- [ ] [MongoDB](https://www.mongodb.com/)
+
 <a name="install"></a>
 ### Installing packages
 > Open up your terminal in the root directory and run this command:
@@ -54,7 +58,7 @@ npm run serve
 http://localhost:8080/         # This is where the website is running on.
 ```
 
-<a name="strcuture"></a>
+<a name="structure"></a>
 ## Project Structure
 ```
 .
