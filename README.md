@@ -10,6 +10,19 @@
 <a name="start"></a>
 ## Set-up :computer:
 
+### Installation 
+## Installing packages
+> Open up your terminal in the root directory and run this command:
+```
+npm install
+```
+#### npm packages
+- [ ] [express](https://www.npmjs.com/package/express)
+- [ ] [dotenv](https://www.npmjs.com/package/dotenv)
+- [ ] [mysql](https://www.npmjs.com/package/mysql)
+- [ ] [nodemon](https://www.npmjs.com/package/nodemon)
+- [ ] [body-parser](https://www.npmjs.com/package/body-parser)
+
 ## Project Structure
 ```
 .
