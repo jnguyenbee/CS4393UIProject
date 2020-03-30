@@ -19,6 +19,7 @@
 ## Create environment variables
 Create a file called .env in the root directory and fill in the following variables without quotations
 ```
+PORT=
 MONGODB_CONNECTION_URI=
 ```
 
