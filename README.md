@@ -4,7 +4,7 @@
 
 
 1. [ Set-up  ](#start)</br>
-    </t> a. [ Installation ](#csv)</br>
+    </t> a. [ Installation ](#install)</br>
 2. [ Running Project ](#run)</br>
     </t> a. [ Run Server ](#server)</br>
     </t> b. [ Run Client ](#client)</br>
@@ -12,7 +12,7 @@
 
 <a name="start"></a>
 ## Set-up :computer:
-
+<a name="install"></a>
 ### Installing packages
 > Open up your terminal in the root directory and run this command:
 ```
