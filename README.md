@@ -16,6 +16,12 @@
 - [ ] [Visual Studio Code](https://code.visualstudio.com/download)
 - [ ] [MongoDB](https://www.mongodb.com/)
 
+## Create environment variables
+Create a file called .env in the root directory and fill in the following variables without quotations
+```
+MONGODB_CONNECTION_URI=
+```
+
 <a name="install"></a>
 ### Installing packages
 > Open up your terminal in the root directory and run this command:
