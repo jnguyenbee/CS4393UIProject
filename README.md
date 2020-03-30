@@ -10,18 +10,22 @@
 <a name="start"></a>
 ## Set-up :computer:
 
-### Installation 
-## Installing packages
+### Installing packages
 > Open up your terminal in the root directory and run this command:
 ```
 npm install
 ```
-#### npm packages
-- [ ] [express](https://www.npmjs.com/package/express)
+### npm packages
+- [ ] [body-parser](https://www.npmjs.com/package/body-parser)
+- [ ] [bootstrap](https://www.npmjs.com/package/bootstrap)
+- [ ] [bootstrap-vue](https://www.npmjs.com/package/bootstrap-vue)
 - [ ] [dotenv](https://www.npmjs.com/package/dotenv)
+- [ ] [express](https://www.npmjs.com/package/express)
 - [ ] [mysql](https://www.npmjs.com/package/mysql)
 - [ ] [nodemon](https://www.npmjs.com/package/nodemon)
-- [ ] [body-parser](https://www.npmjs.com/package/body-parser)
+- [ ] [vue](https://www.npmjs.com/package/vue)
+- [ ] [vue-router](https://www.npmjs.com/package/vue-router)
+
 
 ## Project Structure
 ```
@@ -37,9 +41,8 @@ npm install
 ├── server   
 │   ├── api
 |   │   ├── routes
-│   ├── app.js
-│   ├── server.js
-│   └── README.md
+│   └── app.js
+├── server.js
 ├── LICENSE
 └── README.md
 ```
