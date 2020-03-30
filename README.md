@@ -5,7 +5,10 @@
 
 1. [ Set-up  ](#start)</br>
     </t> a. [ Installation ](#csv)</br>
-2. [ Project Structure ](#structure)
+2. [ Running Project ](#run)</br>
+    </t> a. [ Run Server ](#server)</br>
+    </t> b. [ Run Client ](#client)</br>
+3. [ Project Structure ](#structure)
 
 <a name="start"></a>
 ## Set-up :computer:
@@ -26,7 +29,28 @@ npm install
 - [ ] [vue](https://www.npmjs.com/package/vue)
 - [ ] [vue-router](https://www.npmjs.com/package/vue-router)
 
+<a name="run"></a>
+## Running Project
 
+<a name="server"></a>
+### Run Server
+> Open up your terminal in the root directory and run this command:
+```
+npm start
+```
+or 
+> Open up your terminal in the root directory and run this command:
+```
+nodemon server.js
+```
+<a name="client"></a>
+### Run Client
+> Open up your terminal in the client directory and run this command:
+```
+npm run serve
+```
+
+<a name="strcuture"></a>
 ## Project Structure
 ```
 .
