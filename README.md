@@ -49,6 +49,10 @@ nodemon server.js
 ```
 npm run serve
 ```
+> App running at 
+```
+http://localhost:8080/         # This is where the website is running on.
+```
 
 <a name="strcuture"></a>
 ## Project Structure
