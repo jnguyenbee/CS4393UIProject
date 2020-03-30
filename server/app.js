@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
-const CONNECTION_URI = process.env.MONGO_CONNECTION_URI;
+const CONNECTION_URI = process.env.MONGODB_CONNECTION_URI;
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
