@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
+
+const CONNECTION_URI = process.env.MONGO_CONNECTION_URI;
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -21,10 +24,7 @@ const options = {
     useUnifiedTopology: true
 };
 
-const uri =
-    'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority';
-
-mongoose.connect(uri, options).catch(error => handleError(error));
+mongoose.connect(CONNECTION_URI, options).catch(error => handleError(error));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
