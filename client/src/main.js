@@ -5,6 +5,8 @@ import router from './router';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+//import css from '../../client/static/app.css';
+
 Vue.config.productionTip = false;
 // Install BootstrapVue
 Vue.use(BootstrapVue);

@@ -30,4 +30,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@import '../../../client/static/app.css';
+</style>
