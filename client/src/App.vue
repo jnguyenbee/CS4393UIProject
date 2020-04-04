@@ -1,13 +1,13 @@
 <template>
-  <navi />
+  <Home />
 </template>
 
 <script>
-import nav from './components/NavigationBar';
+import Home from './pages/Home';
 export default {
   name: 'app',
   components: {
-    navi: nav,
+    Home: Home,
   },
 };
 </script>

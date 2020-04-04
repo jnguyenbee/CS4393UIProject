@@ -10,15 +10,16 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
-//Vue.use(Router);
+//Vue.use(router);
 
+/*
 new Vue({
     //el: '#app',
     router,
     template: '<App/>',
     components: { App },
-}).mount('#app');
-
+});
+*/
 /*
 const routes = [{
     path: '/',
@@ -29,5 +30,5 @@ const routes = [{
 const router = new Router({
     routes
 });
-
-new Vue(Vue.util.extend({ router }, App)).$mount('#app');*/
+*/
+new Vue(Vue.util.extend({ router }, App)).$mount('#app');

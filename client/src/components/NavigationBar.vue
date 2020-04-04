@@ -15,9 +15,7 @@
         <ul class="nav__right">
           <li>
             <router-link to="/cart"
-              ><i class="fa fa-shopping-cart"></i> Cart ({{
-                cartItemsCount
-              }})</router-link
+              ><i class="fa fa-shopping-cart"></i> Cart ()</router-link
             >
           </li>
         </ul>
