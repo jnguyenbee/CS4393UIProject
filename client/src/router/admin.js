@@ -1,7 +1,7 @@
-import Index from '@/pages/Admin/Index';
-import New from '@/pages/Admin/New';
-import Products from '@/pages/Admin/Products';
-import Edit from '@/pages/Admin/Edit';
+import Index from '../pages/Admin/Index';
+import New from '../pages/Admin/New';
+import Products from '../pages/Admin/Products';
+import Edit from '../pages/Admin/Edit';
 
 export default {
     path: '/admin',
