@@ -18,6 +18,9 @@
               ><i class="fa fa-shopping-cart"></i> Cart ()</router-link
             >
           </li>
+          <li>
+            <router-link to="/loginin"> Sign in </router-link>
+          </li>
         </ul>
       </div>
     </nav>
