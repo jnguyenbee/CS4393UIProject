@@ -23,7 +23,7 @@
             </b-form-group>
 
             <b-form-group id="input-group-1" label="Description:" label-for="input-1">
-              <b-form-textarea id="textarea-rows" placeholder="Tall textarea" rows="8"></b-form-textarea>
+              <b-form-textarea id="textarea-rows" placeholder="Describe the product" rows="8"></b-form-textarea>
             </b-form-group>
           </div>
         </div>
