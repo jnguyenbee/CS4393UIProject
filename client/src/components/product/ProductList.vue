@@ -4,8 +4,9 @@
     <div class="products">
       <div class="container">
         <ul>
-          <li v-for="product in products" :key="product.name">
-            {{ product.name }}
+          <li v-for="product in products" :key="product.id">
+            {{ product.name }} <br />
+            {{ product.created_at }}
           </li>
         </ul>
       </div>
@@ -18,8 +19,8 @@ export default {
   data() {
     return {
       products: [
-        {id: 1, name: 'iPhone7'},
-        {id: 2, name: 'iPhone6'},
+        {id: 1, name: 'iPhone7', created_at: '01-20-20'},
+        {id: 2, name: 'iPhone6', created_at: '10-30-20'},
       ],
     };
   },
