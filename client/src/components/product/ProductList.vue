@@ -1,35 +1,42 @@
 <template>
   <div>
-    <h1>Product List</h1>
     <div class="products">
       <div class="container">
-        <ul>
-          <li v-for="product in products" :key="product.id">
-            {{ product.name }} <br />
-            {{ product.created_at }}
-          </li>
-        </ul>
+        <div v-for="product in products" :key="product.id">
+          <product-item :product="product"></product-item>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ProductItem from "./ProductItem.vue";
 export default {
+  name: "product-list",
   data() {
     return {
       products: [
-        {id: 1, name: 'iPhone7', created_at: '01-20-20'},
-        {id: 2, name: 'iPhone6', created_at: '10-30-20'},
-      ],
+        {
+          id: 1,
+          name: "iPhone7",
+          price: "4"
+        },
+        {
+          id: 2,
+          name: "iPhone6",
+          price: "5"
+        }
+      ]
     };
   },
+  components: {
+    "product-item": ProductItem
+  }
 };
 </script>
 
-<style scoped>
-@import 'product-item.css';
-
+<style>
 .products {
   background: #f7f8fb;
   padding: 30px 0;
