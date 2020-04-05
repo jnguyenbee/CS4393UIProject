@@ -1,15 +1,21 @@
 <template>
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <div class="product">
-      <div class="product__description">
-        <div class="product__info">
-          <h4>{{product.name}}</h4>
+      <router-link :to="'/details/'+product._id" class="product-link">
+        <div class="product__image">
+          <img class="img-responsive" :src="product.image" alt />
         </div>
-        <div class="product__price-cart">${{product.price}}</div>
-      </div>
+        <div class="product__description">
+          <div class="product__info">
+            <h4>{{product.name}}</h4>
+          </div>
+          <div class="product__price-cart">${{product.price}}</div>
+        </div>
+      </router-link>>
     </div>
   </div>
 </template>
+>
 
 <script>
 export default {
