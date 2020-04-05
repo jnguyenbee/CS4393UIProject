@@ -72,30 +72,31 @@ http://localhost:8080/         # This is where the website is running on.
 ├── client
 │   ├── public          
 │   ├── assets
-│   ├── components
-|   │   ├── ProductForm.vue
-|   │   ├── ProductList.vue
-|   ├── pages
-|   │   ├── Admin
-|   |   │   ├── Edit.vue
-|   |   │   ├── Index.vue
-|   |   │   ├── New.vue
-|   |   │   ├── Product.vue
-|   │   ├── User
-|   |   │   ├── Index.vue
-|   |   │   ├── Signin.vue
-|   |   │   ├── Signup.vue
-|   │   ├── Cart.vue
-|   │   ├── Details.vue
-|   ├── router
-|   |   ├── admin.js
-|   |   ├── cart.js
-|   |   ├── details.js
-|   |   ├── home.js
-|   |   ├── index.js
-|   |   ├── user.js
-│   ├── App.vue
-│   ├── main.js
+│   ├── src
+│   │   ├── components
+│   |   │   ├── ProductForm.vue
+│   |   │   ├── ProductList.vue
+│   |   ├── pages
+│   |   │   ├── Admin
+│   |   |   │   ├── Edit.vue
+│   |   |   │   ├── Index.vue
+│   |   |   │   ├── New.vue
+│   |   |   │   ├── Product.vue
+│   |   │   ├── User
+│   |   |   │   ├── Index.vue
+│   |   |   │   ├── Signin.vue
+│   |   |   │   ├── Signup.vue
+│   |   │   ├── Cart.vue
+│   |   │   ├── Details.vue
+│   |   ├── router
+│   |   |   ├── admin.js
+│   |   |   ├── cart.js
+│   |   |   ├── details.js
+│   |   |   ├── home.js
+│   |   |   ├── index.js
+│   |   |   ├── user.js
+│   │   ├── App.vue
+│   │   ├── main.js
 │   └── README.md                
 ├── server   
 │   ├── api
