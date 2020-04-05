@@ -100,6 +100,7 @@ http://localhost:8080/         # This is where the website is running on.
 ├── server   
 │   ├── api
 |   │   ├── routes
+|   │   ├── models
 |   ├── app.js
 │   └── server.js
 ├── LICENSE
