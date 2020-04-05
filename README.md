@@ -73,15 +73,35 @@ http://localhost:8080/         # This is where the website is running on.
 │   ├── public          
 │   ├── assets
 │   ├── components
-|   │   ├── Home.vue
-│   ├── app.vue
+|   │   ├── ProductForm.vue
+|   │   ├── ProductList.vue
+|   ├── pages
+|   │   ├── Admin
+|   |   │   ├── Edit.vue
+|   |   │   ├── Index.vue
+|   |   │   ├── New.vue
+|   |   │   ├── Product.vue
+|   │   ├── User
+|   |   │   ├── Index.vue
+|   |   │   ├── Signin.vue
+|   |   │   ├── Signup.vue
+|   │   ├── Cart.vue
+|   │   ├── Details.vue
+|   ├── router
+|   |   ├── admin.js
+|   |   ├── cart.js
+|   |   ├── details.js
+|   |   ├── home.js
+|   |   ├── index.js
+|   |   ├── user.js
+│   ├── App.vue
 │   ├── main.js
 │   └── README.md                
 ├── server   
 │   ├── api
 |   │   ├── routes
-│   └── app.js
-├── server.js
+|   ├── app.js
+│   └── server.js
 ├── LICENSE
 └── README.md
 ```
