@@ -18,6 +18,9 @@
             placeholder="Enter password"
           ></b-form-input>
         </b-form-group>
+        <div class="text-center">
+          <b-button type="submit" variant="primary">Login</b-button>
+        </div>
       </b-card>
       <b-card>
         Not a member? <router-link v-bind:to="'/signup'">Sign up</router-link>
