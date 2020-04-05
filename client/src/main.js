@@ -4,7 +4,7 @@ import router from './router';
 //custom
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+//import VeeValidate from 'vee-validate';
 //import css from '../../client/static/app.css';
 
 Vue.config.productionTip = false;

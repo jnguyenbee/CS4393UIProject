@@ -1,7 +1,8 @@
 <template>
   <div>
     <b-form>
-      <b-card class="mt-3">
+      <b-card class="mt-3"
+        ><h1>Sign-Up</h1>
         <b-form-group id="input-group-0" label="Your Name:" label-for="input-2">
           <div class="row">
             <div class="col">
@@ -40,6 +41,10 @@
         <div class="text-center">
           <b-button type="submit" variant="primary">Sign Up</b-button>
         </div>
+      </b-card>
+      <b-card>
+        Already have an account?
+        <router-link v-bind:to="'/signin'">Sign-in</router-link>
       </b-card>
     </b-form>
   </div>
