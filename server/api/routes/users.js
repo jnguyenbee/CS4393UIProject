@@ -2,19 +2,21 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const Product = require('../models/product');
+const User = require('../models/user');
 
 router.post('/', (req, res, next) => {
-    const product = new Product({
+    const user = new User({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        price: req.body.price,
-        description: req.body.description
     });
-    product.save();
+    user.save()
+        .then(result => {
+            console.log(result);
+        })
+        .catch(err => console.log(err));
     res.status(201).json({
-        message: 'posted product to products db',
-        productInfo: product
+        message: 'posted user to users db',
+        userInfo: user
     });
 });
 
