@@ -17,7 +17,7 @@
 - [ ] [MongoDB](https://www.mongodb.com/)
 
 ## Create environment variables
-Create a file called .env in the root directory and fill in the following variables without quotations
+Create a file called .env in the server directory and fill in the following variables without quotations
 ```
 PORT=
 MONGODB_CONNECTION_URI=
@@ -25,7 +25,7 @@ MONGODB_CONNECTION_URI=
 
 <a name="install"></a>
 ### Installing packages
-> Open up your terminal in the root directory and run this command:
+> Open up your terminal in the serve directory and run this command:
 ```
 npm install
 ```
