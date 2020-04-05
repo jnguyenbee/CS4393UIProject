@@ -19,7 +19,7 @@
             >
           </li>
           <li>
-            <router-link to="/loginin"> Sign in </router-link>
+            <router-link to="/user"> Sign in </router-link>
           </li>
         </ul>
       </div>
