@@ -21,13 +21,18 @@ app.use((req, res, next) => {
 
 const options = {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 };
-
-mongoose
-    .connect(CONNECTION_URI, options)
-    .then(console.log('MongoDB Connected'))
-    .catch((error) => handleError(error));
+mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    } 
+)
+    .then(console.log('MongoDB Connected'));
+//mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority
+//mongoose.connect(CONNECTION_URI, options)
+    //.then(console.log('MongoDB Connected'));
+    //.catch((error) => handleError(error));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
