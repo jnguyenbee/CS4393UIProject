@@ -11,7 +11,7 @@
           </div>
           <div class="product__price-cart">${{product.price}}</div>
         </div>
-      </router-link>>
+      </router-link>
     </div>
   </div>
 </template>
