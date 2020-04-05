@@ -19,6 +19,11 @@
           ></b-form-input>
         </b-form-group>
       </b-card>
+      <b-card>
+        Not a member? <router-link v-bind:to="'/signup'">Sign up</router-link>
+        <br />
+        Forgot Password?
+      </b-card>
     </b-form>
   </div>
 </template>

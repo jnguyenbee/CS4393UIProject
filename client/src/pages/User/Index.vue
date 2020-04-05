@@ -1,19 +1,15 @@
 <template>
   <div>
     <div>
-      <p>This is the index for User page</p>
+      <p>This is the Index for User page</p>
     </div>
-    <sign-in></sign-in>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Signin from './Signin';
 export default {
   name: 'Index',
-  components: {
-    'sign-in': Signin,
-  },
 };
 </script>
 

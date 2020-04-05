@@ -3,7 +3,7 @@ import Signup from '../pages/User/Signup';
 import Index from '../pages/User/Index';
 
 export default {
-    path: '/user',
+    path: '/',
     component: Index,
     children: [{
             path: '/signin',
