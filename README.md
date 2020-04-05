@@ -50,7 +50,7 @@ npm install
 npm start
 ```
 or 
-> Open up your terminal in the root directory and run this command:
+> Open up your terminal in the server directory and run this command:
 ```
 nodemon server.js
 ```
