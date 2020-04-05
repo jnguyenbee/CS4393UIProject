@@ -3,11 +3,22 @@
     <b-form>
       <b-card class="mt-3">
         <b-form-group id="input-group-0" label="Your Name:" label-for="input-2">
-          <b-form-input
-            id="input-0"
-            required
-            placeholder="Enter name"
-          ></b-form-input>
+          <div class="row">
+            <div class="col">
+              <b-form-input
+                id="input-0"
+                required
+                placeholder="Enter first name"
+              ></b-form-input>
+            </div>
+            <div class="col">
+              <b-form-input
+                id="input-0"
+                required
+                placeholder="Enter last name"
+              ></b-form-input>
+            </div>
+          </div>
         </b-form-group>
 
         <b-form-group id="input-group-1" label="Username:" label-for="input-1">
@@ -37,4 +48,10 @@
 <script></script>
 <style scoped>
 @import '../../../../client/static/app.css';
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  max-width: 500px;
+}
 </style>

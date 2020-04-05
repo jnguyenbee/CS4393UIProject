@@ -34,4 +34,10 @@
 <script></script>
 <style scoped>
 @import '../../../../client/static/app.css';
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  max-width: 500px;
+}
 </style>
