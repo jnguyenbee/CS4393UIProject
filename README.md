@@ -17,7 +17,7 @@
 - [ ] [MongoDB](https://www.mongodb.com/)
 
 ## Create environment variables
-Create a file called .env in the root directory and fill in the following variables without quotations
+Create a file called .env in the server directory and fill in the following variables without quotations
 ```
 PORT=
 MONGODB_CONNECTION_URI=
@@ -25,7 +25,7 @@ MONGODB_CONNECTION_URI=
 
 <a name="install"></a>
 ### Installing packages
-> Open up your terminal in the root directory and run this command:
+> Open up your terminal in the serve directory and run this command:
 ```
 npm install
 ```
@@ -73,15 +73,35 @@ http://localhost:8080/         # This is where the website is running on.
 │   ├── public          
 │   ├── assets
 │   ├── components
-|   │   ├── Home.vue
-│   ├── app.vue
+|   │   ├── ProductForm.vue
+|   │   ├── ProductList.vue
+|   ├── pages
+|   │   ├── Admin
+|   |   │   ├── Edit.vue
+|   |   │   ├── Index.vue
+|   |   │   ├── New.vue
+|   |   │   ├── Product.vue
+|   │   ├── User
+|   |   │   ├── Index.vue
+|   |   │   ├── Signin.vue
+|   |   │   ├── Signup.vue
+|   │   ├── Cart.vue
+|   │   ├── Details.vue
+|   ├── router
+|   |   ├── admin.js
+|   |   ├── cart.js
+|   |   ├── details.js
+|   |   ├── home.js
+|   |   ├── index.js
+|   |   ├── user.js
+│   ├── App.vue
 │   ├── main.js
 │   └── README.md                
 ├── server   
 │   ├── api
 |   │   ├── routes
-│   └── app.js
-├── server.js
+|   ├── app.js
+│   └── server.js
 ├── LICENSE
 └── README.md
 ```
