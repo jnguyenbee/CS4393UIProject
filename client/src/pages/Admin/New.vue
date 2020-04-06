@@ -1,13 +1,19 @@
 <template>
-  <product-form :model="model"></product-form>
+  <product-form @save-product="addProduct" :product="product"></product-form>
 </template>
 <script>
 import ProductFrom from "../../components/product/ProductForm.vue";
 export default {
   data() {
     return {
-      model: {}
+      product: {}
     };
+  },
+  methods: {
+    addProduct(product) {
+      alert(product.price);
+      this.$store.dispatch("addProduct", product);
+    }
   },
   components: {
     "product-form": ProductFrom
