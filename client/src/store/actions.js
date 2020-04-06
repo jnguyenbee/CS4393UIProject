@@ -1,8 +1,28 @@
 import axios from 'axios';
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS } from './mutation-types';
+import {
+    ADD_PRODUCT,
+    ADD_PRODUCT_SUCCESS,
+    PRODUCT_BY_ID,
+    PRODUCT_BY_ID_SUCCESS,
+    ALL_PRODUCTS,
+    ALL_PRODUCTS_SUCCESS,
+} from './mutation-types';
 
 const API_BASE = 'http://localhost:3000';
 export const productActions = {
+    allProducts({ commit }) {
+        commit(ALL_PRODUCTS);
+        axios.get(`${API_BASE}/products`).then((response) => {
+            commit(ALL_PRODUCTS_SUCCESS, response.data);
+        });
+    },
+    productById({ commit }, payload) {
+        commit(PRODUCT_BY_ID);
+        axios.get(`${API_BASE}/products/${payload}`).then((response) => {
+            console.log(payload, response.data);
+            commit(PRODUCT_BY_ID_SUCCESS, response.data);
+        });
+    },
     addProduct({ commit }, payload) {
         commit(ADD_PRODUCT);
         axios.post(`${API_BASE}/products/`, payload).then((response) => {
