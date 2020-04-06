@@ -6,7 +6,7 @@
       </div>
       <div class="product__description">
         <div class="product__info">
-          <h4>{{product.name}}</h4>
+          <h6>{{product.name}}</h6>
         </div>`
         <div class="product__price-cart">${{product.price}}</div>
       </div>
@@ -29,7 +29,7 @@ export default {
 @import "product-item.css";
 
 .product {
-  background: #fff;
+  background: #ced1da;
   margin-bottom: 10px;
   position: relative;
   overflow: hidden;
@@ -93,7 +93,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 20px;
+  font-size: 10px;
   font-weight: bold;
   color: #51d2b7;
 }

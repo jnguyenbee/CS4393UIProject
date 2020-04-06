@@ -41,7 +41,7 @@ export default {
 
 <style>
 .products {
-  background: #f7f8fb;
+  background: #fff;
   padding: 30px 0;
 }
 </style>
