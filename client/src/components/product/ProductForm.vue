@@ -4,7 +4,11 @@
       <b-card class="mt-3">
         <div class="row">
           <div class="col">
-            <b-form-group id="input-group-0" label="Product Name:" label-for="input-0">
+            <b-form-group
+              id="input-group-0"
+              label="Product Name:"
+              label-for="input-0"
+            >
               <b-form-input
                 id="input-0"
                 type="user"
@@ -29,13 +33,16 @@
               <b-form-file
                 id="input-2"
                 v-model="product.image"
-                :state="Boolean(file)"
                 placeholder="Choose a file or drop it here..."
                 drop-placeholder="Drop file here..."
               ></b-form-file>
             </b-form-group>
 
-            <b-form-group id="input-group-3" label="Description:" label-for="input-3">
+            <b-form-group
+              id="input-group-3"
+              label="Description:"
+              label-for="input-3"
+            >
               <b-form-textarea
                 id="input-3"
                 v-model="product.description"
@@ -47,7 +54,6 @@
         </div>
         <div class="form-group new-button">
           <button class="button">
-            <i class="fa fa-pencil"></i>
             <span v-if="isEditing">Update Product</span>
             <span v-else>Add Product</span>
           </button>
@@ -59,24 +65,24 @@
 
 <script>
 export default {
-  props: ["product", "isEditing"],
+  props: ['product', 'isEditing'],
   methods: {
     saveProduct() {
       alert(this.product.name);
-      this.$emit("save-product", this.product);
+      this.$emit('save-product', this.product);
       //console.log("submit hit");
-    }
-  }
+    },
+  },
 };
 </script>
 
-
 <style scoped>
-@import "../../../../client/static/app.css";
+@import '../../../../client/static/app.css';
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
   margin-bottom: 100px; /* Added */
   max-width: 800px;
+  background: rgb(248, 243, 243);
 }
 </style>

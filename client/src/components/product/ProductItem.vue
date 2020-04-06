@@ -1,35 +1,35 @@
 <template>
   <div class="product">
-    <router-link :to="'/details/'+product._id" class="product-link">
+    <router-link :to="'/details/' + product._id" class="product-link">
       <div class="product__image">
         <img class="img-responsive" :src="product.image" alt />
       </div>
       <div class="product__description">
         <div class="product__info">
-          <h6>{{product.name}}</h6>
-        </div>`
-        <div class="product__price-cart">${{product.price}}</div>
+          <h6>{{ product.name }}</h6>
+        </div>
+
+        <div class="product__price-cart">${{ product.price }}</div>
       </div>
     </router-link>
   </div>
 </template>
 
-
 <script>
 export default {
-  name: "product-item",
-  props: ["product"],
+  name: 'product-item',
+  props: ['product'],
   data() {
     return {};
-  }
+  },
 };
 </script>
 
 <style scoped>
-@import "product-item.css";
+@import 'product-item.css';
 
 .product {
-  background: #ced1da;
+  background: rgb(248, 243, 243);
   margin-bottom: 10px;
   position: relative;
   overflow: hidden;
