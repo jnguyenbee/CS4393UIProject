@@ -8,7 +8,7 @@
         <div class="product__info">
           <h6>{{ product.name }}</h6>
         </div>
-        `
+
         <div class="product__price-cart">${{ product.price }}</div>
       </div>
     </router-link>
@@ -29,7 +29,7 @@ export default {
 @import 'product-item.css';
 
 .product {
-  background: #fff;
+  background: rgb(248, 243, 243);
   margin-bottom: 10px;
   position: relative;
   overflow: hidden;

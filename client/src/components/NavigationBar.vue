@@ -22,8 +22,18 @@
             <b-dropdown-item router-link to="/admin">Admin</b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button variant="outline-success" size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <b-form-input
+              size="sm"
+              class="mr-sm-2"
+              placeholder="Search"
+            ></b-form-input>
+            <b-button
+              variant="outline-warning"
+              size="sm"
+              class="my-2 my-sm-0"
+              type="submit"
+              >Search</b-button
+            >
           </b-nav-form>
           <b-nav-item router-link to="/cart">Cart</b-nav-item>
         </b-navbar-nav>
@@ -34,9 +44,8 @@
 
 <script>
 export default {
-  name: "nav"
+  name: 'nav',
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
