@@ -9,12 +9,12 @@ router.post('/', (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         price: req.body.price,
-        description: req.body.description
+        description: req.body.description,
     });
     product.save();
     res.status(201).json({
         message: 'posted product to products db',
-        productInfo: product
+        productInfo: product,
     });
 });
 
