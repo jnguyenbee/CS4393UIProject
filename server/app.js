@@ -26,6 +26,7 @@ const options = {
 
 const productRoutes = require('./api/routes/products');
 const userRoutes = require('./api/routes/users');
+const orderRoutes = require('./api/routes/orders');
 
 mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -41,5 +42,6 @@ app.use(bodyParser.json());
 
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+app.use('/orders', orderRoutes);
 
 module.exports = app;
