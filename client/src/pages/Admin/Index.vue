@@ -6,10 +6,10 @@
           <ul class="admin-menu">
             <!-- Links are to sibling routes -->
             <li>
-              <router-link to="/admin">View Products</router-link>
+              <router-link to="/admin">View All Products</router-link>
             </li>
             <li>
-              <router-link to="/admin/new">New Product</router-link>
+              <router-link to="/admin/new">Add New Product</router-link>
             </li>
           </ul>
         </div>
@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-  name: "Index"
+  name: 'Index',
 };
 </script>
 
@@ -29,11 +29,11 @@ export default {
 <style scoped>
 .admin-menu a {
   display: block;
-  background: #efdb06;
-  border: 1px solid #f9e610;
+  background: #ffc107;
+  border: 1px solid #ffc107;
   color: #3d3d3d;
   padding: 10px 15px;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 12px;

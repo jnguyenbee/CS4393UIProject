@@ -58,5 +58,6 @@
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
   max-width: 500px;
+  background: rgb(248, 243, 243);
 }
 </style>

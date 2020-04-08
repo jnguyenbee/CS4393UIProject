@@ -1,20 +1,17 @@
 <template>
   <div>
-    <div>
-      <p>This is the home page</p>
-    </div>
     <product-list></product-list>
   </div>
 </template>
 
 <script>
-import ProductList from '../components/product/ProductList.vue';
+import ProductList from "../components/product/ProductList.vue";
 //import NavBar from '../components/NavigationBar';
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    'product-list': ProductList,
-  },
+    "product-list": ProductList
+  }
 };
 </script>
 

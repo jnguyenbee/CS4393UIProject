@@ -1,12 +1,29 @@
 <template>
-  <p>This is the detail page</p>
+  <div>
+    <product-details :product="product" :isAdding="true"></product-details>
+  </div>
 </template>
 
 <script>
+import ProductDetails from '../components/product/ProductDetails';
 export default {
-  name: 'Detail',
+  created() {
+    if (!this.product.name) {
+      this.$store.dispatch('productById', this.$route.params['id']);
+    }
+  },
+  computed: {
+    product() {
+      return this.$store.getters.productById(this.$route.params['id']);
+    },
+  },
+  data() {
+    return {
+      //        product: this.$store.getters.productById(this.$route.params['id'])
+    };
+  },
+  components: {
+    'product-details': ProductDetails,
+  },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
