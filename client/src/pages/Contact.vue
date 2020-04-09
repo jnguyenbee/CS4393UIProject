@@ -1,6 +1,13 @@
 <template>
 <div class="container">
-  <h2>Frequently Asked Questions</h2>
+<div id="contactJumbo">
+  <div class = "jumbotron">
+    <h1 class="display-1">Contact Us</h1>
+      <div><small>Phone: 1-800-867-5309</small></div>
+      <div><small>Email: support@RainbowMangos.com</small></div>
+  </div>
+</div>
+  <h2 class="display-4">Frequently Asked Questions</h2>
   <div> 
     <p></p>
     <b-dropdown
@@ -42,7 +49,7 @@
     </b-dropdown>
 
     <b-dropdown
-      text="Can I get a discount for buying in bulk?"
+      text="Can I get a discount?"
       block
       variant="outline-info"
       class="m-2"
@@ -54,9 +61,9 @@
       </b-dropdown-text>
     </b-dropdown>
   </div>
-  <h2>Got more questions? Send us a message:</h2>
+  <p></p>
+  <h2 class="display-4">Send us a message:</h2>
   <div>
-    <p></p>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
@@ -91,15 +98,11 @@
           max-rows="6"
         ></b-form-textarea>
       </b-form-group>
-      <b-button type="submit" variant="primary">Send</b-button>
-      <b-button type="reset" variant="danger">Clear</b-button>
+      <b-button-group>
+        <b-button type="submit" variant="primary">Send</b-button>
+        <b-button type="reset" variant="danger">Clear</b-button>
+      </b-button-group>
     </b-form>
-  </div>
-  <div>
-    <p></p>
-    <h2>Or Contact us via phone or email:</h2>
-    <p>Phone: 1-800-867-5309</p>
-    <p>Email: support@RainbowMangos.com</p>
   </div>
 </div>
 
@@ -140,4 +143,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+  #contactJumbo .jumbotron{
+    text-align: center;
+    padding: 1px;
+    background-color:rgb(240, 241, 245);
+  }
+</style>
