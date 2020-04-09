@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Contact Us</b-nav-item>
+          <b-nav-item router-link to="/contact">Contact Us</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
