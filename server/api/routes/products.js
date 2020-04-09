@@ -53,27 +53,27 @@ router.get('/:productId', (req, res, next) => {
     });
 });
 
-/*router.patch('/:boardgameId', (req, res, next) => {
-    const id = req.params.boardgameId;
+router.patch('/:productId', (req, res, next) => {
+    const id = req.params.productId;
     const updateOps = {};
     for (const ops of req.body){
         updateOps[ops.propName] = ops.value;
     }
 
-    Boardgame.update({ _id : id}, { $set: updateOps })
+    Product.update({ _id : id}, { $set: updateOps })
         .exec()
         .then(result => {
             res.status(200).json(result);
         })
 });
 
-router.delete('/:boardgameId', (req, res, next) => {
-    const id = req.params.boardgameId;
-    Boardgame.remove({ _id : id})
+router.delete('/:productId', (req, res, next) => {
+    const id = req.params.productId;
+    Product.remove({ _id : id})
     .exec()
     .then(result => {
-        res.status(200).json(result);
+        res.status(200).json(result);   
     })
 });
-*/
+
 module.exports = router;
