@@ -66,6 +66,7 @@
 <script>
 export default {
   props: ['product', 'isEditing'],
+  created() {},
   methods: {
     saveProduct() {
       alert(this.product.name);
