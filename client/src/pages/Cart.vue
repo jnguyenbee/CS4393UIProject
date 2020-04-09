@@ -1,12 +1,31 @@
 <template>
-  <p>This is the Cart page</p>
+  <div v-if="cart.length > 0">
+    <div class="title">
+      <h1>
+        <i class="fa fa-superpowers"></i> Your Cart
+      </h1>
+    </div>
+    <template v-for="product in cart">
+      <product-details :product="product" :key="product.id"></product-details>
+    </template>
+  </div>
+  <div v-else class="title">
+    <h1>
+      <i class="fa fa-superpowers"></i> Your Cart is Empty
+    </h1>
+  </div>
 </template>
 
 <script>
+import ProductDetails from "../components/product/ProductDetails";
 export default {
-  name: 'Cart',
+  data() {
+    return {
+      cart: this.$store.state.cart
+    };
+  },
+  components: {
+    productDetails: ProductDetails
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
