@@ -34,16 +34,20 @@ export const productActions = {
         });
     },
     updateProduct({ commit }, payload) {
-        commit(UPDATE_PRODUCT)
-        axios.put(`${API_BASE}/products/${payload._id}`, payload).then(response => {
-            commit(UPDATE_PRODUCT_SUCCESS, response.data)
-        })
+        commit(UPDATE_PRODUCT);
+        axios
+            .put(`${API_BASE}/products/${payload._id}`, payload)
+            .then((response) => {
+                commit(UPDATE_PRODUCT_SUCCESS, response.data);
+            });
     },
     removeProduct({ commit }, payload) {
-        commit(REMOVE_PRODUCT)
-        axios.delete(`${API_BASE}/products/${payload}`, payload).then(response => {
-            console.debug('response', response.data)
-            commit(REMOVE_PRODUCT_SUCCESS, response.data)
-        })
-    }
+        commit(REMOVE_PRODUCT);
+        axios
+            .delete(`${API_BASE}/products/${payload}`, payload)
+            .then((response) => {
+                console.debug('response', response.data);
+                commit(REMOVE_PRODUCT_SUCCESS, response.data);
+            });
+    },
 };
