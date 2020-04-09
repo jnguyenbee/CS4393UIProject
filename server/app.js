@@ -36,7 +36,7 @@ mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/
 //mongoose.connect(CONNECTION_URI, options)
     //.then(console.log('MongoDB Connected'));
     //.catch((error) => handleError(error));
-
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
