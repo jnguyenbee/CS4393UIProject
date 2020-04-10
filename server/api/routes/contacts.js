@@ -2,40 +2,41 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const User = require('../models/user');
+const Contact = require('../models/contact');
 
 router.post('/', (req, res, next) => {
-    const user = new User({
+    const contact = new Contact({
         _id: new mongoose.Types.ObjectId(),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        password: req.body.password,
         email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        description: req.body.description,
     });
-    user.save()
-        .then(result => {
-            console.log(result);
-        })
-        .catch(err => console.log(err));
-    res.status(201).json({
-        message: 'posted user to users db',
-        userInfo: user
+    contact.save().then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: 'posted contact to contacts db',
+            contactInfo: contact
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
 });
 
 router.get('/', (req, res, next) => {
-    User.find()
+    Contact.find()
     .exec()
     .then(docs => {
         res.status(200).json(docs);
     })
 });
 
-
-router.get('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.findById(id)
+router.get('/:contactId', (req, res, next) => {
+    const id = req.params.contactId;
+    Contact.findById(id)
     .exec()
     .then(doc => {
       if (doc) {
@@ -52,9 +53,9 @@ router.get('/:userId', (req, res, next) => {
     });
 });
 
-router.delete('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.remove({ _id : id})
+router.delete('/:contactId', (req, res, next) => {
+    const id = req.params.contactId;
+    Contact.remove({ _id : id})
     .exec()
     .then(result => {
         res.status(200).json(result);   

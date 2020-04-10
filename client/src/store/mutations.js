@@ -9,6 +9,8 @@ import {
     PRODUCT_BY_ID_SUCCESS,
     ALL_PRODUCTS,
     ALL_PRODUCTS_SUCCESS,
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
 } from './mutation-types';
 
 export const productMutations = {
@@ -36,3 +38,12 @@ export const productMutations = {
         state.products.push(payload);
     },
 };
+
+export const cartMutations = {
+    [ADD_TO_CART]: (state, payload) => state.cart.push(payload),
+    [REMOVE_FROM_CART]: (state, payload) => {
+        const index = state.cart.findIndex(p => p._id === payload)
+        state.cart.splice(index, 1)
+        console.log(state.cart, state.cart.length, index)
+    }
+}

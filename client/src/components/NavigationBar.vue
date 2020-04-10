@@ -35,7 +35,11 @@
               >Search</b-button
             >
           </b-nav-form>
-          <b-nav-item router-link to="/cart">Cart</b-nav-item>
+          <b-nav-item router-link to="/cart"
+            ><i class="fa fa-shopping-cart"></i> Cart ({{
+              cartItemsCount
+            }})</b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -45,6 +49,19 @@
 <script>
 export default {
   name: 'nav',
+  data() {
+    return {
+      cartItems: this.$store.state.cart,
+    };
+  },
+  computed: {
+    cartItemsCount() {
+      return this.cartItems.length;
+    },
+    showLoader() {
+      return this.$store.state.showLoader;
+    },
+  },
 };
 </script>
 

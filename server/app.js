@@ -26,6 +26,7 @@ const options = {
 
 const productRoutes = require('./api/routes/products');
 const userRoutes = require('./api/routes/users');
+const orderRoutes = require('./api/routes/orders');
 
 mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -35,11 +36,12 @@ mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/
 //mongoose.connect(CONNECTION_URI, options)
     //.then(console.log('MongoDB Connected'));
     //.catch((error) => handleError(error));
-
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+app.use('/orders', orderRoutes);
 
 module.exports = app;
