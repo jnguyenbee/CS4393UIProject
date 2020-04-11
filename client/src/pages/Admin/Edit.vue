@@ -1,40 +1,37 @@
 <template>
-  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Manufacturer</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in products" :key="product.id">
-          <td>{{product.name}}</td>
-          <td>${{product.price}}</td>
-          <td>
-            <router-link :to="'/admin/edit/'+product._id">
-              <i class="fa fa-pencil-square-o"></i>
-            </router-link>
-          </td>
-          <td>
-            <a @click="deleteProduct(product._id)">
-              <i class="fa fa-trash"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <product-form
+    @save-product="updateProduct"
+    :product="product"
+    :isEditing="true"
+  ></product-form>
 </template>
-
 <script>
+import ProductFrom from '../../components/product/ProductForm.vue';
 export default {
-  name: "Edit"
+  data() {
+    //      const productById = this.$store.getters.productById(this.$route.params['id'])
+    return {
+      // product: {},
+      // model: this.$store.getters.productById(this.$route.params['id']),
+    };
+  },
+  computed: {
+    product() {
+      const productById = this.$store.getters.productById(
+        this.$route.params['id']
+      );
+      return Object.assign({}, productById);
+    },
+  },
+  methods: {
+    updateProduct(product) {
+      console.log('model', product);
+      this.$store.dispatch('updateProduct', product);
+    },
+  },
+
+  components: {
+    'product-form': ProductFrom,
+  },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
