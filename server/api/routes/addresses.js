@@ -62,6 +62,27 @@ router.get('/:addressId', (req, res, next) => {
     });
 });
 
+router.patch('/:addressId', (req, res, next) => {
+    const id = req.params.addressId;
+    const updateOps = {};
+    for (const ops of req.body){
+        updateOps[ops.propName] = ops.value;
+    }
+    Address.update({ _id : id}, 
+        { $set: updateOps })
+        .exec()
+        .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+        })
+        .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+            });
+        });
+});
+
 router.delete('/:addressId', (req, res, next) => {
     const id = req.params.addressId;
     Address.remove({ _id : id})

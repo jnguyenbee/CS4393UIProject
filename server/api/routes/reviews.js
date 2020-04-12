@@ -60,6 +60,27 @@ router.get('/:reviewId', (req, res, next) => {
     });
 });
 
+router.patch('/:reviewId', (req, res, next) => {
+    const id = req.params.reviewId;
+    const updateOps = {};
+    for (const ops of req.body){
+        updateOps[ops.propName] = ops.value;
+    }
+    Review.update({ _id : id}, 
+        { $set: updateOps })
+        .exec()
+        .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+        })
+        .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+            });
+        });
+});
+
 router.delete('/:reviewId', (req, res, next) => {
     const id = req.params.reviewId;
     Review.remove({ _id : id})
