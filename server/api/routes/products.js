@@ -45,16 +45,16 @@ router.post('/', upload.single('productImage'), (req, res, next) => {
 
 router.get('/', (req, res, next) => {
     Product.find()
-    .exec()
-    .then(docs => {
-        res.status(200).json(docs);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
+        .exec()
+        .then((docs) => {
+            res.status(200).json(docs);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                error: err,
+            });
         });
-    });
 });
 
 router.get('/:productId', (req, res, next) => {
@@ -80,20 +80,19 @@ router.get('/:productId', (req, res, next) => {
 router.patch('/:productId', (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
-    for (const ops of req.body){
+    for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
     }
-    Product.update({ _id : id}, 
-        { $set: updateOps })
+    Product.update({ _id: id }, { $set: updateOps })
         .exec()
-        .then(result => {
-        console.log(result);
-        res.status(200).json(result);
+        .then((result) => {
+            console.log(result);
+            res.status(200).json(result);
         })
-        .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                error: err,
             });
         });
 });
@@ -105,10 +104,10 @@ router.delete('/:productId', (req, res, next) => {
         .then((result) => {
             res.status(200).json(result);
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json({
-                error: err
+                error: err,
             });
         });
 });

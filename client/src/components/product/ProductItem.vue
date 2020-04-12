@@ -2,7 +2,7 @@
   <div class="product">
     <router-link :to="'/details/' + product._id" class="product-link">
       <div class="product__image">
-        <img class="img-responsive" :src="product.image" alt />
+        <img class="img-responsive" v-bind:src="'http://localhost:3000/'+ product.productImage" alt />
       </div>
       <div class="product__description">
         <div class="product__info">
@@ -17,16 +17,16 @@
 
 <script>
 export default {
-  name: 'product-item',
-  props: ['product'],
+  name: "product-item",
+  props: ["product"],
   data() {
     return {};
-  },
+  }
 };
 </script>
 
 <style scoped>
-@import 'product-item.css';
+@import "product-item.css";
 
 .product {
   background: rgb(248, 243, 243);
@@ -58,7 +58,7 @@ export default {
   text-decoration: none;
 }
 
-.product .product__image {
+.product {
   width: 100%;
 }
 
@@ -66,6 +66,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   height: 225px;
 }
 
