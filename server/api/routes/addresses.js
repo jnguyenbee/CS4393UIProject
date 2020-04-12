@@ -2,30 +2,35 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const User = require('../models/user');
+const Address = require('../models/address');
 
 router.post('/', (req, res, next) => {
-    const user = new User({
+    const address = new Address({
         _id: new mongoose.Types.ObjectId(),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        password: req.body.password,
-        email: req.body.email,
+        street: req.body.street,
+        zipcode: req.body.zipcode,
+        state: req.body.state,
+        city: req.body.city,
+        phoneNumber: req.body.phoneNumber
     });
-    user.save()
+    address.save()
         .then(result => {
-            console.log(result);
-        })
-        .catch(err => console.log(err));
-    res.status(201).json({
-        message: 'posted user to users db',
-        userInfo: user
+        console.log(result);
+        res.status(201).json({
+            message: 'posted address to addresses db',
+            addressInfo: address
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
 });
 
 router.get('/', (req, res, next) => {
-    User.find()
+    Address.find()
     .exec()
     .then(docs => {
         res.status(200).json(docs);
@@ -38,10 +43,9 @@ router.get('/', (req, res, next) => {
     });
 });
 
-
-router.get('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.findById(id)
+router.get('/:addressId', (req, res, next) => {
+    const id = req.params.addressId;
+    Address.findById(id)
     .exec()
     .then(doc => {
       if (doc) {
@@ -58,13 +62,13 @@ router.get('/:userId', (req, res, next) => {
     });
 });
 
-router.patch('/:userId', (req, res, next) => {
-    const id = req.params.userId;
+router.patch('/:addressId', (req, res, next) => {
+    const id = req.params.addressId;
     const updateOps = {};
     for (const ops of req.body){
         updateOps[ops.propName] = ops.value;
     }
-    User.update({ _id : id}, 
+    Address.update({ _id : id}, 
         { $set: updateOps })
         .exec()
         .then(result => {
@@ -79,9 +83,9 @@ router.patch('/:userId', (req, res, next) => {
         });
 });
 
-router.delete('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.remove({ _id : id})
+router.delete('/:addressId', (req, res, next) => {
+    const id = req.params.addressId;
+    Address.remove({ _id : id})
     .exec()
     .then(result => {
         res.status(200).json(result);   

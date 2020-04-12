@@ -2,30 +2,32 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const User = require('../models/user');
+const Review = require('../models/review');
 
 router.post('/', (req, res, next) => {
-    const user = new User({
+    const review = new Review({
         _id: new mongoose.Types.ObjectId(),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        password: req.body.password,
-        email: req.body.email,
+        username: req.body.username,
+        rating: req.body.rating,
+        description: req.body.description,
     });
-    user.save()
-        .then(result => {
-            console.log(result);
-        })
-        .catch(err => console.log(err));
-    res.status(201).json({
-        message: 'posted user to users db',
-        userInfo: user
+    review.save().then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: 'posted review to reviews db',
+            reviewInfo: review
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
 });
 
 router.get('/', (req, res, next) => {
-    User.find()
+    Review.find()
     .exec()
     .then(docs => {
         res.status(200).json(docs);
@@ -39,9 +41,9 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.findById(id)
+router.get('/:reviewId', (req, res, next) => {
+    const id = req.params.reviewId;
+    Review.findById(id)
     .exec()
     .then(doc => {
       if (doc) {
@@ -58,13 +60,13 @@ router.get('/:userId', (req, res, next) => {
     });
 });
 
-router.patch('/:userId', (req, res, next) => {
-    const id = req.params.userId;
+router.patch('/:reviewId', (req, res, next) => {
+    const id = req.params.reviewId;
     const updateOps = {};
     for (const ops of req.body){
         updateOps[ops.propName] = ops.value;
     }
-    User.update({ _id : id}, 
+    Review.update({ _id : id}, 
         { $set: updateOps })
         .exec()
         .then(result => {
@@ -79,9 +81,9 @@ router.patch('/:userId', (req, res, next) => {
         });
 });
 
-router.delete('/:userId', (req, res, next) => {
-    const id = req.params.userId;
-    User.remove({ _id : id})
+router.delete('/:reviewId', (req, res, next) => {
+    const id = req.params.reviewId;
+    Review.remove({ _id : id})
     .exec()
     .then(result => {
         res.status(200).json(result);   
