@@ -4,11 +4,7 @@
       <b-card class="mt-3">
         <div class="row">
           <div class="col">
-            <b-form-group
-              id="input-group-0"
-              label="Product Name:"
-              label-for="input-0"
-            >
+            <b-form-group id="input-group-0" label="Product Name:" label-for="input-0">
               <b-form-input
                 id="input-0"
                 type="user"
@@ -32,17 +28,13 @@
             <b-form-group id="input-group-2" label="Image:" label-for="input-2">
               <b-form-file
                 id="input-2"
-                v-model="product.image"
+                v-model="product.productImage"
                 placeholder="Choose a file or drop it here..."
                 drop-placeholder="Drop file here..."
               ></b-form-file>
             </b-form-group>
 
-            <b-form-group
-              id="input-group-3"
-              label="Description:"
-              label-for="input-3"
-            >
+            <b-form-group id="input-group-3" label="Description:" label-for="input-3">
               <b-form-textarea
                 id="input-3"
                 v-model="product.description"
@@ -65,20 +57,20 @@
 
 <script>
 export default {
-  props: ['product', 'isEditing'],
+  props: ["product", "isEditing"],
   created() {},
   methods: {
     saveProduct() {
       alert(this.product.name);
-      this.$emit('save-product', this.product);
+      this.$emit("save-product", this.product);
       //console.log("submit hit");
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-@import '../../../../client/static/app.css';
+@import "../../../../client/static/app.css";
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */

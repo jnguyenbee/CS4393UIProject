@@ -4,7 +4,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 product-details__image">
-          <img class="img-responsive" :src="product.image" alt />
+          <img
+            class="img-responsive"
+            v-bind:src="'http://localhost:3000/'+ product.productImage"
+            alt
+          />
         </div>
         <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 product-details__info">
           <div class="product-details__description">
