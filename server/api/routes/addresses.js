@@ -7,12 +7,14 @@ const Address = require('../models/address');
 router.post('/', (req, res, next) => {
     const address = new Address({
         _id: new mongoose.Types.ObjectId(),
+        street: req.body.street,
         zipcode: req.body.zipcode,
         state: req.body.state,
         city: req.body.city,
         phoneNumber: req.body.phoneNumber
     });
-    product.save().then(result => {
+    address.save()
+        .then(result => {
         console.log(result);
         res.status(201).json({
             message: 'posted address to addresses db',
@@ -33,6 +35,12 @@ router.get('/', (req, res, next) => {
     .then(docs => {
         res.status(200).json(docs);
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 router.get('/:addressId', (req, res, next) => {
@@ -61,6 +69,12 @@ router.delete('/:addressId', (req, res, next) => {
     .then(result => {
         res.status(200).json(result);   
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 module.exports = router;

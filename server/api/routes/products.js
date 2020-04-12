@@ -49,6 +49,12 @@ router.get('/', (req, res, next) => {
     .then(docs => {
         res.status(200).json(docs);
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 router.get('/:productId', (req, res, next) => {
@@ -101,6 +107,12 @@ router.delete('/:productId', (req, res, next) => {
         .exec()
         .then((result) => {
             res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
         });
 });
 
