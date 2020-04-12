@@ -32,6 +32,12 @@ router.get('/', (req, res, next) => {
     .then(docs => {
         res.status(200).json(docs);
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 router.get('/:contactId', (req, res, next) => {
@@ -60,6 +66,12 @@ router.delete('/:contactId', (req, res, next) => {
     .then(result => {
         res.status(200).json(result);   
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 module.exports = router;
