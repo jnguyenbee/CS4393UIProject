@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
         });
     });
 });
-
+//must use productId in postman
 router.post('/', (req, res, next) => {
     Product.findById(req.body.productId)
         .then(product => {
