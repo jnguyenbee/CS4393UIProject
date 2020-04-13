@@ -21,7 +21,8 @@ export default {
   },
   methods: {
     updateProduct(product) {
-      this.$store.dispatch("updateProduct", product);
+      console.log(product);
+      this.$store.dispatch("updateProduct", this.product);
     }
   },
 

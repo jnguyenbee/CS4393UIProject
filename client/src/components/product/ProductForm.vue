@@ -105,8 +105,11 @@ export default {
       this.file = file;
     },
     saveProduct() {
-      alert(this.product.description);
       const formData = new FormData();
+      if (this.isEditing == true) {
+        formData.append("_id", this.product.id);
+      }
+
       formData.append("name", this.product.name);
       formData.append("price", this.product.price);
       formData.append("size", this.product.size);
@@ -114,6 +117,8 @@ export default {
       formData.append("quanity", this.product.quantity);
       formData.append("description", this.product.description);
       formData.append("productImage", this.product.productImage);
+
+      alert(this.product.name);
       this.$emit("save-product", formData);
       //console.log("submit hit");
     }
