@@ -1,11 +1,11 @@
 
 <template>
-  <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:400px">
+  <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
     <b-row no-gutters>
       <b-col md="6">
         <b-card-img
           fluid
-          style="height:400px; width:400px"
+          style="height:100%; width:400px"
           v-bind:src="'http://localhost:3000/'+ product.productImage"
           alt="Image"
           class="rounded-0"
@@ -14,12 +14,13 @@
       <b-col md="6">
         <b-card-body :title="product.name">
           <b-card-text>
-            <div class="product-details__description">
-              <p>Price: ${{ product.price }}</p>
-              <p>Size: {{ product.size }}</p>
-              <p>Color: {{ product.color }}</p>
-              <em>{{ product.quantity }} left in stock</em>
-            </div>
+            <p>Price: ${{ product.price }}</p>
+            <p>Size: {{ product.size }}</p>
+            <p>Color: {{ product.color }}</p>
+            <b-card>
+              <h5>Description</h5>
+              {{product.description}}
+            </b-card>
           </b-card-text>
           <div class="product-details__price-cart">
             <product-button :product="product"></product-button>

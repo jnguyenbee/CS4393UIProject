@@ -35,9 +35,11 @@ export const productActions = {
     },
     updateProduct({ commit }, payload) {
         commit(UPDATE_PRODUCT);
-        axios.put(`${API_BASE}/products/${payload._id}`, payload).then(response => {
-            commit(UPDATE_PRODUCT_SUCCESS, response.data);
-        });
+        axios
+            .patch(`${API_BASE}/products/${payload._id}`, payload)
+            .then(response => {
+                commit(UPDATE_PRODUCT_SUCCESS, response.data);
+            });
     },
     removeProduct({ commit }, payload) {
         commit(REMOVE_PRODUCT);
