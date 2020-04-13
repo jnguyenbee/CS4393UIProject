@@ -7,8 +7,8 @@ import Vuex from 'vuex';
 //import { productMutations, cartMutations, manufacturerMutations } from './mutations'
 
 import { productGetters } from './getters';
-import { productMutations, cartMutations } from './mutations';
-import { productActions } from './actions';
+import { productMutations, cartMutations, userMutations } from './mutations';
+import { productActions, userActions } from './actions';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -18,9 +18,11 @@ export default new Vuex.Store({
         showLoader: false,
         product: {},
         products: [],
+        user: {},
+        users: []
     },
 
-    mutations: Object.assign({}, productMutations, cartMutations),
+    mutations: Object.assign({}, productMutations, cartMutations, userMutations),
     getters: Object.assign({}, productGetters),
-    actions: Object.assign({}, productActions),
+    actions: Object.assign({}, productActions, userActions)
 });

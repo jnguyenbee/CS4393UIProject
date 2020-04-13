@@ -1,22 +1,23 @@
 <template>
-  <product-form @save-product="addProduct" :product="product"></product-form>
+  <product-form @save-product="addProduct" :product="product" :isEditing="false"></product-form>
 </template>
 <script>
-import ProductFrom from '../../components/product/ProductForm.vue';
+import ProductFrom from "../../components/product/ProductForm.vue";
 export default {
   data() {
     return {
-      product: {},
+      product: {}
     };
   },
   methods: {
     addProduct(product) {
-      this.$store.dispatch('addProduct', product);
-    },
+      alert("reached");
+      this.$store.dispatch("addProduct", product);
+    }
   },
   components: {
-    'product-form': ProductFrom,
-  },
+    "product-form": ProductFrom
+  }
 };
 </script>
 

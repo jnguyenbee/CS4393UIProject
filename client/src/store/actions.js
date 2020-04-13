@@ -9,7 +9,9 @@ import {
     UPDATE_PRODUCT,
     UPDATE_PRODUCT_SUCCESS,
     REMOVE_PRODUCT,
-    REMOVE_PRODUCT_SUCCESS
+    REMOVE_PRODUCT_SUCCESS,
+    ADD_USER,
+    ADD_USER_SUCCESS
 } from './mutation-types';
 
 const API_BASE = 'http://localhost:3000';
@@ -46,6 +48,15 @@ export const productActions = {
         axios.delete(`${API_BASE}/products/${payload}`, payload).then(response => {
             console.debug('response', response.data);
             commit(REMOVE_PRODUCT_SUCCESS, response.data);
+        });
+    }
+};
+
+export const userActions = {
+    addUser({ commit }, payload) {
+        commit(ADD_USER);
+        axios.post(`${API_BASE}/users/`, payload).then(response => {
+            commit(ADD_USER_SUCCESS, response.data);
         });
     }
 };

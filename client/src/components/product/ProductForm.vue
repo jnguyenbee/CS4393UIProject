@@ -116,9 +116,13 @@ export default {
       formData.append("color", this.product.color);
       formData.append("quanity", this.product.quantity);
       formData.append("description", this.product.description);
-      formData.append("productImage", this.product.productImage);
+      formData.append("productImage", this.file);
 
       alert(this.product.name);
+      alert(this.product.price);
+      alert(this.product.size);
+      alert(this.product.color);
+      alert(this.product.quantity);
       this.$emit("save-product", formData);
       //console.log("submit hit");
     }
