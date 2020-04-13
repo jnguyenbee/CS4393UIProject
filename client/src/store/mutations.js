@@ -83,7 +83,7 @@ export const cartMutations = {
 };
 
 export const userMutations = {
-    [ADD_USER]: state => {
+    [ADD_USER]: (state, payload) => {
         state.user = payload;
         state.showLoader = true;
     },

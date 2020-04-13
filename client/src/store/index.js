@@ -22,7 +22,7 @@ export default new Vuex.Store({
         users: []
     },
 
-    mutations: Object.assign({}, productMutations, cartMutation, userMutations),
+    mutations: Object.assign({}, productMutations, cartMutations, userMutations),
     getters: Object.assign({}, productGetters),
     actions: Object.assign({}, productActions, userActions)
 });
