@@ -20,15 +20,17 @@ const contactRoutes = require('./api/routes/contacts');
 const reviewRoutes = require('./api/routes/reviews');
 
 //mongoose.connect(CONNECTION_URI, options)
-    //.then(console.log('MongoDB Connected'));
-    //.catch((error) => handleError(error));
-mongoose.connect( 'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    } 
-).then(console.log('MongoDB Connected'));
+//.then(console.log('MongoDB Connected'));
+//.catch((error) => handleError(error));
+mongoose
+    .connect(
+        'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
+    .then(console.log('MongoDB Connected'));
 
-app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -45,6 +47,7 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/uploads', express.static('uploads'));
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
 app.use('/orders', orderRoutes);
@@ -52,19 +55,18 @@ app.use('/addresses', addressRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/reviews', reviewRoutes);
 
-
 app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404;
     next(error);
-})
+});
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.json({
         error: {
-            message: error.message
-        }
+            message: error.message,
+        },
     });
 });
 

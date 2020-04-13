@@ -17,25 +17,25 @@
 </template>
 
 <script>
-import ProductItem from './ProductItem.vue';
+import ProductItem from "./ProductItem.vue";
 export default {
-  name: 'product-list',
+  name: "product-list",
   created() {
     if (this.products.length === 0) {
-      this.$store.dispatch('allProducts');
+      this.$store.dispatch("allProducts");
     }
   },
   computed: {
     products() {
       return this.$store.getters.allProducts;
-    },
+    }
   },
   data() {
     return {};
   },
   components: {
-    'product-item': ProductItem,
-  },
+    "product-item": ProductItem
+  }
 };
 </script>
 
