@@ -15,8 +15,6 @@ const upload = multer({ storage: storage });
 const Product = require('../models/product');
 
 router.post('/', upload.single('productImage'), (req, res, next) => {
-    console.log(req.file);
-    console.log(req.body.name);
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -27,6 +25,7 @@ router.post('/', upload.single('productImage'), (req, res, next) => {
         description: req.body.description,
         productImage: req.file.path,
     });
+
     product
         .save()
         .then((result) => {
@@ -71,6 +70,7 @@ router.get('/:productId', (req, res, next) => {
             }
         })
         .catch((err) => {
+
             console.log(err);
             res.status(500).json({
                 error: err,
@@ -78,7 +78,7 @@ router.get('/:productId', (req, res, next) => {
         });
 });
 
-router.patch('/:productId', (req, res, next) => {
+router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
     console.log(req.body.description);
     console.log(req.body.name);
     console.log(req.body.color);
@@ -99,29 +99,29 @@ router.patch('/:productId', (req, res, next) => {
             });
         });
     /*
-        for (const ops of req.body) {
-            updateOps[ops.propName] = ops.value;
-            console.log('Stuck');
-            console.log(ops.value);
-        }
-        Product.update({ _id: id }, { $set: updateOps })
-            .exec()
-            .then((result) => {
-                console.log(result);
-                res.status(200).json(result);
-            })
-            .catch((err) => {
-                console.log(err);
-                res.status(500).json({
-                    error: err,
-                });
-            });
-        */
+          for (const ops of req.body) {
+              updateOps[ops.propName] = ops.value;
+              console.log('Stuck');
+              console.log(ops.value);
+          }
+          Product.update({ _id: id }, { $set: updateOps })
+              .exec()
+              .then((result) => {
+                  console.log(result);
+                  res.status(200).json(result);
+              })
+              .catch((err) => {
+                  console.log(err);
+                  res.status(500).json({
+                      error: err,
+                  });
+              });
+          */
 });
 
 router.delete('/:productId', (req, res, next) => {
     const id = req.params.productId;
-    Product.remove({ _id: id })
+    Product.deleteOne({ _id: id })
         .exec()
         .then((result) => {
             res.status(200).json(result);
