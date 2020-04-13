@@ -7,10 +7,11 @@ const Address = require('../models/address');
 router.post('/', (req, res, next) => {
     const address = new Address({
         _id: new mongoose.Types.ObjectId(),
+        street: req.body.street,
         zipcode: req.body.zipcode,
         state: req.body.state,
         city: req.body.city,
-        phoneNumber: req.body.phoneNumber
+        phoneNumber: req.body.phoneNumber,
     });
     product.save().then(result => {
         console.log(result);

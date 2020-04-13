@@ -71,7 +71,7 @@ router.get('/:productId', (req, res, next) => {
         });
 });
 
-router.put('/:productId', (req, res, next) => {
+/*router.put('/:productId', (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
 
@@ -91,9 +91,9 @@ router.put('/:productId', (req, res, next) => {
                           }
 
                         Product.update({ _id: id }, { $set: updateOps })
-                            */
+                            
 
-});
+});*/
 
 router.delete('/:productId', (req, res, next) => {
     const id = req.params.productId;
