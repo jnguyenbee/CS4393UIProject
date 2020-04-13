@@ -72,8 +72,8 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:productId', (req, res, next) => {
-    const id = req.params.productId;
+router.get('/:orderId', (req, res, next) => {
+    const id = req.params.orderId;
     Order.findById(id)
     .exec()
     .then(doc => {
@@ -91,23 +91,30 @@ router.get('/:productId', (req, res, next) => {
     });
 });
 
-/*router.patch('/:boardgameId', (req, res, next) => {
-    const id = req.params.boardgameId;
+router.patch('/:orderId', (req, res, next) => {
+    const id = req.params.orderId;
     const updateOps = {};
     for (const ops of req.body){
         updateOps[ops.propName] = ops.value;
     }
 
-    Boardgame.update({ _id : id}, { $set: updateOps })
+    Order.update({ _id : id}, { $set: updateOps })
         .exec()
         .then(result => {
+            console.log(result);
             res.status(200).json(result);
         })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+                });
+            });
 });
 
-router.delete('/:boardgameId', (req, res, next) => {
-    const id = req.params.boardgameId;
-    Boardgame.remove({ _id : id})
+router.delete('/:orderId', (req, res, next) => {
+    const id = req.params.orderId;
+    Order.remove({ _id : id})
     .exec()
     .then(result => {
         res.status(200).json(result);
@@ -119,5 +126,5 @@ router.delete('/:boardgameId', (req, res, next) => {
         });
     });
 });
-*/
+
 module.exports = router;
