@@ -1,5 +1,5 @@
 .product {
-    background: #FFF;
+    background: #fff;
     padding: 15px;
     margin-bottom: 15px;
     transition: all 200ms ease-in;
@@ -12,11 +12,11 @@
 
 .product-link {
     display: block;
-    color: #3D3D3D;
+    color: #3d3d3d;
 }
 
 .product-link:hover {
-    color: #3D3D3D;
+    color: #3d3d3d;
     text-decoration: none;
 }
 

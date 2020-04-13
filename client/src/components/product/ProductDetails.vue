@@ -1,28 +1,33 @@
 
 <template>
-  <div class="product-details">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 product-details__image">
-          <img
-            class="img-responsive"
-            v-bind:src="'http://localhost:3000/'+ product.productImage"
-            alt
-          />
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 product-details__info">
-          <div class="product-details__description">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-          </div>
+  <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:400px">
+    <b-row no-gutters>
+      <b-col md="6">
+        <b-card-img
+          fluid
+          style="height:400px; width:400px"
+          v-bind:src="'http://localhost:3000/'+ product.productImage"
+          alt="Image"
+          class="rounded-0"
+        ></b-card-img>
+      </b-col>
+      <b-col md="6">
+        <b-card-body :title="product.name">
+          <b-card-text>
+            <div class="product-details__description">
+              <p>Price: ${{ product.price }}</p>
+              <p>Size: {{ product.size }}</p>
+              <p>Color: {{ product.color }}</p>
+              <em>{{ product.quantity }} left in stock</em>
+            </div>
+          </b-card-text>
           <div class="product-details__price-cart">
-            <p>${{ product.price }}</p>
             <product-button :product="product"></product-button>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </b-card-body>
+      </b-col>
+    </b-row>
+  </b-card>
 </template>
 
 
@@ -34,24 +39,16 @@ export default {
     "product-button": ProductButton
   }
 };
-</script>>
+</script>
 
 <style>
-.product-details {
-  border-bottom: 2px solid #f5f5f5;
-  padding: 30px 0;
-}
-
-.product-details__description {
-  padding-top: 30px;
-}
-
-.product-details__description small {
-  color: #808080;
-}
-
-.product-details__description h3 {
-  margin: 5px 0 30px 0;
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-top: 50px;
+  margin-bottom: 10px; /* Added */
+  max-width: 500px;
+  background: rgb(248, 243, 243);
 }
 
 .product-details__price-cart {
@@ -65,3 +62,4 @@ export default {
   font-weight: bold;
 }
 </style>
+>
