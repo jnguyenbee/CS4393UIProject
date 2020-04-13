@@ -16,6 +16,7 @@ const Product = require('../models/product');
 
 router.post('/', upload.single('productImage'), (req, res, next) => {
     console.log(req.file);
+    console.log(req.body.name);
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
