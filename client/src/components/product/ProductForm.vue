@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form @submit="saveProduct">
+    <b-form @submit="saveProduct" enctype="multipart/form-data">
       <b-card class="mt-3">
         <div class="row">
           <div class="col">
@@ -23,20 +23,60 @@
                 placeholder="Enter product price"
               ></b-form-input>
             </b-form-group>
+
+            <div class="row">
+              <div class="col">
+                <b-form-group id="input-group-2" label="Color:" label-for="input-2">
+                  <b-form-input
+                    id="input-3"
+                    type="text"
+                    v-model="product.color"
+                    required
+                    placeholder="Enter product color"
+                  ></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col">
+                <b-form-group id="input-group-3" label="Size:" label-for="input-3">
+                  <b-form-input
+                    id="input-3"
+                    type="text"
+                    v-model="product.size"
+                    required
+                    placeholder="Size"
+                  ></b-form-input>
+                </b-form-group>
+              </div>
+
+              <div class="col">
+                <b-form-group id="input-group-4" label="Quanity:" label-for="input-4">
+                  <b-form-input
+                    id="input-4"
+                    type="number"
+                    v-model="product.quantity"
+                    required
+                    placeholder="Quantity"
+                  ></b-form-input>
+                </b-form-group>
+              </div>
+            </div>
           </div>
           <div class="col">
-            <b-form-group id="input-group-2" label="Image:" label-for="input-2">
+            <b-form-group id="input-group-5" label="Image:" label-for="input-5">
               <b-form-file
-                id="input-2"
+                type="file"
+                ref="file"
+                id="input-5"
                 v-model="product.productImage"
                 placeholder="Choose a file or drop it here..."
                 drop-placeholder="Drop file here..."
+                @change="onSelect"
               ></b-form-file>
             </b-form-group>
 
-            <b-form-group id="input-group-3" label="Description:" label-for="input-3">
+            <b-form-group id="input-group-6" label="Description:" label-for="input-6">
               <b-form-textarea
-                id="input-3"
+                id="input-6"
                 v-model="product.description"
                 placeholder="Describe the product"
                 rows="8"
@@ -60,9 +100,21 @@ export default {
   props: ["product", "isEditing"],
   created() {},
   methods: {
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.file = file;
+    },
     saveProduct() {
-      alert(this.product.name);
-      this.$emit("save-product", this.product);
+      alert(this.product.productImage);
+      const formData = new FormData();
+      formData.append("name", this.product.name);
+      formData.append("price", this.product.price);
+      formData.append("size", this.product.size);
+      formData.append("color", this.product.color);
+      formData.append("quanity", this.product.quantity);
+      formData.append("description", this.product.description);
+      formData.append("productImage", this.product.productImage);
+      this.$emit("save-product", formData);
       //console.log("submit hit");
     }
   }
