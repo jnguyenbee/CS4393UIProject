@@ -78,16 +78,15 @@ router.get('/:productId', (req, res, next) => {
         });
 });
 
-router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
+router.patch('/:productId', (req, res, next) => {
     console.log(req.body.description);
     console.log(req.body.name);
     console.log(req.body.color);
     const id = req.params.productId;
-    const updateOps = {};
-    for (const ops of req.body) {
-        updateOps[ops.propName] = ops.value;
-    }
-    Product.update({ _id: id }, { $set: updateOps })
+    console.log(id);
+    //const updateOps = {};
+
+    Product.updateMany({ _id: id }, { $set: req.body })
         .exec()
         .then((result) => {
             console.log(result);
@@ -99,6 +98,25 @@ router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
                 error: err,
             });
         });
+    /*
+        for (const ops of req.body) {
+            updateOps[ops.propName] = ops.value;
+            console.log('Stuck');
+            console.log(ops.value);
+        }
+        Product.update({ _id: id }, { $set: updateOps })
+            .exec()
+            .then((result) => {
+                console.log(result);
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json({
+                    error: err,
+                });
+            });
+        */
 });
 
 router.delete('/:productId', (req, res, next) => {
