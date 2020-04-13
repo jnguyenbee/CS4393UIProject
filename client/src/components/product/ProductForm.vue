@@ -105,7 +105,7 @@ export default {
       this.file = file;
     },
     saveProduct() {
-      alert(this.product.productImage);
+      alert(this.product.description);
       const formData = new FormData();
       formData.append("name", this.product.name);
       formData.append("price", this.product.price);

@@ -1,12 +1,8 @@
 <template>
-  <product-form
-    @save-product="updateProduct"
-    :product="product"
-    :isEditing="true"
-  ></product-form>
+  <product-form @save-product="updateProduct" :product="product" :isEditing="true"></product-form>
 </template>
 <script>
-import ProductFrom from '../../components/product/ProductForm.vue';
+import ProductFrom from "../../components/product/ProductForm.vue";
 export default {
   data() {
     //      const productById = this.$store.getters.productById(this.$route.params['id'])
@@ -18,20 +14,19 @@ export default {
   computed: {
     product() {
       const productById = this.$store.getters.productById(
-        this.$route.params['id']
+        this.$route.params["id"]
       );
       return Object.assign({}, productById);
-    },
+    }
   },
   methods: {
     updateProduct(product) {
-      console.log('model', product);
-      this.$store.dispatch('updateProduct', product);
-    },
+      this.$store.dispatch("updateProduct", product);
+    }
   },
 
   components: {
-    'product-form': ProductFrom,
-  },
+    "product-form": ProductFrom
+  }
 };
 </script>
