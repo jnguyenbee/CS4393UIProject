@@ -78,7 +78,7 @@ router.get('/:productId', (req, res, next) => {
         });
 });
 
-router.patch('/:productId', (req, res, next) => {
+router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
     console.log(req.body.description);
     console.log(req.body.name);
     console.log(req.body.color);
