@@ -11,15 +11,8 @@
           class="btn btn-outline-primary"
           href="
     http://localhost:8080/?#/Home/"
-          >Add more Sock</a
-        >
-        <button
-          v-b-modal.modal-1
-          type="button"
-          class="btn btn-outline-secondary"
-        >
-          Order Now
-        </button>
+        >Add more Sock</a>
+        <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
       </div>
     </div>
 
@@ -30,8 +23,14 @@
       </template>
       <addressForm />
 
-      <b-button class="mt-3" variant="outline-danger" block>Cancel</b-button>
-      <b-button class="mt-2" variant="outline-warning" block>Continue</b-button>
+      <b-button pill class="mt-3" variant="outline-danger" block>Cancel</b-button>
+      <b-button
+        pill
+        class="mt-2"
+        variant="outline-warning"
+        block
+        href="http://localhost:8080/?#/Buy"
+      >Continue</b-button>
     </b-modal>
 
     <template v-for="product in cart">
@@ -39,15 +38,17 @@
     </template>
   </div>
   <div v-else class="title">
-    <h1><i class="fa fa-shopping-cart"></i> Your Cart is Empty</h1>
+    <h1>
+      <i class="fa fa-shopping-cart"></i> Your Cart is Empty
+    </h1>
     <div class="text-center">
       <a
+        pill
         type="button"
         class="btn btn-outline-primary"
         href="
     http://localhost:8080/?#/Home/"
-        >Added Sock</a
-      >
+      >Added Sock</a>
     </div>
   </div>
 </template>
@@ -55,8 +56,8 @@
 <style scoped></style>
 
 <script>
-import ProductDetails from '../components/product/ProductDetailsCart';
-import AddressForm from '../components/user/AddressForm';
+import ProductDetails from "../components/product/ProductDetailsCart";
+import AddressForm from "../components/user/AddressForm";
 export default {
   data() {
     return {
