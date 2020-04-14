@@ -4,7 +4,11 @@
       <b-card class="mt-3">
         <div class="row">
           <div class="col">
-            <b-form-group id="input-group-0" label="Product Name:" label-for="input-0">
+            <b-form-group
+              id="input-group-0"
+              label="Product Name:"
+              label-for="input-0"
+            >
               <b-form-input
                 id="input-0"
                 type="user"
@@ -26,7 +30,11 @@
 
             <div class="row">
               <div class="col">
-                <b-form-group id="input-group-2" label="Color:" label-for="input-2">
+                <b-form-group
+                  id="input-group-2"
+                  label="Color:"
+                  label-for="input-2"
+                >
                   <b-form-input
                     id="input-3"
                     type="text"
@@ -37,7 +45,11 @@
                 </b-form-group>
               </div>
               <div class="col">
-                <b-form-group id="input-group-3" label="Size:" label-for="input-3">
+                <b-form-group
+                  id="input-group-3"
+                  label="Size:"
+                  label-for="input-3"
+                >
                   <b-form-input
                     id="input-3"
                     type="text"
@@ -49,7 +61,11 @@
               </div>
 
               <div class="col">
-                <b-form-group id="input-group-4" label="Quanity:" label-for="input-4">
+                <b-form-group
+                  id="input-group-4"
+                  label="Quanity:"
+                  label-for="input-4"
+                >
                   <b-form-input
                     id="input-4"
                     type="number"
@@ -74,7 +90,11 @@
               ></b-form-file>
             </b-form-group>
 
-            <b-form-group id="input-group-6" label="Description:" label-for="input-6">
+            <b-form-group
+              id="input-group-6"
+              label="Description:"
+              label-for="input-6"
+            >
               <b-form-textarea
                 id="input-6"
                 v-model="product.description"
@@ -97,7 +117,7 @@
 
 <script>
 export default {
-  props: ["product", "isEditing"],
+  props: ['product', 'isEditing'],
   created() {},
   methods: {
     onSelect() {
@@ -107,23 +127,24 @@ export default {
     saveProduct() {
       const formData = new FormData();
       if (this.isEditing == true) {
-        formData.append("_id", this.product.id);
+        formData.append('_id', this.product.id);
       }
 
-      formData.append("name", this.product.name);
-      formData.append("price", this.product.price);
-      formData.append("size", this.product.size);
-      formData.append("color", this.product.color);
-      formData.append("quanity", this.product.quantity);
-      formData.append("description", this.product.description);
-      formData.append("productImage", this.file);
+      formData.append('name', this.product.name);
+      formData.append('price', this.product.price);
+      formData.append('size', this.product.size);
+      formData.append('color', this.product.color);
+      formData.append('quanity', this.product.quantity);
+      formData.append('description', this.product.description);
+      formData.append('productImage', this.product.productImage);
 
       alert(this.product.name);
       alert(this.product.price);
       alert(this.product.size);
       alert(this.product.color);
       alert(this.product.quantity);
-      this.$emit("save-product", formData);
+      alert(this.product.productImage);
+      this.$emit('save-product', formData);
       //console.log("submit hit");
     }
   }
@@ -131,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../../client/static/app.css";
+@import '../../../../client/static/app.css';
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */

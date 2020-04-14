@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
         zipcode: req.body.zipcode,
         state: req.body.state,
         city: req.body.city,
-        phoneNumber: req.body.phoneNumber
+        phoneNumber: req.body.phoneNumber,
     });
     address.save()
         .then(result => {
