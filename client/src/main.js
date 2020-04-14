@@ -15,10 +15,11 @@ import {
     faEdit,
     faCartPlus,
     faShoppingCart,
+    faHome
 } from '@fortawesome/free-solid-svg-icons';
 
 dom.watch();
-library.add(faSpinner, faTrash, faEdit, faCartPlus, faShoppingCart);
+library.add(faSpinner, faTrash, faEdit, faCartPlus, faShoppingCart, faHome);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
