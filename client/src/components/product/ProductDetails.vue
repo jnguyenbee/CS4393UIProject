@@ -44,6 +44,11 @@
           </b-card-body>
         </b-col>
       </b-row>
+      <b-row>
+        <b-col>
+          <product-review-list :product="product"></product-review-list>
+        </b-col>
+      </b-row>
     </b-card>
   </div>
 </template>
@@ -53,10 +58,12 @@
 import ProductButton from "./ProductButton";
 //import ProductBackButton from "./ProductBackButton";
 //import ProductReviewButton from "./ProductReviewButton";
+import ProductListReview from "./ProductReviewList";
 export default {
   props: ["product"],
   components: {
-    "product-button": ProductButton
+    "product-button": ProductButton,
+    "product-review-list": ProductListReview
     //"product-back": ProductBackButton
     //  "product-review-side-button": ProductReviewButton
   }

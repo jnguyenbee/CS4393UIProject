@@ -14,7 +14,20 @@
         </b-nav-form>
       </div>
     </b-navbar>
-
+    <div class="text-center">
+      <div class="container">
+        <b-button pill v-b-toggle.collapse-1 variant="primary" size="sm">For more advance search</b-button>
+        <div class="row">
+          <b-collapse id="collapse-1" class="mt-2">
+            <b-form inline>
+              <b-form-group id="input-group-3" label="Size:" label-for="input-3">
+                <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
+              </b-form-group>
+            </b-form>
+          </b-collapse>
+        </div>
+      </div>
+    </div>
     <div class="products">
       <div class="container">
         <div class="row">
@@ -37,6 +50,23 @@
 import ProductItem from "./ProductItem.vue";
 export default {
   name: "product-list",
+  data() {
+    return {
+      search: "",
+      form: {
+        food: null
+      },
+      foods: [
+        { text: "Select One", value: null },
+        "x-small",
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
+      show: true
+    };
+  },
   created() {
     if (this.products.length === 0) {
       this.$store.dispatch("allProducts");
@@ -65,9 +95,7 @@ export default {
       });
     }
   },
-  data() {
-    return { search: "" };
-  },
+
   components: {
     "product-item": ProductItem
   }
