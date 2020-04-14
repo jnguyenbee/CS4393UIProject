@@ -16,7 +16,7 @@
     </b-navbar>
     <div class="text-center">
       <div class="container">
-        <b-button pill v-b-toggle.collapse-1 variant="primary" size="sm">For more advance search</b-button>
+        <b-button pill v-b-toggle.collapse-1 variant="primary" size="sm">Filter Options</b-button>
         <div class="row">
           <b-collapse id="collapse-1" class="mt-2">
             <b-form inline>

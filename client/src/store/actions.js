@@ -55,7 +55,13 @@ export const productActions = {
 export const userActions = {
     addUser({ commit }, payload) {
         commit(ADD_USER);
-        axios.post(`${API_BASE}/users/`, payload).then(response => {
+        axios.post(`${API_BASE}/users/register`, payload).then(response => {
+            commit(ADD_USER_SUCCESS, response.data);
+        });
+    },
+    checkUser({ commit }, payload) {
+        commit(ADD_USER);
+        axios.post(`${API_BASE}/users/login`, payload).then(response => {
             commit(ADD_USER_SUCCESS, response.data);
         });
     }
