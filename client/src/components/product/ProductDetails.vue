@@ -1,43 +1,46 @@
-
 <template>
-  <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
-    <b-row no-gutters>
-      <b-col md="6">
-        <b-card-img
-          fluid
-          style="height:100%; width:400px"
-          v-bind:src="'http://localhost:3000/'+ product.productImage"
-          alt="Image"
-          class="rounded-0"
-        ></b-card-img>
-      </b-col>
-      <b-col md="6">
-        <b-card-body :title="product.name">
-          <b-card-text>
-            <p>Price: ${{ product.price }}</p>
-            <p>Size: {{ product.size }}</p>
-            <p>Color: {{ product.color }}</p>
-            <b-card>
-              <h5>Description</h5>
-              {{product.description}}
-            </b-card>
-          </b-card-text>
-          <div class="product-details__price-cart">
-            <product-button :product="product"></product-button>
-          </div>
-        </b-card-body>
-      </b-col>
-    </b-row>
-  </b-card>
+  <div>
+    <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
+      <b-row no-gutters>
+        <b-col md="6">
+          <b-card-img
+            fluid
+            style="height:100%; width:400px"
+            v-bind:src="'http://localhost:3000/'+ product.productImage"
+            alt="Image"
+            class="rounded-0"
+          ></b-card-img>
+        </b-col>
+        <b-col md="6">
+          <b-card-body :title="product.name">
+            <b-card-text>
+              <p>Price: ${{ product.price }}</p>
+              <p>Size: {{ product.size }}</p>
+              <p>Color: {{ product.color }}</p>
+              <b-card>
+                <h5>Description</h5>
+                {{product.description}}
+              </b-card>
+            </b-card-text>
+            <div class="product-details__price-cart">
+              <product-button :product="product"></product-button>
+            </div>
+          </b-card-body>
+        </b-col>
+      </b-row>
+    </b-card>
+  </div>
 </template>
 
 
 <script>
 import ProductButton from "./ProductButton";
+//import ProductReviewButton from "./ProductReviewButton";
 export default {
   props: ["product"],
   components: {
     "product-button": ProductButton
+    //  "product-review-side-button": ProductReviewButton
   }
 };
 </script>

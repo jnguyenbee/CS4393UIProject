@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form>
+    <b-form action="http://localhost:8080/?#/Home/">
       <b-card class="mt-3">
         <h1>Sign-In</h1>
         <b-form-group id="input-group-1" label="Username :" label-for="input-1">
@@ -24,9 +24,9 @@
         </div>
       </b-card>
       <b-card>
-        Not a member? <router-link v-bind:to="'/signup'">Sign up</router-link>
-        <br />
-        Forgot Password?
+        Not a member?
+        <router-link v-bind:to="'/'">Sign up</router-link>
+        <br />Forgot Password?
       </b-card>
     </b-form>
   </div>
