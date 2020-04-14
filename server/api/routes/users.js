@@ -4,24 +4,69 @@ const mongoose = require('mongoose');
 
 const User = require('../models/user');
 
-router.post('/', (req, res, next) => {
-    const user = new User({
-        _id: new mongoose.Types.ObjectId(),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        password: req.body.password,
-        email: req.body.email,
+router.post('/register', (req, res, next) => {
+    console.log("reached register");
+    console.log( req.body.userName );
+    User.find({ userName: req.body.userName })
+    .exec()
+    .then(user => {
+        if (user.length >= 1) {
+          return res.status(409).json({
+            message: "user exists already"
+          });
+        } 
+        else {
+            const user = new User({
+            _id: new mongoose.Types.ObjectId(),
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            userName: req.body.userName,
+            password: req.body.password,
+            email: req.body.email
+        });
+        user.save()
+            .then(result => {
+                console.log(result);
+                res.status(201).json({
+                    message: 'signup successful',
+                    userInfo: user
+                });
+            })}
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
-    user.save()
-        .then(result => {
-            console.log(result);
+});
+
+router.post("/login", (req, res, next) => {
+    console.log("reached login");
+    console.log( req.body.userName );
+    User.find({ userName: req.body.userName, password: req.body.password })
+      .exec()
+      .then(user => {
+        if (user.length < 1) {
+            console.log("failed");
+            return res.status(401).json({
+              message: "username and/or password incorrect"
+            });
+          }
+        else {
+            console.log("succeed");
+            return res.status(200).json({
+                message: "Login successful",
+                userName: req.body.userName
+              });
+        }
         })
-        .catch(err => console.log(err));
-    res.status(201).json({
-        message: 'posted user to users db',
-        userInfo: user
-    });
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 router.get('/', (req, res, next) => {

@@ -1,13 +1,14 @@
 <template>
   <div>
-    <b-form action="http://localhost:8080/?#/Home/">
+    <b-form @submit="checkUser" action="http://localhost:8080/?#/Home/">
       <b-card class="mt-3">
         <h1>Sign-In</h1>
         <b-form-group id="input-group-1" label="Username :" label-for="input-1">
           <b-form-input
             id="input-1"
             type="user"
-            required
+            v-model="user.userName"
+            required            
             placeholder="Enter username"
           ></b-form-input>
         </b-form-group>
@@ -15,6 +16,7 @@
           <b-form-input
             id="input-2"
             type="password"
+            v-model="user.password"
             required
             placeholder="Enter password"
           ></b-form-input>
@@ -32,7 +34,24 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        userName: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    checkUser() {
+      alert(this.user.userName);
+      this.$store.dispatch("checkUser", this.user);
+    }
+  }
+};
+</script>
 <style scoped>
 @import '../../../../client/static/app.css';
 .card {
