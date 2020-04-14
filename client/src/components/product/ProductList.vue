@@ -8,7 +8,7 @@
             class="mr-sm-0"
             type="text"
             v-model="search"
-            placeholder="Search by Name"
+            placeholder="Search by Keyword"
           ></b-form-input>
           <b-button pill variant="outline-success" class="my-5 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
