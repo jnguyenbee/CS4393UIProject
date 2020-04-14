@@ -11,14 +11,22 @@
           class="btn btn-outline-primary"
           href="
     http://localhost:8080/?#/Home/"
-        >Add more Sock</a>
-        <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
+          >Add more Sock</a
+        >
+        <button
+          v-b-modal.modal-1
+          type="button"
+          class="btn btn-outline-secondary"
+        >
+          Order Now
+        </button>
       </div>
     </div>
 
     <b-modal la id="modal-1" hide-footer title="Purchasing Order">
+      <h1>Need to do calculation</h1>
       <template v-for="product in cart">
-        <p :key="product.id">{{product.name}} {{product.price}}</p>
+        <p :key="product.id">{{ product.name }} {{ product.price }}</p>
       </template>
       <addressForm />
 
@@ -31,26 +39,24 @@
     </template>
   </div>
   <div v-else class="title">
-    <h1>
-      <i class="fa fa-shopping-cart"></i> Your Cart is Empty
-    </h1>
+    <h1><i class="fa fa-shopping-cart"></i> Your Cart is Empty</h1>
     <div class="text-center">
       <a
         type="button"
         class="btn btn-outline-primary"
         href="
     http://localhost:8080/?#/Home/"
-      >Added Sock</a>
+        >Added Sock</a
+      >
     </div>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
 
 <script>
-import ProductDetails from "../components/product/ProductDetailsCart";
-import AddressForm from "../components/user/AddressForm";
+import ProductDetails from '../components/product/ProductDetailsCart';
+import AddressForm from '../components/user/AddressForm';
 export default {
   data() {
     return {

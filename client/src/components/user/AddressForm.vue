@@ -1,22 +1,52 @@
 <template>
-  <b-form>
-    <h6>shipping address</h6>
-    <b-form-group id="input-group-1" label="Username :" label-for="input-1">
-      <b-form-input
-        id="input-1"
-        type="user"
-        required
-        placeholder="Enter username"
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group id="input-group-2" label="Password:" label-for="input-2">
-      <b-form-input
-        id="input-2"
-        type="password"
-        required
-        placeholder="Enter password"
-      ></b-form-input>
-    </b-form-group>
+  <b-form
+    ><h6>shipping address</h6>
+    <b-container>
+      <b-form-group id="input-group-1" label="address :" label-for="input-1">
+        <b-form-input
+          id="input-1"
+          type="text"
+          required
+          placeholder="Enter adresss"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-row
+        ><b-col>
+          <b-form-group id="input-group-2" label="city :" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              type="text"
+              required
+              placeholder="Enter city"
+            ></b-form-input>
+          </b-form-group> </b-col
+        ><b-col>
+          <b-form-group id="input-group-2" label="state :" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              type="text"
+              required
+              placeholder="Enter state"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group
+            id="input-group-2"
+            label="zip code :"
+            label-for="input-2"
+          >
+            <b-form-input
+              id="input-2"
+              type="text"
+              required
+              placeholder="Enter zip code"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
+    </b-container>
 
     <h6>payment</h6>
     <VueCardPayment
