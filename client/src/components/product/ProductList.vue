@@ -10,7 +10,7 @@
             v-model="search"
             placeholder="Search by Name"
           ></b-form-input>
-          <b-button variant="outline-success" class="my-5 my-sm-0" type="submit">Search</b-button>
+          <b-button pill variant="outline-success" class="my-5 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
       </div>
     </b-navbar>
@@ -20,10 +20,11 @@
         <div class="row">
           <div
             class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
-            v-for="product in searchProduct"
+            v-for="product in filtered"
             :key="product.id"
           >
-            <p>{{ product.name }}</p>
+            <p>color: {{product.color}}</p>
+            <p>description: {{product.description}}</p>
             <product-item :product="product"></product-item>
           </div>
         </div>
@@ -44,6 +45,18 @@ export default {
   computed: {
     products() {
       return this.$store.getters.allProducts;
+    },
+    filtered: function() {
+      var self = this;
+      return this.products.filter(function(product) {
+        return (
+          product.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
+          product.color.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
+          product.description
+            .toLowerCase()
+            .indexOf(self.search.toLowerCase()) >= 0
+        );
+      });
     },
     searchProduct: function() {
       console.log(this.search);
