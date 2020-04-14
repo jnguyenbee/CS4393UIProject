@@ -15,6 +15,7 @@ const upload = multer({ storage: storage });
 const Product = require('../models/product');
 
 router.post('/', upload.single('productImage'), (req, res, next) => {
+    console.log('reached here to post');
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -70,7 +71,6 @@ router.get('/:productId', (req, res, next) => {
             }
         })
         .catch((err) => {
-
             console.log(err);
             res.status(500).json({
                 error: err,
@@ -100,24 +100,24 @@ router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
             });
         });
     /*
-          for (const ops of req.body) {
-              updateOps[ops.propName] = ops.value;
-              console.log('Stuck');
-              console.log(ops.value);
-          }
-          Product.update({ _id: id }, { $set: updateOps })
-              .exec()
-              .then((result) => {
-                  console.log(result);
-                  res.status(200).json(result);
-              })
-              .catch((err) => {
-                  console.log(err);
-                  res.status(500).json({
-                      error: err,
-                  });
-              });
-          */
+            for (const ops of req.body) {
+                updateOps[ops.propName] = ops.value;
+                console.log('Stuck');
+                console.log(ops.value);
+            }
+            Product.update({ _id: id }, { $set: updateOps })
+                .exec()
+                .then((result) => {
+                    console.log(result);
+                    res.status(200).json(result);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err,
+                    });
+                });
+            */
 });
 
 router.delete('/:productId', (req, res, next) => {
