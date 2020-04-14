@@ -1,22 +1,6 @@
 <template>
   <div>
     <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
-      <b-breadcrumb>
-        <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
-          <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
-        </b-breadcrumb-item>
-        <b-breadcrumb-item active>
-          <b-badge variant="warning">{{product.name}}</b-badge>
-        </b-breadcrumb-item>
-        <a
-          class="button"
-          href="http://localhost:8080/?#/Home/"
-          style="background:  #17a2b8;color:#fff; border: 1px solid  #17a2b8;border-radius: 20px;
-    padding: 10px 15px;position: absolute; right: 10px;padding: 0px 15px"
-        >
-          <i class="fa fa-socks"></i> Back to Socks
-        </a>
-      </b-breadcrumb>
       <b-row no-gutters>
         <b-col md="6">
           <b-card-img
@@ -44,11 +28,6 @@
           </b-card-body>
         </b-col>
       </b-row>
-      <b-row>
-        <b-col>
-          <product-review-list :product="product"></product-review-list>
-        </b-col>
-      </b-row>
     </b-card>
   </div>
 </template>
@@ -58,12 +37,10 @@
 import ProductButton from "./ProductButton";
 //import ProductBackButton from "./ProductBackButton";
 //import ProductReviewButton from "./ProductReviewButton";
-import ProductListReview from "./ProductReviewList";
 export default {
   props: ["product"],
   components: {
-    "product-button": ProductButton,
-    "product-review-list": ProductListReview
+    "product-button": ProductButton
     //"product-back": ProductBackButton
     //  "product-review-side-button": ProductReviewButton
   }
