@@ -1,12 +1,20 @@
 <template>
   <div>
-    <div class="search-bar">
-      <b-form-input
-        type="text"
-        v-model="search"
-        placeholder="Search by Name"
-      ></b-form-input>
-    </div>
+    <b-navbar type="light" variant="light">
+      <div class="search">
+        <b-nav-form>
+          <b-form-input
+            style="width:500px"
+            class="mr-sm-0"
+            type="text"
+            v-model="search"
+            placeholder="Search by Name"
+          ></b-form-input>
+          <b-button variant="outline-success" class="my-5 my-sm-0" type="submit">Search</b-button>
+        </b-nav-form>
+      </div>
+    </b-navbar>
+
     <div class="products">
       <div class="container">
         <div class="row">
@@ -25,12 +33,12 @@
 </template>
 
 <script>
-import ProductItem from './ProductItem.vue';
+import ProductItem from "./ProductItem.vue";
 export default {
-  name: 'product-list',
+  name: "product-list",
   created() {
     if (this.products.length === 0) {
-      this.$store.dispatch('allProducts');
+      this.$store.dispatch("allProducts");
     }
   },
   computed: {
@@ -40,15 +48,15 @@ export default {
     searchProduct: function() {
       console.log(this.search);
       return this.products.filter(product => {
-        return product.name.match(this.search);
+        return product.name.toUpperCase().match(this.search.toUpperCase());
       });
     }
   },
   data() {
-    return {search: ''};
+    return { search: "" };
   },
   components: {
-    'product-item': ProductItem
+    "product-item": ProductItem
   }
 };
 </script>
@@ -57,5 +65,9 @@ export default {
 .products {
   background: #ffffff;
   padding: 30px 0;
+}
+.search {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
 }
 </style>
