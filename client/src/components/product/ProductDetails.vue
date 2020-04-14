@@ -8,6 +8,14 @@
         <b-breadcrumb-item active>
           <b-badge variant="warning">{{product.name}}</b-badge>
         </b-breadcrumb-item>
+        <a
+          class="button"
+          href="http://localhost:8080/?#/Home/"
+          style="background:  #17a2b8;color:#fff; border: 1px solid  #17a2b8;border-radius: 20px;
+    padding: 10px 15px;position: absolute; right: 10px;padding: 0px 15px"
+        >
+          <i class="fa fa-socks"></i> Back to Socks
+        </a>
       </b-breadcrumb>
       <b-row no-gutters>
         <b-col md="6">
