@@ -11,7 +11,7 @@
           class="btn btn-outline-primary"
           href="
     http://localhost:8080/?#/Home/"
-        >Add more Sock</a>
+        >Add More Socks</a>
         <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
       </div>
     </div>
@@ -48,7 +48,7 @@
         class="btn btn-outline-primary"
         href="
     http://localhost:8080/?#/Home/"
-      >Added Sock</a>
+      >Add Socks</a>
     </div>
   </div>
 </template>

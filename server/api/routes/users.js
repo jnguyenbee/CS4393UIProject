@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 const User = require('../models/user');
 
-router.post('/signup', (req, res, next) => {
+router.post('/register', (req, res, next) => {
+    console.log("reached register");
+    console.log( req.body.userName );
     User.find({ userName: req.body.userName })
     .exec()
     .then(user => {
@@ -40,15 +42,19 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
+    console.log("reached login");
+    console.log( req.body.userName );
     User.find({ userName: req.body.userName, password: req.body.password })
       .exec()
       .then(user => {
         if (user.length < 1) {
+            console.log("failed");
             return res.status(401).json({
               message: "username and/or password incorrect"
             });
           }
         else {
+            console.log("succeed");
             return res.status(200).json({
                 message: "Login successful",
                 userName: req.body.userName
