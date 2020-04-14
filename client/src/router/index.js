@@ -8,8 +8,9 @@ import DetailsRoutes from './details';
 import CartRoutes from './cart';
 import UserRoutes from './user';
 import ContactRoutes from './contact';
+import CheckoutRoutes from './checkout';
 Vue.use(Router);
 
 export default new Router({
-    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes],
+    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes, CheckoutRoutes],
 });
