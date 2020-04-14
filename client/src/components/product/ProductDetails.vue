@@ -3,7 +3,7 @@
     <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
       <b-breadcrumb>
         <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
-          <b-badge variant="dark">Home</b-badge>
+          <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
         </b-breadcrumb-item>
         <b-breadcrumb-item active>
           <b-badge variant="warning">{{product.name}}</b-badge>
