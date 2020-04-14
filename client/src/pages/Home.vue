@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import ProductList from "../components/product/ProductList.vue";
+import ProductList from '../components/product/ProductList.vue';
 //import NavBar from '../components/NavigationBar';
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    "product-list": ProductList
+    'product-list': ProductList
   }
 };
 </script>
