@@ -1,12 +1,16 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
+    <b-card
+      no-body
+      class="overflow-hidden"
+      style="max-width: 800px;max-height:100%"
+    >
       <b-breadcrumb>
         <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
           <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
         </b-breadcrumb-item>
         <b-breadcrumb-item active>
-          <b-badge variant="warning">{{product.name}}</b-badge>
+          <b-badge variant="warning">{{ product.name }}</b-badge>
         </b-breadcrumb-item>
         <a
           class="button"
@@ -22,7 +26,7 @@
           <b-card-img
             fluid
             style="height:100%; width:400px"
-            v-bind:src="'http://localhost:3000/'+ product.productImage"
+            v-bind:src="'http://localhost:3000/' + product.productImage"
             alt="Image"
             class="rounded-0"
           ></b-card-img>
@@ -35,7 +39,7 @@
               <p>Color: {{ product.color }}</p>
               <b-card>
                 <h5>Description</h5>
-                {{product.description}}
+                {{ product.description }}
               </b-card>
             </b-card-text>
             <div class="product-details__price-cart">
@@ -45,27 +49,118 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col>
-          <product-review-list :product="product"></product-review-list>
+        <b-col
+          ><b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.accordion-2 variant="info"
+              >Click here to Write a review</b-button
+            >
+          </b-card-header>
+          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+            <b-form @submit="saveReview">
+              <div class="row">
+                <div class="col">
+                  <div class="col">
+                    <b-form-group
+                      id="input-group-0"
+                      label="Username:"
+                      label-for="input-2"
+                    >
+                      <b-form-input
+                        id="input-0"
+                        type="text"
+                        v-model="review.username"
+                        required
+                        placeholder="Enter username"
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="col">
+                    <b-form-group
+                      id="input-group-0"
+                      label="Rating:"
+                      label-for="input-2"
+                    >
+                      <b-form-select
+                        id="input-2"
+                        required
+                        :options="options"
+                        size="sm"
+                        class="mt-3"
+                        v-model="review.rating"
+                      ></b-form-select>
+                    </b-form-group>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <b-form-group
+                  id="input-group-6"
+                  label="Description:"
+                  label-for="input-6"
+                >
+                  <b-form-textarea
+                    id="input-6"
+                    v-model="review.description"
+                    placeholder="How was it?"
+                    rows="4"
+                  ></b-form-textarea>
+                </b-form-group>
+                <div class="text-center">
+                  <b-button
+                    type="submit"
+                    variant="outline-danger"
+                    style="float: right;margin-bottom:10px"
+                    >Submit</b-button
+                  >
+                </div>
+              </div>
+            </b-form>
+          </b-collapse>
         </b-col>
       </b-row>
     </b-card>
   </div>
 </template>
 
-
 <script>
-import ProductButton from "./ProductButton";
-//import ProductBackButton from "./ProductBackButton";
-//import ProductReviewButton from "./ProductReviewButton";
-import ProductListReview from "./ProductReviewList";
+import ProductButton from './ProductButton';
+//import ProductListReview from './ProductReviewList';
 export default {
-  props: ["product"],
+  data() {
+    return {
+      review: {
+        username: '',
+        description: '',
+        rating: '',
+        productId: this.product._id
+      },
+      options: [
+        {value: null, text: 'Please select an option'},
+        {value: '1', text: '1'},
+        {value: '2', text: '2'},
+        {value: '3', text: '3'},
+        {value: '4', text: '4'},
+        {value: '5', text: '5'}
+      ]
+    };
+  },
+  props: ['product'],
   components: {
-    "product-button": ProductButton,
-    "product-review-list": ProductListReview
-    //"product-back": ProductBackButton
-    //  "product-review-side-button": ProductReviewButton
+    'product-button': ProductButton
+    // 'product-review-list': ProductListReview
+  },
+  methods: {
+    saveReview() {
+      alert(this.product._id);
+      //alert(this.review.product);
+      //alert(this.review.rating);
+      //alert(this.review.username);
+      //alert(this.review.description);
+      this.$store.dispatch('addReview', this.review);
+    }
   }
 };
 </script>

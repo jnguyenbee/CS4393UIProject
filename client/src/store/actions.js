@@ -11,7 +11,11 @@ import {
     REMOVE_PRODUCT,
     REMOVE_PRODUCT_SUCCESS,
     ADD_USER,
-    ADD_USER_SUCCESS
+    ADD_USER_SUCCESS,
+    ADD_REVIEW,
+    ADD_REVIEW_SUCCESS,
+    ALL_REVIEWS,
+    ALL_REVIEWS_SUCCESS
 } from './mutation-types';
 
 const API_BASE = 'http://localhost:3000';
@@ -63,6 +67,22 @@ export const userActions = {
         commit(ADD_USER);
         axios.post(`${API_BASE}/users/login`, payload).then(response => {
             commit(ADD_USER_SUCCESS, response.data);
+        });
+    }
+};
+
+export const reviewActions = {
+    addReview({ commit }, payload) {
+        alert('reach');
+        commit(ADD_REVIEW);
+        axios.post(`${API_BASE}/reviews`, payload).then(response => {
+            commit(ADD_REVIEW_SUCCESS, response.data);
+        });
+    },
+    allReview({ commit }) {
+        commit(ALL_REVIEWS);
+        axios.get(`${API_BASE}/reviews`).then(response => {
+            commit(ALL_REVIEWS_SUCCESS, response.data);
         });
     }
 };

@@ -10,3 +10,9 @@ export const productGetters = {
         }
     }
 };
+
+export const reviewGetters = {
+    allReview: state => {
+        return state.reviews;
+    }
+};

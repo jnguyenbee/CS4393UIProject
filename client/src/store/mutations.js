@@ -16,7 +16,10 @@ import {
     ALL_PRODUCTS,
     ALL_PRODUCTS_SUCCESS,
     ADD_USER,
-    ADD_USER_SUCCESS
+    ADD_USER_SUCCESS,
+    ADD_REVIEW,
+    ADD_REVIEW_SUCCESS,
+    ALL_REVIEWS
     //ERROR_MSG
 } from './mutation-types';
 
@@ -90,5 +93,20 @@ export const userMutations = {
     [ADD_USER_SUCCESS]: (state, payload) => {
         state.showLoader = false;
         state.users.push(payload);
+    }
+};
+
+export const reviewMutations = {
+    [ALL_REVIEWS](state) {
+        state.showLoader = true;
+        // this[]
+    },
+    [ADD_REVIEW]: (state, payload) => {
+        state.review = payload;
+        state.showLoader = true;
+    },
+    [ADD_REVIEW_SUCCESS]: (state, payload) => {
+        state.showLoader = false;
+        state.reviews.push(payload);
     }
 };
