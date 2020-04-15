@@ -21,8 +21,9 @@ import {
     ADD_REVIEW_SUCCESS,
     ALL_REVIEWS,
     REVIEW_BY_ID,
-    REVIEW_BY_ID_SUCCESS
-
+    REVIEW_BY_ID_SUCCESS,
+    ALL_USERS,
+    ALL_USERS_SUCCESS,
     //ERROR_MSG
 } from './mutation-types';
 
@@ -90,13 +91,25 @@ export const cartMutations = {
 
 export const userMutations = {
     [ADD_USER]: (state, payload) => {
+        // user.username
+        // user.password
         state.user = payload;
+        state.users1 = payload;
         state.showLoader = true;
     },
     [ADD_USER_SUCCESS]: (state, payload) => {
         state.showLoader = false;
         state.users.push(payload);
-    }
+        state.users1.push(payload);
+    },
+
+    [ALL_USERS](state) {
+        state.showLoader = true;
+    },
+    [ALL_USERS_SUCCESS](state, payload) {
+        state.showLoader = false;
+        state.users = payload;
+    },
 };
 
 export const reviewMutations = {

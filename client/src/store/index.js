@@ -25,6 +25,7 @@ export default new Vuex.Store({
         products: [],
         user: {},
         users: [],
+
         review: [],
         reviews: []
     },

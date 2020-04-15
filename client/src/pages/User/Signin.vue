@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-for="v in users" :key="v.id">
+      <p>username : {{v.userName}} password: {{ v.password}}</p>
+    </div>
     <b-form @submit="checkUser" action="http://localhost:8080/?#/Home/">
       <b-card class="mt-3">
         <h1>Sign-In</h1>
@@ -8,7 +11,7 @@
             id="input-1"
             type="user"
             v-model="user.userName"
-            required            
+            required
             placeholder="Enter username"
           ></b-form-input>
         </b-form-group>
@@ -44,6 +47,11 @@ export default {
       }
     };
   },
+  
+  created() {
+    this.$store.dispatch("allUsers");
+  },
+
   computed: {
     users() {
       return this.$store.getters.allUsers;
@@ -63,7 +71,7 @@ export default {
 };
 </script>
 <style scoped>
-@import '../../../../client/static/app.css';
+@import "../../../../client/static/app.css";
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
