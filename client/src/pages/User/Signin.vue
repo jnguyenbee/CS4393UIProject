@@ -47,23 +47,25 @@ export default {
       }
     };
   },
+  
   created() {
     this.$store.dispatch("allUsers");
   },
+
   computed: {
     users() {
       return this.$store.getters.allUsers;
     }
   },
   methods: {
-    checkUser() {
-      alert(" inside check user ");
-      const productById = this.$store.getters.productById(
-        this.$route.params["id"]
-        //this.$route.params["userName"]
-      );
-      //alert(this.$route.params["userName"]);
-      return Object.assign({}, productById);
+    checkUsers() {
+      var tempUser;
+      for ( tempUser in this.users ) {
+        if (tempUser.userName == this.data.user.userName && tempUser.password == this.data.user.password ) {
+          return true;
+        }
+      } 
+      return false;
     }
   }
 };

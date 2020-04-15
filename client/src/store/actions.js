@@ -67,9 +67,9 @@ export const userActions = {
             commit(ADD_USER_SUCCESS, response.data);
         });
     },
-    checkUser({ commit }, payload) {
-        commit(ADD_USER);
-        axios.post(`${API_BASE}/users/login`, payload).then(response => {
+    checkUser({ commit }) {
+        commit(ADD_USER_SUCCESS);
+        axios.get(`${API_BASE}/users`).then(response => {
             commit(ADD_USER_SUCCESS, response.data);
         });
     },
