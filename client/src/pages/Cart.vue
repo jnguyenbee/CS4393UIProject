@@ -17,12 +17,13 @@
     </div>
 
     <b-modal la id="modal-1" hide-footer title="Purchasing Order">
-      <h1>Need to do calculation</h1>
+      <h1>Your items:</h1>
+      
       <template v-for="product in cart">
-        <p :key="product.id">{{ product.name }} {{ product.price }}</p>
+        <p :key="product.id">{{ product.name }} {{ "- $" }}{{ product.price }}</p>
       </template>
+      <h3>Total: ${{ total }}</h3>
       <addressForm />
-
       <b-button pill class="mt-3" variant="outline-danger" block>Cancel</b-button>
       <b-button
         pill
@@ -67,6 +68,14 @@ export default {
   components: {
     productDetails: ProductDetails,
     addressForm: AddressForm
+  },
+  computed: {
+    total: function() {
+      return this.$store.state.cart.reduce(function(sum, cart) {
+        sum += cart.price;
+        return sum;
+      }, 0);
+    }
   }
 };
 </script>
