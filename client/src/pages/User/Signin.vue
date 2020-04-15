@@ -46,8 +46,13 @@ export default {
   },
   methods: {
     checkUser() {
-      alert(this.user.userName);
-      this.$store.dispatch("checkUser", this.user);
+      alert(" inside check user ");
+      const productById = this.$store.getters.productById(
+        this.$route.params["id"],
+        //this.$route.params["userName"]
+      );
+      //alert(this.$route.params["userName"]);
+      return Object.assign({}, productById);
     }
   }
 };
