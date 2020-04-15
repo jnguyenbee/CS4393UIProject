@@ -1,10 +1,6 @@
 <template>
   <div>
-    <b-card
-      no-body
-      class="overflow-hidden"
-      style="max-width: 800px;max-height:100%"
-    >
+    <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
       <b-breadcrumb>
         <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
           <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
@@ -49,27 +45,18 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col
-          ><b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" v-b-toggle.accordion-2 variant="info"
-              ><b>WRITE A REVIEW</b></b-button
-            >
+        <b-col>
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.accordion-2 variant="info">
+              <b>WRITE A REVIEW</b>
+            </b-button>
           </b-card-header>
-          <b-collapse
-            id="accordion-2"
-            visible
-            accordion="my-accordion"
-            role="tabpanel"
-          >
+          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
             <b-form @submit="saveReview">
               <div class="row">
                 <div class="col">
                   <div class="col">
-                    <b-form-group
-                      id="input-group-0"
-                      label="Username:"
-                      label-for="input-2"
-                    >
+                    <b-form-group id="input-group-0" label="Username:" label-for="input-2">
                       <b-form-input
                         id="input-0"
                         type="text"
@@ -82,11 +69,7 @@
                 </div>
                 <div class="col">
                   <div class="col">
-                    <b-form-group
-                      id="input-group-0"
-                      label="Rating:"
-                      label-for="input-2"
-                    >
+                    <b-form-group id="input-group-0" label="Rating:" label-for="input-2">
                       <b-form-select
                         id="input-2"
                         required
@@ -101,11 +84,7 @@
               </div>
 
               <div class="col">
-                <b-form-group
-                  id="input-group-6"
-                  label="Description:"
-                  label-for="input-6"
-                >
+                <b-form-group id="input-group-6" label="Description:" label-for="input-6">
                   <b-form-textarea
                     id="input-6"
                     v-model="review.description"
@@ -118,8 +97,7 @@
                     type="submit"
                     variant="outline-danger"
                     style="float: right;margin-bottom:10px"
-                    >Submit</b-button
-                  >
+                  >Submit</b-button>
                 </div>
               </div>
             </b-form>
@@ -129,16 +107,11 @@
       <b-row>
         <b-col>
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" variant="dark" v-b-toggle.accordion-1
-              ><b>CUSTOMER REVIEWS</b></b-button
-            >
+            <b-button block href="#" variant="dark" v-b-toggle.accordion-1>
+              <b>CUSTOMER REVIEWS</b>
+            </b-button>
           </b-card-header>
-          <b-collapse
-            id="accordion-1"
-            visible
-            accordion="my-accordion"
-            role="tabpanel"
-          >
+          <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
             <product-review-list :product="product"></product-review-list>
           </b-collapse>
         </b-col>
@@ -148,31 +121,31 @@
 </template>
 
 <script>
-import ProductButton from './ProductButton';
-import ProductListReview from './ProductReviewList';
+import ProductButton from "./ProductButton";
+import ProductListReview from "./ProductReviewList";
 export default {
   data() {
     return {
       review: {
-        username: '',
-        description: '',
-        rating: '',
+        username: "",
+        description: "",
+        rating: "",
         productId: this.product._id
       },
       options: [
-        {value: null, text: 'Please select an option'},
-        {value: '1', text: '1'},
-        {value: '2', text: '2'},
-        {value: '3', text: '3'},
-        {value: '4', text: '4'},
-        {value: '5', text: '5'}
+        { value: null, text: "Please select an option" },
+        { value: "1", text: "1" },
+        { value: "2", text: "2" },
+        { value: "3", text: "3" },
+        { value: "4", text: "4" },
+        { value: "5", text: "5" }
       ]
     };
   },
-  props: ['product'],
+  props: ["product"],
   components: {
-    'product-button': ProductButton,
-    'product-review-list': ProductListReview
+    "product-button": ProductButton,
+    "product-review-list": ProductListReview
   },
   methods: {
     saveReview() {
@@ -181,7 +154,7 @@ export default {
       //alert(this.review.rating);
       //alert(this.review.username);
       //alert(this.review.description);
-      this.$store.dispatch('addReview', this.review);
+      this.$store.dispatch("addReview", this.review);
     }
   }
 };
