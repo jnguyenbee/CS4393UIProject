@@ -30,6 +30,7 @@ export const REMOVE_PRODUCT_FAILURE = 'REMOVE_PRODUCT_FAILURE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
+export const ALL_USERS = 'ALL_USERS';
 export const ADD_USER = 'ADD_USER';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
