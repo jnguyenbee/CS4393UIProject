@@ -11,27 +11,72 @@
           class="btn btn-outline-primary"
           href="
     http://localhost:8080/?#/Home/"
-        >Add More Socks</a>
-        <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
+          >Add More Socks</a
+        >
+        <button
+          v-b-modal.modal-1
+          type="button"
+          class="btn btn-outline-secondary"
+        >
+          Order Now
+        </button>
       </div>
     </div>
 
     <b-modal la id="modal-1" hide-footer title="Purchasing Order">
       <h1>Your items:</h1>
-      
+
       <template v-for="product in cart">
-        <p :key="product.id">{{ product.name }} {{ "- $" }}{{ product.price }}</p>
+        <b-form v-bind:key="product.id">
+          <b-row>
+            <b-col>
+              <h4>
+                <b-badge variant="info" style="width:100%">{{
+                  product.name
+                }}</b-badge>
+              </h4>
+            </b-col>
+            <b-col>
+              <b-input-group size="sm" prepend="$" style="margin-bottom:0px">
+                <b-form-input
+                  disabled
+                  :value="product.price"
+                  class="text-right"
+                ></b-form-input>
+              </b-input-group>
+            </b-col>
+          </b-row>
+        </b-form>
       </template>
-      <h3>Total: ${{ total }}</h3>
+      <hr />
+
+      <b-form>
+        <b-row>
+          <b-col> <h3>Total:</h3> </b-col>
+          <b-col>
+            <b-input-group prepend="$">
+              <b-form-input
+                disabled
+                :value="total"
+                class="text-right"
+              ></b-form-input>
+            </b-input-group>
+          </b-col>
+        </b-row>
+      </b-form>
+      <hr />
       <addressForm />
-      <b-button pill class="mt-3" variant="outline-danger" block>Cancel</b-button>
+      <b-button pill class="mt-3" variant="outline-danger" block
+        >Cancel</b-button
+      >
       <b-button
         pill
         class="mt-2"
         variant="outline-warning"
         block
         href="http://localhost:8080/?#/Buy"
-      >Continue</b-button>
+        >Continue</b-button
+      >
     </b-modal>
 
     <template v-for="product in cart">
@@ -39,9 +84,7 @@
     </template>
   </div>
   <div v-else class="title">
-    <h1>
-      <i class="fa fa-shopping-cart"></i> Your Cart is Empty
-    </h1>
+    <h1><i class="fa fa-shopping-cart"></i> Your Cart is Empty</h1>
     <div class="text-center">
       <a
         pill
@@ -49,7 +92,8 @@
         class="btn btn-outline-primary"
         href="
     http://localhost:8080/?#/Home/"
-      >Add Socks</a>
+        >Add Socks</a
+      >
     </div>
   </div>
 </template>
@@ -57,17 +101,17 @@
 <style scoped></style>
 
 <script>
-import ProductDetails from "../components/product/ProductDetailsCart";
-import AddressForm from "../components/user/AddressForm";
+import ProductDetails from '../components/product/ProductDetailsCart';
+import AddressForm from '../components/user/AddressForm';
 export default {
   data() {
     return {
-      cart: this.$store.state.cart
+      cart: this.$store.state.cart,
     };
   },
   components: {
     productDetails: ProductDetails,
-    addressForm: AddressForm
+    addressForm: AddressForm,
   },
   computed: {
     total: function() {
@@ -75,7 +119,7 @@ export default {
         sum += cart.price;
         return sum;
       }, 0);
-    }
-  }
+    },
+  },
 };
 </script>
