@@ -17,7 +17,9 @@ import {
     ALL_REVIEWS,
     ALL_REVIEWS_SUCCESS,
     REVIEW_BY_ID,
-    REVIEW_BY_ID_SUCCESS
+    REVIEW_BY_ID_SUCCESS,
+    ALL_USERS,
+    ALL_USERS_SUCCESS
 } from './mutation-types';
 
 const API_BASE = 'http://localhost:3000';
@@ -70,7 +72,15 @@ export const userActions = {
         axios.post(`${API_BASE}/users/login`, payload).then(response => {
             commit(ADD_USER_SUCCESS, response.data);
         });
+    },
+    allUsers({ commit }) {
+        alert('called');
+        commit(ALL_USERS);
+        axios.get(`${API_BASE}/users/`).then(response => {
+            commit(ALL_USERS_SUCCESS, response.data);
+        });
     }
+
 };
 
 export const reviewActions = {
