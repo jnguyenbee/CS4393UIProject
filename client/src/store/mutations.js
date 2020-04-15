@@ -94,13 +94,13 @@ export const userMutations = {
         // user.username
         // user.password
         state.user = payload;
-        state.users1 = payload;
+        //  state.users1 = payload;
         state.showLoader = true;
     },
     [ADD_USER_SUCCESS]: (state, payload) => {
         state.showLoader = false;
         state.users.push(payload);
-        state.users1.push(payload);
+        //  state.users1.push(payload);
     },
 
     [ALL_USERS](state) {

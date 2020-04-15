@@ -58,14 +58,17 @@ export default {
     }
   },
   methods: {
-    checkUsers() {
-      var tempUser;
-      for ( tempUser in this.users ) {
-        if (tempUser.userName == this.data.user.userName && tempUser.password == this.data.user.password ) {
-          return true;
-        }
-      } 
-      return false;
+
+    checkUser() {
+      alert(" inside check user ");
+
+      /*
+      const productById = this.$store.getters.productById(
+        this.$route.params["id"]
+        //this.$route.params["userName"]
+      );
+      //alert(this.$route.params["userName"]);
+      return Object.assign({}, productById);*/
     }
   }
 };
