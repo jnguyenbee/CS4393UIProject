@@ -40,7 +40,7 @@ export default {
     //  'product-review': ProductReview
   },
   created() {
-    if (this.reviews.length === 0) {
+    if (this.reviews.length >= 0) {
       this.$store.dispatch('reviewById', this.product._id);
     }
   },
