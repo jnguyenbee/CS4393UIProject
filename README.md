@@ -30,6 +30,7 @@ MONGODB_CONNECTION_URI=
 npm install
 ```
 ### npm packages
+- [ ] [axios](https://www.npmjs.com/package/axios)
 - [ ] [body-parser](https://www.npmjs.com/package/body-parser)
 - [ ] [bootstrap](https://www.npmjs.com/package/bootstrap)
 - [ ] [bootstrap-vue](https://www.npmjs.com/package/bootstrap-vue)
@@ -39,6 +40,8 @@ npm install
 - [ ] [mysql](https://www.npmjs.com/package/mysql)
 - [ ] [nodemon](https://www.npmjs.com/package/nodemon)
 - [ ] [vue](https://www.npmjs.com/package/vue)
+- [ ] [vue-card-payment](https://www.npmjs.com/package/vue-card-payment)
+- [ ] [vue-style-loader](https://www.npmjs.com/package/vue-style-loader)
 - [ ] [vue-router](https://www.npmjs.com/package/vue-router)
 
 <a name="run"></a>
