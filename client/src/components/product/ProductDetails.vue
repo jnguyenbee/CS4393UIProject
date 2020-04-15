@@ -52,10 +52,15 @@
         <b-col
           ><b-card-header header-tag="header" class="p-1" role="tab">
             <b-button block href="#" v-b-toggle.accordion-2 variant="info"
-              >Click here to Write a review</b-button
+              ><b>WRITE A REVIEW</b></b-button
             >
           </b-card-header>
-          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+          <b-collapse
+            id="accordion-2"
+            visible
+            accordion="my-accordion"
+            role="tabpanel"
+          >
             <b-form @submit="saveReview">
               <div class="row">
                 <div class="col">
@@ -121,13 +126,30 @@
           </b-collapse>
         </b-col>
       </b-row>
+      <b-row>
+        <b-col>
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" variant="dark" v-b-toggle.accordion-1
+              ><b>CUSTOMER REVIEWS</b></b-button
+            >
+          </b-card-header>
+          <b-collapse
+            id="accordion-1"
+            visible
+            accordion="my-accordion"
+            role="tabpanel"
+          >
+            <product-review-list :product="product"></product-review-list>
+          </b-collapse>
+        </b-col>
+      </b-row>
     </b-card>
   </div>
 </template>
 
 <script>
 import ProductButton from './ProductButton';
-//import ProductListReview from './ProductReviewList';
+import ProductListReview from './ProductReviewList';
 export default {
   data() {
     return {
@@ -149,12 +171,12 @@ export default {
   },
   props: ['product'],
   components: {
-    'product-button': ProductButton
-    // 'product-review-list': ProductListReview
+    'product-button': ProductButton,
+    'product-review-list': ProductListReview
   },
   methods: {
     saveReview() {
-      alert(this.product._id);
+      //alert(this.product._id);
       //alert(this.review.product);
       //alert(this.review.rating);
       //alert(this.review.username);

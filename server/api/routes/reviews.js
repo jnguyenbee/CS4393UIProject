@@ -6,7 +6,6 @@ const Review = require('../models/review');
 const Product = require('../models/product');
 //must use productId in postman
 router.post('/', (req, res, next) => {
-    console.log('reached???????? POST REVIEW');
     Product.findById(req.body.productId)
         .then((product) => {
             if (!product) {
@@ -64,14 +63,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/:reviewId', (req, res, next) => {
     const id = req.params.reviewId;
-    Review.findById(id)
+    console.log(id);
+    Review.find({ product: id })
         .exec()
-        .then((doc) => {
-            if (doc) {
-                res.status(200).json(doc);
-            } else {
-                res.status(404).json({ message: 'No valid entry found for provided ID' });
-            }
+        .then((docs) => {
+            console.log(docs);
+            res.status(200).json(docs);
         })
         .catch((err) => {
             console.log(err);
@@ -79,6 +76,23 @@ router.get('/:reviewId', (req, res, next) => {
                 error: err,
             });
         });
+    /*
+        const id = req.params.reviewId;
+        Review.findById(id)
+        .exec()
+        .then(doc => {
+          if (doc) {
+            res.status(200).json(doc);
+          } else {
+            res.status(404)
+              .json({ message: "No valid entry found for provided ID" });
+          }
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });*/
 });
 //in postman, must post field to propName and actual value to value field
 router.patch('/:reviewId', (req, res, next) => {

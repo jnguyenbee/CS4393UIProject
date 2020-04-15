@@ -15,7 +15,9 @@ import {
     ADD_REVIEW,
     ADD_REVIEW_SUCCESS,
     ALL_REVIEWS,
-    ALL_REVIEWS_SUCCESS
+    ALL_REVIEWS_SUCCESS,
+    REVIEW_BY_ID,
+    REVIEW_BY_ID_SUCCESS
 } from './mutation-types';
 
 const API_BASE = 'http://localhost:3000';
@@ -79,9 +81,19 @@ export const reviewActions = {
             commit(ADD_REVIEW_SUCCESS, response.data);
         });
     },
-    allReview({ commit }) {
+
+    reviewById({ commit }, payload) {
+        commit(REVIEW_BY_ID);
+        axios.get(`${API_BASE}/reviews/${payload}`).then(response => {
+            console.log(payload, response.data);
+            commit(REVIEW_BY_ID_SUCCESS, response.data);
+        });
+    },
+
+    allReviewByProdId({ commit }, payload) {
         commit(ALL_REVIEWS);
-        axios.get(`${API_BASE}/reviews`).then(response => {
+        alert('called' + payload);
+        axios.get(`${API_BASE}/reviews/${payload}`).then(response => {
             commit(ALL_REVIEWS_SUCCESS, response.data);
         });
     }

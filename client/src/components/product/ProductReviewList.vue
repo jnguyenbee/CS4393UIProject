@@ -1,47 +1,52 @@
 <template>
   <div>
-    <p>
-      NEED TO GET ID AND SEND TO TEMPLE VIA PRODUVT VIEW; SEE PRODUCT LIST,
-      PRODUCT ITEMS FOR ASSISTANCE
-    </p>
-    <p>NEED TO PASS IN REVIEW NOT PRODUCT</p>
-    <p>
-      <product-review product="product"></product-review>
-    </p>
+    <div v-for="review in reviews" :key="review.id">
+      <b-card no-body class="overflow-hidden" border-variant="light">
+        <b-row no-gutters>
+          <b-col md="8">
+            <h1>
+              <b-badge variant="info" style="width:100%">{{
+                review.username
+              }}</b-badge>
+            </h1>
+            <h5>{{ review.description }}</h5>
+          </b-col>
+          <h1>
+            <b-badge variant="warning" style="width:100%; height:50%">
+              Rated: {{ review.rating }}
+            </b-badge>
+          </h1>
+        </b-row>
+      </b-card>
+    </div>
   </div>
 </template>
 
 <style scoped></style>
 
 <script>
-import ProductReview from './ProductReview';
+//import ProductReview from './ProductReview';
 export default {
+  data() {
+    //const reviews = this.$store.getters.reviewById(this.$route.params['id']);
+    return {
+      // product: {},
+      //reviews: this.$store.getters.reviewById(this.$route.params['id'])
+      // model: this.$store.getters.productById(this.$route.params['id']),
+    };
+  },
   props: ['product'],
   components: {
-    'product-review': ProductReview
-    //"product-back": ProductBackButton
-    //  "product-review-side-button": ProductReviewButton
+    //  'product-review': ProductReview
   },
   created() {
-    if (this.products.length === 0) {
-      this.$store.dispatch('allProducts');
+    if (this.reviews.length === 0) {
+      this.$store.dispatch('reviewById', this.product._id);
     }
   },
   computed: {
-    products() {
-      return this.$store.getters.allProducts;
-    },
-    filtered: function() {
-      var self = this;
-      return this.products.filter(function(product) {
-        return (
-          product.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
-          product.color.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
-          product.description
-            .toLowerCase()
-            .indexOf(self.search.toLowerCase()) >= 0
-        );
-      });
+    reviews() {
+      return this.$store.getters.allReviews;
     }
   }
 };
