@@ -47,15 +47,18 @@ export default {
       }
     };
   },
+  
   created() {
     this.$store.dispatch("allUsers");
   },
+
   computed: {
     users() {
       return this.$store.getters.allUsers;
     }
   },
   methods: {
+
     checkUser() {
       alert(" inside check user ");
 
