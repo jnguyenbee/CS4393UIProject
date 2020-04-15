@@ -30,14 +30,18 @@ MONGODB_CONNECTION_URI=
 npm install
 ```
 ### npm packages
+- [ ] [axios](https://www.npmjs.com/package/axios)
 - [ ] [body-parser](https://www.npmjs.com/package/body-parser)
 - [ ] [bootstrap](https://www.npmjs.com/package/bootstrap)
 - [ ] [bootstrap-vue](https://www.npmjs.com/package/bootstrap-vue)
 - [ ] [dotenv](https://www.npmjs.com/package/dotenv)
 - [ ] [express](https://www.npmjs.com/package/express)
+- [ ] [multer](https://www.npmjs.com/package/multer)
 - [ ] [mysql](https://www.npmjs.com/package/mysql)
 - [ ] [nodemon](https://www.npmjs.com/package/nodemon)
 - [ ] [vue](https://www.npmjs.com/package/vue)
+- [ ] [vue-card-payment](https://www.npmjs.com/package/vue-card-payment)
+- [ ] [vue-style-loader](https://www.npmjs.com/package/vue-style-loader)
 - [ ] [vue-router](https://www.npmjs.com/package/vue-router)
 
 <a name="run"></a>
@@ -49,11 +53,7 @@ npm install
 ```
 npm start
 ```
-or 
-> Open up your terminal in the server directory and run this command:
-```
-nodemon server.js
-```
+
 <a name="client"></a>
 ### Run Client
 > Open up your terminal in the client directory and run this command:
