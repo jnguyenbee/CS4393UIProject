@@ -23,3 +23,9 @@ export const reviewGetters = {
         }
     }
 };
+
+export const userGetters = {
+    allUsers: state => {
+        return state.users;
+    }
+};
