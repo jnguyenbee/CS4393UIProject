@@ -16,6 +16,7 @@ export default {
       const productById = this.$store.getters.productById(
         this.$route.params["id"]
       );
+      alert(this.$route.params["id"]);
       return Object.assign({}, productById);
     }
   },
