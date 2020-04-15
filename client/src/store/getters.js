@@ -10,3 +10,16 @@ export const productGetters = {
         }
     }
 };
+
+export const reviewGetters = {
+    allReviews: state => {
+        return state.review;
+    },
+    reviewById: (state, getters) => id => {
+        if (getters.allReviews.length > 0) {
+            return getters.allReviews.filter(p => p.productId === id)[0];
+        } else {
+            return state.review;
+        }
+    }
+};
