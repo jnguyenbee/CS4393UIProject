@@ -25,7 +25,7 @@
         <b-button
           href="https://www.linkedin.com/in/joe-garcia-547223123/"
           variant="outline-danger"
-          >Joe Garica</b-button
+          >Joe Garcia</b-button
         >
       </div>
     </div>
