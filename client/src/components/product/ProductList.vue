@@ -3,48 +3,34 @@
     <b-navbar type="light" variant="light">
       <div class="search">
         <b-nav-form>
-          <b-form-input
-            style="width:500px"
-            class="mr-sm-0"
-            type="text"
-            v-model="search"
-            placeholder="Search by Keyword"
-          ></b-form-input>
-          <b-button
-            pill
-            variant="outline-success"
-            class="my-5 my-sm-0"
-            type="submit"
-            >Search</b-button
-          >
+          <b-row>
+            <b-col>
+              Search:
+              <b-form-input
+                style="width:500px"
+                class="mr-sm-0"
+                type="text"
+                v-model="search"
+                placeholder="Search by Keyword"
+              ></b-form-input>
+            </b-col>
+
+            <b-col>
+              Sort By:
+              <b-form inline>
+                <b-form-select
+                  id="input-3"
+                  v-model="sort"
+                  :options="options"
+                  required
+                ></b-form-select>
+              </b-form>
+            </b-col>
+          </b-row>
         </b-nav-form>
       </div>
     </b-navbar>
-    <div class="text-center">
-      <div class="container">
-        <b-button pill v-b-toggle.collapse-1 variant="primary" size="sm"
-          >Filter Options</b-button
-        >
-        <div class="row">
-          <b-collapse id="collapse-1" class="mt-2">
-            <b-form inline>
-              <b-form-group
-                id="input-group-3"
-                label="Size:"
-                label-for="input-3"
-              >
-                <b-form-select
-                  id="input-3"
-                  v-model="form.food"
-                  :options="foods"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-form>
-          </b-collapse>
-        </div>
-      </div>
-    </div>
+
     <div class="products">
       <div class="container">
         <div class="row">
@@ -53,8 +39,23 @@
             v-for="product in filtered"
             :key="product._id"
           >
-            <p>color: {{ product.color }}</p>
-            <p>description: {{ product.description }}</p>
+            <div v-if="sort == 'name'">
+              <b-badge variant="warning">{{ product.name }}</b-badge>
+            </div>
+            <div v-if="sort == 'color'">
+              <b-badge variant="info">{{ product.color }}</b-badge>
+            </div>
+            <div v-if="sort == 'size'">
+              <b-badge variant="primary">{{ product.size }}</b-badge>
+            </div>
+
+            <div v-if="sort == 'cheap'">
+              <b-badge variant="danger"> ${{ product.price }}</b-badge>
+            </div>
+            <div v-if="sort == 'notcheap'">
+              <b-badge variant="danger"> ${{ product.price }}</b-badge>
+            </div>
+
             <product-item :product="product"></product-item>
           </div>
         </div>
@@ -70,18 +71,16 @@ export default {
   data() {
     return {
       search: '',
-      form: {
-        food: null
-      },
-      foods: [
-        {text: 'Select One', value: null},
-        'x-small',
-        'small',
-        'medium',
-        'large',
-        'x-large'
+      sort: '',
+      options: [
+        {text: 'Default', value: null},
+        {text: 'Name (A-Z)', value: 'name'},
+        {text: 'Color (A-Z)', value: 'color'},
+        {text: 'Price ($ - $$$)', value: 'cheap'},
+        {text: 'Price ($$$ - $)', value: 'notcheap'},
+        {text: 'Size (Small - Large)', value: 'size'},
       ],
-      show: true
+      show: true,
     };
   },
   created() {
@@ -95,7 +94,7 @@ export default {
     },
     filtered: function() {
       var self = this;
-      return this.products.filter(function(product) {
+      var prod = this.products.filter(function(product) {
         return (
           product.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
           product.color.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 ||
@@ -104,18 +103,53 @@ export default {
             .indexOf(self.search.toLowerCase()) >= 0
         );
       });
+
+      function name(a, b) {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      }
+      function color(a, b) {
+        if (a.color < b.color) return -1;
+        if (a.color > b.color) return 1;
+        return 0;
+      }
+
+      function sized(a, b) {
+        if (a.size > b.size) return -1;
+        if (a.size < b.size) return 1;
+        return 0;
+      }
+
+      if (this.sort == 'name') {
+        return prod.sort(name);
+      } else if (this.sort == 'color') {
+        return prod.sort(color);
+      } else if (this.sort == 'size') {
+        return prod.sort(sized);
+      } else if (this.sort == 'cheap') {
+        return prod.sort(function(a, b) {
+          return a.price - b.price;
+        });
+      } else if (this.sort == 'notcheap') {
+        return prod.sort(function(a, b) {
+          return b.price - a.price;
+        });
+      } else {
+        return prod;
+      }
     },
     searchProduct: function() {
       console.log(this.search);
-      return this.products.filter(product => {
+      return this.products.filter((product) => {
         return product.name.toUpperCase().match(this.search.toUpperCase());
       });
-    }
+    },
   },
 
   components: {
-    'product-item': ProductItem
-  }
+    'product-item': ProductItem,
+  },
 };
 </script>
 
