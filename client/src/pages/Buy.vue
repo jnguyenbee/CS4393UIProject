@@ -23,12 +23,12 @@
           </tr>
         </table>
         <div align="right"> 
-          <p>Shipping: <br>
-            Tax: <br>
-            Total: </p>
+          <p>Shipping: $5.00<br>
+            Tax: $1.50<br>
+            Total: ${{total}}</p>
         </div>
         <h5>Shipping Address</h5>
-          <p>Firstname Lastname<br>
+          <p>{{}} Lastname<br>
             Address<br>
             City, State Zip</p>
         <h5>Payment Method</h5>
@@ -63,5 +63,19 @@ tr:nth-child(even) {
 </style>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      cart: this.$store.state.cart,
+    };
+  },
+  computed: {
+    total: function() {
+      return this.$store.state.cart.reduce(function(sum, cart) {
+        sum += cart.price + 6.5;
+        return sum;
+      }, 0);
+    },
+  },
+};
 </script>
