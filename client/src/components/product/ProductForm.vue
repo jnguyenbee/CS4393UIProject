@@ -144,10 +144,11 @@ export default {
    //   alert(this.product.color);
    //   alert(this.product.quantity);
    //   alert(this.product.productImage);
+   
       this.$emit('save-product', formData);
       //console.log("submit hit");
-    }
-  }
+    },
+  },
 };
 </script>
 
