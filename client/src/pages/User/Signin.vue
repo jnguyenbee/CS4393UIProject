@@ -60,7 +60,7 @@ export default {
   methods: {
 
     checkUser() {
-      alert(" inside check user ");
+//      alert(" inside check user ");
 
       /*
       const productById = this.$store.getters.productById(

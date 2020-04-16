@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     addProduct(product) {
-      alert("reached");
+    //  alert("reached");
       this.$store.dispatch("addProduct", product);
     }
   },
