@@ -138,16 +138,10 @@ export default {
       formData.append('description', this.product.description);
       formData.append('productImage', this.product.productImage);
 
-      alert(this.product.name);
-      alert(this.product.price);
-      alert(this.product.size);
-      alert(this.product.color);
-      alert(this.product.quantity);
-      alert(this.product.productImage);
       this.$emit('save-product', formData);
       //console.log("submit hit");
-    }
-  }
+    },
+  },
 };
 </script>
 

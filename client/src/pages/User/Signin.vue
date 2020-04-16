@@ -75,28 +75,6 @@ export default {
           alert('Password ' + pw + ' vs ' + password);
         }
       }
-
-      //var temp = this.user.userName;
-      /*
-      this.users.forEach(function(item) {
-        // alert(typeof item.userName);
-        if (item.userName == userName) {
-          alert(item.userName);
-          alert(userName);
-          alert(password);
-          return;
-        } else {
-          alert('chickem');
-        }
-      });
-*/
-      /*
-      const productById = this.$store.getters.productById(
-        this.$route.params["id"]
-        //this.$route.params["userName"]
-      );
-      //alert(this.$route.params["userName"]);
-      return Object.assign({}, productById);*/
     },
   },
 };
