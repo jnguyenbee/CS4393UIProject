@@ -114,15 +114,17 @@ General:
 - Everytime an admin edits a product and when a user writes a review, you will not be able to see the modifications unless you go back to the home page and manually refresh the page.
 
 Sign up page:
--Atomatically goes into the login page whether the registration is successful or not.
-    - When the person clicks the "Sign up" button, the user isn't given a message whether the sign up was successful or not.
+-Automatically goes into the login page whether the registration is successful or not.
+-When the person clicks the "Sign up" button, the user isn't given a message whether the sign up was successful or not.
+
 Contact Us page:
-    - When the clear button is pressed, it does not clear message.
+- When the clear button is pressed, it does not clear message.
+
 Admin page:
-    - Our admin page is not protected; anyone can access the admin page.
+- Our admin page is not protected; anyone can access the admin page.
     
 Cart page:
-    - Cancel button doesn't work.
-    - Credit card is not stored.
-    - When you press continue, the cart doesn't return to 0.
+- Cancel button doesn't work.
+- Credit card is not stored.
+- When you press continue, the cart doesn't return to 0.
     
