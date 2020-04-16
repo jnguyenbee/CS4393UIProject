@@ -22,13 +22,12 @@
           ></b-form-input>
         </b-form-group>
         <div class="text-center">
-          <b-button type="submit" variant="primary" @click="() => $router.push('Home')">'Login'</b-button>
+          <b-button type="submit" variant="primary" @click="() => $router.push('Home')">Login</b-button>
         </div>
       </b-card>
       <b-card>
         Not a member?
         <router-link v-bind:to="'/'">Sign up</router-link>
-        <br />Forgot Password?
       </b-card>
     </b-form>
   </div>
