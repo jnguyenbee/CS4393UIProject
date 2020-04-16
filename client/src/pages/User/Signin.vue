@@ -59,6 +59,7 @@ export default {
     checkUser() {
       var userName = this.user.userName;
       var password = this.user.password;
+//      alert(" inside check user ");
 
       for (let i = 0; i < this.users.length; i++) {
         var uNm = this.users[i].userName;
@@ -74,28 +75,6 @@ export default {
           this.truth = "notruth";
         }
       }
-
-      //var temp = this.user.userName;
-      /*
-      this.users.forEach(function(item) {
-        // alert(typeof item.userName);
-        if (item.userName == userName) {
-          alert(item.userName);
-          alert(userName);
-          alert(password);
-          return;
-        } else {
-          alert('chickem');
-        }
-      });
-*/
-      /*
-      const productById = this.$store.getters.productById(
-        this.$route.params["id"]
-        //this.$route.params["userName"]
-      );
-      //alert(this.$route.params["userName"]);
-      return Object.assign({}, productById);*/
     },
   },
 };

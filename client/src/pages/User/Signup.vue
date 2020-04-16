@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     saveUser() {
-      alert(this.user.firstName);
+    //  alert(this.user.firstName);
       this.$store.dispatch("addUser", this.user);
     }
   }
