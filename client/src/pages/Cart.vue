@@ -36,7 +36,7 @@
     <template v-for="product in cart">
       <product-details :product="product" :key="product.id"></product-details>
     </template>
-    <div class="container">
+    <!--<div class="container">
         <b-row>
           <b-col></b-col>
           <b-col></b-col>
@@ -51,7 +51,7 @@
             <b-button variant="primary" router-link to="/checkout">Checkout</b-button>  
           </b-col>          
         </b-row>
-    </div>
+    </div> -->
   </div>
   <div v-else class="title">
     <h1>
