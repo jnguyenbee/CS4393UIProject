@@ -18,7 +18,8 @@ import {
     faCartPlus,
     faShoppingCart,
     faHome,
-    faSocks
+    faSearch,
+    faSocks,
 } from '@fortawesome/free-solid-svg-icons';
 
 dom.watch();
@@ -29,7 +30,8 @@ library.add(
     faCartPlus,
     faShoppingCart,
     faHome,
-    faSocks
+    faSocks,
+    faSearch
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueCardPayment);
