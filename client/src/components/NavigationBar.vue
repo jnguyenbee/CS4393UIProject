@@ -1,7 +1,13 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-brand >Rainbow Mangos Company</b-navbar-brand>
+      <img
+        src="http://localhost:3000/uploads/Logo.jpeg"
+        class="d-inline-block align-top"
+        style="width:30px; height:30px"
+        alt="mango"
+      />
+      <b-navbar-brand>Rainbow Mangos Company</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -37,7 +43,7 @@ export default {
   name: 'nav',
   data() {
     return {
-      cartItems: this.$store.state.cart
+      cartItems: this.$store.state.cart,
     };
   },
   computed: {
@@ -46,8 +52,8 @@ export default {
     },
     showLoader() {
       return this.$store.state.showLoader;
-    }
-  }
+    },
+  },
 };
 </script>
 
