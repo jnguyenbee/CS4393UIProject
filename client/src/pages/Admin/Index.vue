@@ -6,6 +6,9 @@
           <ul class="admin-menu">
             <!-- Links are to sibling routes -->
             <li>
+              <router-link to="/Home">Return to store</router-link>
+            </li>
+            <li>
               <router-link to="/admin">View All Products</router-link>
             </li>
             <li>
