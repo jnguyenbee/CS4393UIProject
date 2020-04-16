@@ -8,10 +8,10 @@ import DetailsRoutes from './details';
 import CartRoutes from './cart';
 import UserRoutes from './user';
 import ContactRoutes from './contact';
-//import CheckoutRoutes from './checkout';
 import BuyRoutes from './buy'
+import ThanksRoutes from './thanks'
 Vue.use(Router);
 
 export default new Router({
-    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes, /*CheckoutRoutes,*/ BuyRoutes],
+    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes, BuyRoutes, ThanksRoutes],
 });
