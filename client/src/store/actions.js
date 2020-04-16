@@ -76,7 +76,7 @@ export const userActions = {
         });
     },*/
     allUsers({ commit }) {
-        alert('called');
+//        alert('called');
         commit(ALL_USERS);
         axios.get(`${API_BASE}/users/`).then(response => {
             commit(ALL_USERS_SUCCESS, response.data);
@@ -87,7 +87,7 @@ export const userActions = {
 
 export const reviewActions = {
     addReview({ commit }, payload) {
-        alert('reach');
+       // alert('reach');
         commit(ADD_REVIEW);
         axios.post(`${API_BASE}/reviews`, payload).then(response => {
             commit(ADD_REVIEW_SUCCESS, response.data);
@@ -104,7 +104,7 @@ export const reviewActions = {
 
     allReviewByProdId({ commit }, payload) {
         commit(ALL_REVIEWS);
-        alert('called' + payload);
+//        alert('called' + payload);
         axios.get(`${API_BASE}/reviews/${payload}`).then(response => {
             commit(ALL_REVIEWS_SUCCESS, response.data);
         });
