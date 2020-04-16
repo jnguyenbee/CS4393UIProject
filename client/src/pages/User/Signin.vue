@@ -1,12 +1,16 @@
 <template>
   <div>
-    <b-form action="http://localhost:8080/?#/Home/">
+    <div v-for="v in users" :key="v.id">
+      <p>username : {{v.userName}} password: {{ v.password}}</p>
+    </div>
+    <b-form @submit="checkUser" action="http://localhost:8080/?#/Home/">
       <b-card class="mt-3">
         <h1>Sign-In</h1>
         <b-form-group id="input-group-1" label="Username :" label-for="input-1">
           <b-form-input
             id="input-1"
             type="user"
+            v-model="user.userName"
             required
             placeholder="Enter username"
           ></b-form-input>
@@ -15,6 +19,7 @@
           <b-form-input
             id="input-2"
             type="password"
+            v-model="user.password"
             required
             placeholder="Enter password"
           ></b-form-input>
@@ -32,9 +37,41 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        userName: "",
+        password: ""
+      }
+    };
+  },
+  
+  created() {
+    this.$store.dispatch("allUsers");
+  },
+
+  computed: {
+    users() {
+      return this.$store.getters.allUsers;
+    }
+  },
+  methods: {
+    checkUsers() {
+      var tempUser;
+      for ( tempUser in this.users ) {
+        if (tempUser.userName == this.data.user.userName && tempUser.password == this.data.user.password ) {
+          return true;
+        }
+      } 
+      return false;
+    }
+  }
+};
+</script>
 <style scoped>
-@import '../../../../client/static/app.css';
+@import "../../../../client/static/app.css";
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
