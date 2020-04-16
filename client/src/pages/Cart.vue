@@ -71,10 +71,11 @@
       >
       <b-button
         pill
+        onclick="refresh()"
         class="mt-2"
         variant="outline-warning"
         block
-        href="http://localhost:8080/?#/Buy"
+        href="http://localhost:8080/?#/Thanks"
         >Continue</b-button
       >
     </b-modal>
