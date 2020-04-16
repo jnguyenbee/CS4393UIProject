@@ -16,15 +16,15 @@ export default {
   methods: {
     addProduct(product) {
       this.$store.dispatch('addProduct', product);
-    },
+   // },
     //  alert("reached");
       this.$store.dispatch("addProduct", product);
     }
   },
   components: {
-    'product-form': ProductFrom,
-  },
-};
+    'product-form': ProductFrom
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
