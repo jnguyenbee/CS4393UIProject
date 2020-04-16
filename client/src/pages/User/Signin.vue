@@ -62,6 +62,7 @@ export default {
     checkUser() {
       var userName = this.user.userName;
       var password = this.user.password;
+//      alert(" inside check user ");
 
       for (let i = 0; i < this.users.length; i++) {
         var uNm = this.users[i].userName;

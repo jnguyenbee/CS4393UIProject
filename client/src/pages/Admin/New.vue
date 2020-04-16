@@ -17,6 +17,9 @@ export default {
     addProduct(product) {
       this.$store.dispatch('addProduct', product);
     },
+    //  alert("reached");
+      this.$store.dispatch("addProduct", product);
+    }
   },
   components: {
     'product-form': ProductFrom,
