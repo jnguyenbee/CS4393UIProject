@@ -9,17 +9,9 @@
         <a
           type="button"
           class="btn btn-outline-primary"
-          href="
-    http://localhost:8080/?#/Home/"
-          >Add More Socks</a
-        >
-        <button
-          v-b-modal.modal-1
-          type="button"
-          class="btn btn-outline-secondary"
-        >
-          Order Now
-        </button>
+          @click="() => $router.push('/Home')"
+        >Add More Socks</a>
+        <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
       </div>
     </div>
 
@@ -31,18 +23,16 @@
           <b-row>
             <b-col>
               <h4>
-                <b-badge variant="info" style="width:100%">{{
+                <b-badge variant="info" style="width:100%">
+                  {{
                   product.name
-                }}</b-badge>
+                  }}
+                </b-badge>
               </h4>
             </b-col>
             <b-col>
               <b-input-group size="sm" prepend="$" style="margin-bottom:0px">
-                <b-form-input
-                  disabled
-                  :value="product.price"
-                  class="text-right"
-                ></b-form-input>
+                <b-form-input disabled :value="product.price" class="text-right"></b-form-input>
               </b-input-group>
             </b-col>
           </b-row>
@@ -52,32 +42,27 @@
 
       <b-form>
         <b-row>
-          <b-col> <h3>Total:</h3> </b-col>
+          <b-col>
+            <h3>Total:</h3>
+          </b-col>
           <b-col>
             <b-input-group prepend="$">
-              <b-form-input
-                disabled
-                :value="total"
-                class="text-right"
-              ></b-form-input>
+              <b-form-input disabled :value="total" class="text-right"></b-form-input>
             </b-input-group>
           </b-col>
         </b-row>
       </b-form>
       <hr />
       <addressForm />
-      <b-button pill class="mt-3" variant="outline-danger" block
-        >Cancel</b-button
-      >
+      <b-button pill class="mt-3" variant="outline-danger" block>Cancel</b-button>
       <b-button
         pill
         onclick="refresh()"
         class="mt-2"
         variant="outline-warning"
         block
-        href="http://localhost:8080/?#/Thanks"
-        >Continue</b-button
-      >
+        @click="() => $router.push('/thanks')"
+      >Continue</b-button>
     </b-modal>
 
     <template v-for="product in cart">
@@ -85,16 +70,16 @@
     </template>
   </div>
   <div v-else class="title">
-    <h1><i class="fa fa-shopping-cart"></i> Your Cart is Empty</h1>
+    <h1>
+      <i class="fa fa-shopping-cart"></i> Your Cart is Empty
+    </h1>
     <div class="text-center">
       <a
         pill
         type="button"
         class="btn btn-outline-primary"
-        href="
-    http://localhost:8080/?#/Home/"
-        >Add Socks</a
-      >
+        @click="() => $router.push('/Home')"
+      >Add Socks</a>
     </div>
   </div>
 </template>
@@ -102,17 +87,17 @@
 <style scoped></style>
 
 <script>
-import ProductDetails from '../components/product/ProductDetailsCart';
-import AddressForm from '../components/user/AddressForm';
+import ProductDetails from "../components/product/ProductDetailsCart";
+import AddressForm from "../components/user/AddressForm";
 export default {
   data() {
     return {
-      cart: this.$store.state.cart,
+      cart: this.$store.state.cart
     };
   },
   components: {
     productDetails: ProductDetails,
-    addressForm: AddressForm,
+    addressForm: AddressForm
   },
   computed: {
     total: function() {
@@ -120,7 +105,7 @@ export default {
         sum += cart.price;
         return sum;
       }, 0);
-    },
-  },
+    }
+  }
 };
 </script>
