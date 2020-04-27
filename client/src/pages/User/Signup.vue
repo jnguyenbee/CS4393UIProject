@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form @submit="saveUser" action="http://localhost:8080/?#/signin/">
+    <b-form @submit="saveUser" @click="() => $router.push('/signin')">
       <b-card class="mt-3">
         <h1>Sign-Up</h1>
         <b-form-group id="input-group-0" label="Your Name:" label-for="input-2">
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     saveUser() {
-    //  alert(this.user.firstName);
+      //  alert(this.user.firstName);
       this.$store.dispatch("addUser", this.user);
     }
   }
