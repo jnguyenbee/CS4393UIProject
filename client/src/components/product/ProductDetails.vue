@@ -2,20 +2,19 @@
   <div>
     <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
       <b-breadcrumb>
-        <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
+        <b-breadcrumb-item @click="() => $router.push('/Home')">
           <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
         </b-breadcrumb-item>
         <b-breadcrumb-item active>
           <b-badge variant="warning">{{ product.name }}</b-badge>
         </b-breadcrumb-item>
-        <a
-          class="button"
-          href="http://localhost:8080/?#/Home/"
+        <b-button
+          @click="() => $router.push('/Home')"
           style="background:  #17a2b8;color:#fff; border: 1px solid  #17a2b8;border-radius: 20px;
     padding: 10px 15px;position: absolute; right: 10px;padding: 0px 15px"
         >
           <i class="fa fa-socks"></i> Back to Socks
-        </a>
+        </b-button>
       </b-breadcrumb>
       <b-row no-gutters>
         <b-col md="6">
@@ -128,7 +127,7 @@ export default {
     return {
       review: {
         username: "",
-        description: "",
+        iption: "",
         rating: "",
         productId: this.product._id
       },
@@ -149,11 +148,6 @@ export default {
   },
   methods: {
     saveReview() {
-      //alert(this.product._id);
-      //alert(this.review.product);
-      //alert(this.review.rating);
-      //alert(this.review.username);
-      //alert(this.review.description);
       this.$store.dispatch("addReview", this.review);
     }
   }
@@ -181,4 +175,4 @@ export default {
   font-weight: bold;
 }
 </style>
->
+

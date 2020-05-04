@@ -9,8 +9,9 @@ import CartRoutes from './cart';
 import UserRoutes from './user';
 import ContactRoutes from './contact';
 import BuyRoutes from './buy'
+import ThanksRoutes from './thanks'
 Vue.use(Router);
 
 export default new Router({
-    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes, BuyRoutes],
+    routes: [HomeRoutes, AdminRoutes, DetailsRoutes, CartRoutes, UserRoutes, ContactRoutes, BuyRoutes, ThanksRoutes],
 });

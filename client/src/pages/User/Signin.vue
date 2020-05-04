@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div v-for="v in users" :key="v.id">
-      <p>username : {{ v.userName }} password: {{ v.password }}</p>
-    </div>
     <b-form @submit="checkUser">
       <b-card class="mt-3">
         <h1>Sign-In</h1>
@@ -25,13 +22,12 @@
           ></b-form-input>
         </b-form-group>
         <div class="text-center">
-          <b-button type="submit" variant="primary">Login</b-button>
+          <b-button type="submit" variant="primary" @click="() => $router.push('Home')">Login</b-button>
         </div>
       </b-card>
       <b-card>
         Not a member?
         <router-link v-bind:to="'/'">Sign up</router-link>
-        <br />Forgot Password?
       </b-card>
     </b-form>
   </div>
@@ -41,7 +37,7 @@
 export default {
   data() {
     return {
-      //username: '',
+      truth: '',
       user: {
         userName: '',
         password: '',
@@ -62,6 +58,7 @@ export default {
     checkUser() {
       var userName = this.user.userName;
       var password = this.user.password;
+//      alert(" inside check user ");
 
       for (let i = 0; i < this.users.length; i++) {
         var uNm = this.users[i].userName;
@@ -69,34 +66,14 @@ export default {
 
         if (uNm === userName && pw === password) {
           alert(i);
+          this.truth = "truth";
           break;
         } else {
           alert('UserName ' + uNm + ' vs ' + userName);
           alert('Password ' + pw + ' vs ' + password);
+          this.truth = "notruth";
         }
       }
-
-      //var temp = this.user.userName;
-      /*
-      this.users.forEach(function(item) {
-        // alert(typeof item.userName);
-        if (item.userName == userName) {
-          alert(item.userName);
-          alert(userName);
-          alert(password);
-          return;
-        } else {
-          alert('chickem');
-        }
-      });
-*/
-      /*
-      const productById = this.$store.getters.productById(
-        this.$route.params["id"]
-        //this.$route.params["userName"]
-      );
-      //alert(this.$route.params["userName"]);
-      return Object.assign({}, productById);*/
     },
   },
 };
