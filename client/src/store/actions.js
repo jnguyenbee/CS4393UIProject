@@ -22,32 +22,36 @@ import {
     ALL_USERS_SUCCESS,
 } from './mutation-types';
 
-//const API_BASE = '/';
+const dotenv = require('dotenv').config();
+
+const API_BASE = 'http://localhost:' + JSON.stringify(process.env.PORT);
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
-        axios.get(`/products/`).then((response) => {
+        axios.get(`${API_BASE}/products/`).then((response) => {
             commit(ALL_PRODUCTS_SUCCESS, response.data);
         });
     },
     productById({ commit }, payload) {
         commit(PRODUCT_BY_ID);
-        axios.get(`/products/${payload}`).then((response) => {
+        axios.get(`${API_BASE}/products/${payload}`).then((response) => {
             console.log(payload, response.data);
             commit(PRODUCT_BY_ID_SUCCESS, response.data);
         });
     },
     addProduct({ commit }, payload) {
         commit(ADD_PRODUCT);
-        axios.post(`/products/`, payload).then((response) => {
+        axios.post(`${API_BASE}/products/`, payload).then((response) => {
             commit(ADD_PRODUCT_SUCCESS, response.data);
         });
     },
     updateProduct({ commit }, payload) {
         commit(UPDATE_PRODUCT);
-        axios.patch(`/products/${payload._id}`, payload).then((response) => {
-            commit(UPDATE_PRODUCT_SUCCESS, response.data);
-        });
+        axios
+            .patch(`${API_BASE}/products/${payload._id}`, payload)
+            .then((response) => {
+                commit(UPDATE_PRODUCT_SUCCESS, response.data);
+            });
     },
     removeProduct({ commit }, payload) {
         commit(REMOVE_PRODUCT);
@@ -61,22 +65,15 @@ export const productActions = {
 export const userActions = {
     addUser({ commit }, payload) {
         commit(ADD_USER);
-        axios.post(`/users/register`, payload).then((response) => {
+        axios.post(`${API_BASE}/users/register`, payload).then((response) => {
             commit(ADD_USER_SUCCESS, response.data);
         });
     },
-    /*
-                                                            checkUser({ commit }, payload) {
-                                                                commit(ADD_USER);
-                                                                axios.post(`${API_BASE}/users/login`, payload).then(response => {
 
-                                                                    commit(ADD_USER_SUCCESS, response.data);
-                                                                });
-                                                            },*/
     allUsers({ commit }) {
         //        alert('called');
         commit(ALL_USERS);
-        axios.get(`/users/`).then((response) => {
+        axios.get(`${API_BASE}/users/`).then((response) => {
             commit(ALL_USERS_SUCCESS, response.data);
         });
     },
@@ -86,14 +83,14 @@ export const reviewActions = {
     addReview({ commit }, payload) {
         // alert('reach');
         commit(ADD_REVIEW);
-        axios.post(`/reviews`, payload).then((response) => {
+        axios.post(`${API_BASE}/reviews`, payload).then((response) => {
             commit(ADD_REVIEW_SUCCESS, response.data);
         });
     },
 
     reviewById({ commit }, payload) {
         commit(REVIEW_BY_ID);
-        axios.get(`/reviews/${payload}`).then((response) => {
+        axios.get(`${API_BASE}/reviews/${payload}`).then((response) => {
             console.log(payload, response.data);
             commit(REVIEW_BY_ID_SUCCESS, response.data);
         });
@@ -102,7 +99,7 @@ export const reviewActions = {
     allReviewByProdId({ commit }, payload) {
         commit(ALL_REVIEWS);
         //        alert('called' + payload);
-        axios.get(`/reviews/${payload}`).then((response) => {
+        axios.get(`${API_BASE}/reviews/${payload}`).then((response) => {
             commit(ALL_REVIEWS_SUCCESS, response.data);
         });
     },
