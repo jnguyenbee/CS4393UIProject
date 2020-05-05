@@ -3,14 +3,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
-var herokuProxy = require('heroku-proxy');
+/*var herokuProxy = require('heroku-proxy');
 app.use(
     herokuProxy({
         hostname: 'localhost',
         port: 5000,
         protocol: 'http',
     })
-);
+);*/
+
 //const serveStatic = require('serve-static');
 //const path = require('path');
 //var paths = path.join(process.cwd(), '/client/dist');
