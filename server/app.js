@@ -78,8 +78,8 @@ app.use((error, req, res, next) => {
 app.use('/', serveStatic(paths));
 
 // this * route is to serve project on different page routes except root `/`
-app.get(/.*/, function(req, res) {
-    res.sendFile(path.join(paths, '/index.html'));
-});
+//app.get(/.*/, function(req, res) {
+//    res.sendFile(path.join(paths, '/index.html'));
+//});
 
 module.exports = app;
