@@ -7,7 +7,8 @@ module.exports = {
         proxy: {
             '^/products': {
                 target: 'http://localhost:5000' ||
-                    'http://localhost:' + JSON.stringify(process.env.PORT),
+                    'https://gentle-stream-93479.herokuapp.com',
+                // 'http://localhost:' + JSON.stringify(process.env.PORT),
                 //target: 'https://gentle-stream-93479.herokuapp.com', // +
                 // JSON.stringify(process.env.PORT),
                 changeOrigin: true,
@@ -16,7 +17,7 @@ module.exports = {
             },
             '^/users/': {
                 target: 'http://localhost:5000' ||
-                    'http://localhost:' + JSON.stringify(process.env.PORT),
+                    'https://gentle-stream-93479.herokuapp.com',
 
                 //target: 'http://localhost:' + JSON.stringify(5000),
                 //target: 'http://localhost:' + JSON.stringify(process.env.PORT),
@@ -25,7 +26,8 @@ module.exports = {
             },
             '^/reviews/': {
                 target: 'http://localhost:5000' ||
-                    'http://localhost:' + JSON.stringify(process.env.PORT),
+                    'https://gentle-stream-93479.herokuapp.com' ||
+                    'https://gentle-stream-93479.herokuapp.com',
                 //target: 'http://localhost:' + JSON.stringify(5000),
                 //target: 'http://localhost:' + JSON.stringify(process.env.PORT),
                 changeOrigin: true,
