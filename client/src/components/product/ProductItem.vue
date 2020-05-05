@@ -2,11 +2,7 @@
   <div class="product">
     <router-link :to="'/details/' + product._id" class="product-link">
       <div class="product__image">
-        <img
-          class="img-responsive"
-          v-bind:src="'http://localhost:3000/' + product.productImage"
-          alt="product.name"
-        />
+        <img class="img-responsive" v-bind:src="'/' + product.productImage" alt="product.name" />
       </div>
       <div class="product__description">
         <div class="product__info">

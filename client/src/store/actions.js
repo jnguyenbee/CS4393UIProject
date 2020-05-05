@@ -66,13 +66,13 @@ export const userActions = {
         });
     },
     /*
-                  checkUser({ commit }, payload) {
-                      commit(ADD_USER);
-                      axios.post(`${API_BASE}/users/login`, payload).then(response => {
+                    checkUser({ commit }, payload) {
+                        commit(ADD_USER);
+                        axios.post(`${API_BASE}/users/login`, payload).then(response => {
 
-                          commit(ADD_USER_SUCCESS, response.data);
-                      });
-                  },*/
+                            commit(ADD_USER_SUCCESS, response.data);
+                        });
+                    },*/
     allUsers({ commit }) {
         //        alert('called');
         commit(ALL_USERS);
