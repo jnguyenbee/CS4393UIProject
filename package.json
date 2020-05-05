@@ -5,9 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node server/server.js",
-        "test": "nodemon server/server.js",
-        "build": "ng build",
-        "heroku-postbuild": "ng build --prod"
+        "test": "nodemon server/server.js"
     },
     "repository": {
         "type": "git",
