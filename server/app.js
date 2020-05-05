@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const serveStatic = require('serve-static');
 const path = require('path');
-var paths = path.join(process.cwd(), 'client/dist/index.html');
+var paths = path.join(process.cwd(), '/client/dist');
 //app.use(express.static(paths));
 app.use('/', serveStatic(paths));
 
