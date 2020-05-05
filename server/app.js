@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 //const serveStatic = require('serve-static');
 //const path = require('path');
 //var paths = path.join(process.cwd(), '/client/dist');
@@ -27,6 +28,16 @@ const reviewRoutes = require('./api/routes/reviews');
 //mongoose.connect(CONNECTION_URI, options)
 //.then(console.log('MongoDB Connected'));
 //.catch((error) => handleError(error));
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+const conn = mongoose.connection;
+mongoose.connection.once('open', () => {
+    console.log('MongoDB Connected');
+});
+mongoose.connection.on('error', (err) => {
+    console.log('MongoDB connection error: ', err);
+});
+/*
 mongoose
     .connect(
         process.env.MONGODB_URI ||
@@ -37,6 +48,7 @@ mongoose
     )
     .then(console.log('MongoDB Connected'))
     .catch((e) => console.log('could not connect to mongodb', e));
+*/
 
 //app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));
