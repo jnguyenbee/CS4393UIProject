@@ -10,7 +10,7 @@
           type="button"
           class="btn btn-outline-primary"
           @click="() => $router.push('/Home')"
-          >Add More Socks</a
+          >Continue Shopping for Socks</a
         >
         <button
           v-b-modal.modal-1
@@ -188,7 +188,7 @@
         type="button"
         class="btn btn-outline-primary"
         @click="() => $router.push('/Home')"
-        >Add Socks</a
+        >Shop for Socks</a
       >
     </div>
   </div>
