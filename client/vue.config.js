@@ -13,8 +13,8 @@ module.exports = {
                 logLevel: 'debug',
                 secure: false,
                 pathRewrite: {
-                    '^/products': ''
-                }
+                    '^/products': '',
+                },
             },
             '^/users/': {
                 //target: 'http://localhost:' + JSON.stringify(5000),
@@ -30,5 +30,4 @@ module.exports = {
             },
         },
     },
-    */
 };
