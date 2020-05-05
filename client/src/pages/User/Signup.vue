@@ -53,7 +53,7 @@
           ></b-form-input>
         </b-form-group>
         <div class="text-center">
-          <b-button type="submit" @click="() => $router.push('/signin')" variant="primary">Sign Up</b-button>
+          <b-button type="submit" variant="primary">Sign Up</b-button>
         </div>
       </b-card>
       <b-card>
@@ -69,24 +69,25 @@ export default {
   data() {
     return {
       user: {
-        firstName: "",
-        lastName: "",
-        userName: "",
-        password: "",
-        email: ""
-      }
+        firstName: '',
+        lastName: '',
+        userName: '',
+        password: '',
+        email: '',
+      },
     };
   },
   methods: {
     saveUser() {
       //  alert(this.user.firstName);
-      this.$store.dispatch("addUser", this.user);
-    }
-  }
+      this.$store.dispatch('addUser', this.user);
+      this.$router.push('/signin');
+    },
+  },
 };
 </script>
 <style scoped>
-@import "../../../../client/static/app.css";
+@import '../../../../client/static/app.css';
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
