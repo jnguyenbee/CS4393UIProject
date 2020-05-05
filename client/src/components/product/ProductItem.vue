@@ -1,6 +1,13 @@
 <template>
   <div class="product">
     <router-link :to="'/details/' + product._id" class="product-link">
+      <div class="product__image">
+        <img
+          class="img-responsive"
+          v-bind:src="'http://localhost:5000/' + product.productImage"
+          alt="product.name"
+        />
+      </div>
       <div class="product__description">
         <div class="product__info">
           <h6>{{ product.name }}</h6>

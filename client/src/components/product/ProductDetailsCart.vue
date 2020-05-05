@@ -1,12 +1,16 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="max-width: 800px;max-height:100%">
+    <b-card
+      no-body
+      class="overflow-hidden"
+      style="max-width: 800px;max-height:100%"
+    >
       <b-row no-gutters>
         <b-col md="6">
           <b-card-img
             fluid
             style="height:100%; width:400px"
-            v-bind:src="'http://localhost:3000/'+ product.productImage"
+            v-bind:src="'http://localhost:5000/' + product.productImage"
             alt="Image"
             class="rounded-0"
           ></b-card-img>
@@ -19,7 +23,7 @@
               <p>Color: {{ product.color }}</p>
               <b-card>
                 <h5>Description</h5>
-                {{product.description}}
+                {{ product.description }}
               </b-card>
             </b-card-text>
             <div class="product-details__price-cart">
@@ -32,18 +36,17 @@
   </div>
 </template>
 
-
 <script>
-import ProductButton from "./ProductButton";
+import ProductButton from './ProductButton';
 //import ProductBackButton from "./ProductBackButton";
 //import ProductReviewButton from "./ProductReviewButton";
 export default {
-  props: ["product"],
+  props: ['product'],
   components: {
-    "product-button": ProductButton
+    'product-button': ProductButton,
     //"product-back": ProductBackButton
     //  "product-review-side-button": ProductReviewButton
-  }
+  },
 };
 </script>
 

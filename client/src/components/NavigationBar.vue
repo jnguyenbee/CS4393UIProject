@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="light" variant="light">
       <img
-        src="http://localhost:3000/uploads/Logo.jpeg"
+        src="http://localhost:5000/uploads/Logo.jpeg"
         class="d-inline-block align-top"
         style="width:30px; height:30px"
         alt="mango"

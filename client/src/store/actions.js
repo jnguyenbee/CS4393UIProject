@@ -22,10 +22,10 @@ import {
     ALL_USERS_SUCCESS,
 } from './mutation-types';
 
-const dotenv = require('dotenv').config();
-console.log(JSON.stringify(process.env.PORT));
+//const dotenv = require('dotenv').config();
+//console.log(JSON.stringify(process.env.PORT));
 
-const API_BASE = 'http://localhost:' + JSON.stringify(process.env.PORT);
+//const API_BASE = 'http://localhost:' + JSON.stringify(process.env.PORT);
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
@@ -64,7 +64,7 @@ export const productActions = {
 export const userActions = {
     addUser({ commit }, payload) {
         commit(ADD_USER);
-        axios.post(`${API_BASE}/users/register`, payload).then((response) => {
+        axios.post(`/users/register`, payload).then((response) => {
             commit(ADD_USER_SUCCESS, response.data);
         });
     },
@@ -72,7 +72,7 @@ export const userActions = {
     allUsers({ commit }) {
         //        alert('called');
         commit(ALL_USERS);
-        axios.get(`${API_BASE}/users/`).then((response) => {
+        axios.get(`/users/`).then((response) => {
             commit(ALL_USERS_SUCCESS, response.data);
         });
     },
@@ -82,14 +82,14 @@ export const reviewActions = {
     addReview({ commit }, payload) {
         // alert('reach');
         commit(ADD_REVIEW);
-        axios.post(`${API_BASE}/reviews`, payload).then((response) => {
+        axios.post(`/reviews`, payload).then((response) => {
             commit(ADD_REVIEW_SUCCESS, response.data);
         });
     },
 
     reviewById({ commit }, payload) {
         commit(REVIEW_BY_ID);
-        axios.get(`${API_BASE}/reviews/${payload}`).then((response) => {
+        axios.get(`/reviews/${payload}`).then((response) => {
             console.log(payload, response.data);
             commit(REVIEW_BY_ID_SUCCESS, response.data);
         });
@@ -98,7 +98,7 @@ export const reviewActions = {
     allReviewByProdId({ commit }, payload) {
         commit(ALL_REVIEWS);
         //        alert('called' + payload);
-        axios.get(`${API_BASE}/reviews/${payload}`).then((response) => {
+        axios.get(`/reviews/${payload}`).then((response) => {
             commit(ALL_REVIEWS_SUCCESS, response.data);
         });
     },
