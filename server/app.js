@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const serveStatic = require('serve-static');
-const path = require('path');
-var paths = path.join(process.cwd(), '/client/dist');
+//const serveStatic = require('serve-static');
+//const path = require('path');
+//var paths = path.join(process.cwd(), '/client/dist');
 //app.use(express.static(paths));
 //here we are configuring dist to serve app files
 
@@ -37,7 +37,7 @@ mongoose
     )
     .then(console.log('MongoDB Connected'));
 
-app.use('/', serveStatic(paths));
+//app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -53,6 +53,14 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+// Handle Production
+if (process.env.NODE_ENV === 'production') {
+    //static folder
+    app.use(express.static(__dirname + '/public/'));
+    // handle single page application
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
 
 app.use('/uploads', express.static('uploads'));
 app.use('/products', productRoutes);
