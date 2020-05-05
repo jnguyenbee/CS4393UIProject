@@ -4,6 +4,6 @@ const dotenv = require('dotenv').config();
 var PORT = process.env.PORT || 5000;
 
 const server = http.createServer(app);
-server.listen(PORT, 'gentle-stream-93479.herokuapp.com');
+server.listen(PORT);
 
 module.exports = app;
