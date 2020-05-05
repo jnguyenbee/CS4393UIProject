@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 
 module.exports = {
     outputDir: path.resolve(__dirname, '../server/public'),
+
     devServer: {
         proxy: {
             '^/products': {
@@ -26,7 +27,6 @@ module.exports = {
             },
             '^/reviews/': {
                 target: 'http://localhost:5000' ||
-                    'https://gentle-stream-93479.herokuapp.com' ||
                     'https://gentle-stream-93479.herokuapp.com',
                 //target: 'http://localhost:' + JSON.stringify(5000),
                 //target: 'http://localhost:' + JSON.stringify(process.env.PORT),

@@ -46,7 +46,7 @@
       </table>
       <hr />
 
-      <b-form @submit="onAddressSubmit">
+      <b-form @submit="checkForm" actions="/thanks">
         <b-card header="shipping address">
           <b-form-group
             id="input-group-1"
@@ -56,6 +56,7 @@
             <b-form-input
               id="input-1"
               type="text"
+              v-model="address"
               required
               placeholder="Enter adresss"
             ></b-form-input>
@@ -71,6 +72,7 @@
                 <b-form-input
                   id="input-2"
                   type="text"
+                  v-model="city"
                   required
                   placeholder="Enter city"
                 ></b-form-input>
@@ -85,6 +87,7 @@
                 <b-form-input
                   id="input-2"
                   type="text"
+                  v-model="state"
                   required
                   placeholder="Enter state"
                 ></b-form-input>
@@ -99,27 +102,17 @@
                 <b-form-input
                   id="input-2"
                   type="number"
+                  v-model="zip"
                   required
                   placeholder="Enter zip code"
                 ></b-form-input>
               </b-form-group>
             </b-col>
           </b-row>
-          <template v-slot:footer>
-            <b-button
-              type="submit"
-              pill
-              class="mt-2"
-              variant="outline-danger"
-              block
-              >Save Address</b-button
-            >
-          </template>
+          <template v-slot:footer> </template>
         </b-card>
-      </b-form>
 
-      <b-form @submit="onCardSubmit"
-        ><b-card header="payment">
+        <b-card header="payment">
           <b-form-group
             id="input-group-1"
             label="Card Number"
@@ -128,6 +121,7 @@
           >
             <b-form-input
               id="input-1"
+              v-model="card"
               required
               placeholder="####-####-####-####"
               v-cardformat:formatCardNumber
@@ -142,6 +136,7 @@
               >
                 <b-form-input
                   id="input-1"
+                  v-model="exp"
                   required
                   placeholder="##/####"
                   v-cardformat:formatCardExpiry
@@ -156,6 +151,7 @@
               >
                 <b-form-input
                   id="input-1"
+                  v-model="cvs"
                   required
                   placeholder="####"
                   v-cardformat:formatCardCVC
@@ -164,29 +160,20 @@
             </b-col>
           </b-row>
 
-          <template v-slot:footer>
-            <b-button
-              type="submit"
-              pill
-              class="mt-2"
-              variant="outline-danger"
-              block
-              >Save Payment</b-button
-            >
-          </template></b-card
-        >
+          <template v-slot:footer> </template
+        ></b-card>
+
+        <div>
+          <b-button
+            pill
+            type="submit"
+            class="mt-2"
+            variant="outline-warning"
+            block
+            >Continue</b-button
+          >
+        </div>
       </b-form>
-      <div v-if="counter === 2">
-        <b-button
-          pill
-          onclick="refresh()"
-          class="mt-2"
-          variant="outline-warning"
-          block
-          @click="() => $router.push('/thanks')"
-          >Continue</b-button
-        >
-      </div>
     </b-modal>
 
     <template v-for="product in cart">
@@ -214,7 +201,18 @@ import ProductDetails from '../components/product/ProductDetailsCart';
 //import AddressForm from "../components/user/AddressForm";
 export default {
   data() {
-    return {counter: 0, cart: this.$store.state.cart};
+    return {
+      errors: [],
+      address: null,
+      city: null,
+      state: null,
+      zip: null,
+      card: null,
+      exp: null,
+      cvs: null,
+      counter: 0,
+      cart: this.$store.state.cart,
+    };
   },
   components: {
     productDetails: ProductDetails,
@@ -231,6 +229,47 @@ export default {
       evt.preventDefault();
       this.counter = 2;
       alert('Card Saved');
+    },
+    checkForm: function(e) {
+      if (
+        this.address &&
+        this.city &&
+        this.state &&
+        this.zip &&
+        this.card &&
+        this.exp &&
+        this.cvs
+      ) {
+        // this.$router.go()
+        this.$store.cart = {};
+        this.$router.push('/thanks');
+      }
+
+      this.errors = [];
+
+      if (!this.address) {
+        this.errors.push('address required.');
+      }
+      if (!this.city) {
+        this.errors.push('city required.');
+      }
+      if (!this.state) {
+        this.errors.push('state required.');
+      }
+      if (!this.zip) {
+        this.errors.push('zip required.');
+      }
+      if (!this.card) {
+        this.errors.push('acard required.');
+      }
+      if (!this.exp) {
+        this.errors.push('exp required.');
+      }
+      if (!this.cvs) {
+        this.errors.push('cvs required.');
+      }
+
+      e.preventDefault();
     },
   },
   computed: {
