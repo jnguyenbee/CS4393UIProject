@@ -7,12 +7,6 @@ const path = require('path');
 var paths = path.join(process.cwd(), '/client/dist');
 //app.use(express.static(paths));
 //here we are configuring dist to serve app files
-app.use('/', serveStatic(paths));
-
-// this * route is to serve project on different page routes except root `/`
-app.get(/.*/, function(req, res) {
-    res.sendFile(path.join(paths, '/index.html'));
-});
 
 /*const dotenv = require('dotenv').config();
 
@@ -79,6 +73,13 @@ app.use((error, req, res, next) => {
             message: error.message,
         },
     });
+});
+
+app.use('/', serveStatic(paths));
+
+// this * route is to serve project on different page routes except root `/`
+app.get(/.*/, function(req, res) {
+    res.sendFile(path.join(paths, '/index.html'));
 });
 
 module.exports = app;
