@@ -2,9 +2,8 @@ const http = require('http');
 const app = require('./app');
 const dotenv = require('dotenv').config();
 
-//app.listen(process.env.PORT || 5000);
+const server = http.createServer(app);
+server.listen(process.env.PORT || 5000);
+console.log('Express server started on port %s', server.address().port);
+console.log('Express server started on addree %s', server.address().address);
 //var port = process.env.PORT;
-app.set('port', process.env.PORT);
-const server = http.createServer(app).listen(app.get('port'));
-console.log('port' + server.address.port);
-console.log('address' + server.address.address);
