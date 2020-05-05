@@ -5,7 +5,7 @@ module.exports = {
     outputDir: path.resolve(__dirname, '../server/public'),
     devServer: {
         proxy: {
-            '^/api': {
+            '^/api/*': {
                 target: 'http://localhost:' + process.env.PORT,
                 changeOrigin: true,
                 logLevel: 'debug',
