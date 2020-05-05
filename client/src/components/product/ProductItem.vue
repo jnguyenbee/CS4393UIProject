@@ -5,7 +5,7 @@
         <img
           class="img-responsive"
           v-bind:src="'http://localhost:3000/' + product.productImage"
-          alt
+          alt="product.name"
         />
       </div>
       <div class="product__description">
@@ -21,16 +21,16 @@
 
 <script>
 export default {
-  name: 'product-item',
-  props: ['product'],
+  name: "product-item",
+  props: ["product"],
   data() {
     return {};
-  },
+  }
 };
 </script>
 
 <style scoped>
-@import 'product-item.css';
+@import "product-item.css";
 
 .product {
   background: rgb(248, 243, 243);
