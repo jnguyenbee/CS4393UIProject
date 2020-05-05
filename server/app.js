@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //const serveStatic = require('serve-static');
 //const path = require('path');
-app.use(express.static('client'));
-//app.use('/', serveStatic(path.join(process.cwd(), 'client/dist ')));
 var paths = path.join(process.cwd(), 'client/dist ');
+app.use(express.static(paths));
+//app.use('/', serveStatic(path.join(process.cwd(), 'client/dist ')));
+
 console.log(paths);
 
 /*const dotenv = require('dotenv').config();
