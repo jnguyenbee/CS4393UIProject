@@ -26,32 +26,32 @@ import {
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
-        axios.get(`/api/products/`).then((response) => {
+        axios.get(`/products/`).then((response) => {
             commit(ALL_PRODUCTS_SUCCESS, response.data);
         });
     },
     productById({ commit }, payload) {
         commit(PRODUCT_BY_ID);
-        axios.get(`/api/products/${payload}`).then((response) => {
+        axios.get(`/products/${payload}`).then((response) => {
             console.log(payload, response.data);
             commit(PRODUCT_BY_ID_SUCCESS, response.data);
         });
     },
     addProduct({ commit }, payload) {
         commit(ADD_PRODUCT);
-        axios.post(`/api/products/`, payload).then((response) => {
+        axios.post(`/products/`, payload).then((response) => {
             commit(ADD_PRODUCT_SUCCESS, response.data);
         });
     },
     updateProduct({ commit }, payload) {
         commit(UPDATE_PRODUCT);
-        axios.patch(`/api/products/${payload._id}`, payload).then((response) => {
+        axios.patch(`/products/${payload._id}`, payload).then((response) => {
             commit(UPDATE_PRODUCT_SUCCESS, response.data);
         });
     },
     removeProduct({ commit }, payload) {
         commit(REMOVE_PRODUCT);
-        axios.delete(`/api/products/${payload}`, payload).then((response) => {
+        axios.delete(`/products/${payload}`, payload).then((response) => {
             console.debug('response', response.data);
             commit(REMOVE_PRODUCT_SUCCESS, response.data);
         });
@@ -66,13 +66,13 @@ export const userActions = {
         });
     },
     /*
-                                                          checkUser({ commit }, payload) {
-                                                              commit(ADD_USER);
-                                                              axios.post(`${API_BASE}/users/login`, payload).then(response => {
+                                                            checkUser({ commit }, payload) {
+                                                                commit(ADD_USER);
+                                                                axios.post(`${API_BASE}/users/login`, payload).then(response => {
 
-                                                                  commit(ADD_USER_SUCCESS, response.data);
-                                                              });
-                                                          },*/
+                                                                    commit(ADD_USER_SUCCESS, response.data);
+                                                                });
+                                                            },*/
     allUsers({ commit }) {
         //        alert('called');
         commit(ALL_USERS);
