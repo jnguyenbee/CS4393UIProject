@@ -29,15 +29,6 @@ const reviewRoutes = require('./api/routes/reviews');
 //.then(console.log('MongoDB Connected'));
 //.catch((error) => handleError(error));
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-const conn = mongoose.connection;
-mongoose.connection.once('open', () => {
-    console.log('MongoDB Connected');
-});
-mongoose.connection.on('error', (err) => {
-    console.log('MongoDB connection error: ', err);
-});
-/*
 mongoose
     .connect(
         process.env.MONGODB_URI ||
@@ -48,7 +39,6 @@ mongoose
     )
     .then(console.log('MongoDB Connected'))
     .catch((e) => console.log('could not connect to mongodb', e));
-*/
 
 //app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));

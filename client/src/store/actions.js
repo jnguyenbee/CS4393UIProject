@@ -22,7 +22,7 @@ import {
     ALL_USERS_SUCCESS,
 } from './mutation-types';
 
-const API_BASE = '/';
+const API_BASE = 'http://localhost:3000';
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
