@@ -36,6 +36,7 @@ mongoose
     )
     .then(console.log('MongoDB Connected'));
 
+app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -74,8 +75,6 @@ app.use((error, req, res, next) => {
         },
     });
 });
-
-app.use('/', serveStatic(paths));
 
 // this * route is to serve project on different page routes except root `/`
 //app.get(/.*/, function(req, res) {
