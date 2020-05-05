@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form @submit="saveUser" @click="() => $router.push('/signin')">
+    <b-form @submit="saveUser">
       <b-card class="mt-3">
         <h1>Sign-Up</h1>
         <b-form-group id="input-group-0" label="Your Name:" label-for="input-2">
@@ -53,7 +53,7 @@
           ></b-form-input>
         </b-form-group>
         <div class="text-center">
-          <b-button type="submit" variant="primary">Sign Up</b-button>
+          <b-button type="submit" @click="() => $router.push('/signin')" variant="primary">Sign Up</b-button>
         </div>
       </b-card>
       <b-card>

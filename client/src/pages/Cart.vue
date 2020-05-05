@@ -10,59 +10,183 @@
           type="button"
           class="btn btn-outline-primary"
           @click="() => $router.push('/Home')"
-        >Add More Socks</a>
-        <button v-b-modal.modal-1 type="button" class="btn btn-outline-secondary">Order Now</button>
+          >Add More Socks</a
+        >
+        <button
+          v-b-modal.modal-1
+          type="button"
+          class="btn btn-outline-secondary"
+        >
+          Order Now
+        </button>
       </div>
     </div>
 
     <b-modal la id="modal-1" hide-footer title="Purchasing Order">
-      <h1>Your items:</h1>
+      <table class="table is-striped">
+        <thead>
+          <tr>
+            <td>Product Name</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in cart" v-bind:key="product.id">
+            <td>{{ product.name }}</td>
+            <td>${{ product.price }}</td>
+          </tr>
+          <tr>
+            <td><b>Total:</b></td>
 
-      <template v-for="product in cart">
-        <b-form v-bind:key="product.id">
+            <td>
+              <b>${{ total }}</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+
+      <b-form @submit="onAddressSubmit">
+        <b-card header="shipping address">
+          <b-form-group
+            id="input-group-1"
+            label="address :"
+            label-for="input-1"
+          >
+            <b-form-input
+              id="input-1"
+              type="text"
+              required
+              placeholder="Enter adresss"
+            ></b-form-input>
+          </b-form-group>
+
           <b-row>
             <b-col>
-              <h4>
-                <b-badge variant="info" style="width:100%">
-                  {{
-                  product.name
-                  }}
-                </b-badge>
-              </h4>
+              <b-form-group
+                id="input-group-2"
+                label="city :"
+                label-for="input-2"
+              >
+                <b-form-input
+                  id="input-2"
+                  type="text"
+                  required
+                  placeholder="Enter city"
+                ></b-form-input>
+              </b-form-group>
             </b-col>
             <b-col>
-              <b-input-group size="sm" prepend="$" style="margin-bottom:0px">
-                <b-form-input disabled :value="product.price" class="text-right"></b-form-input>
-              </b-input-group>
+              <b-form-group
+                id="input-group-2"
+                label="state :"
+                label-for="input-2"
+              >
+                <b-form-input
+                  id="input-2"
+                  type="text"
+                  required
+                  placeholder="Enter state"
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group
+                id="input-group-2"
+                label="zip code :"
+                label-for="input-2"
+              >
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  required
+                  placeholder="Enter zip code"
+                ></b-form-input>
+              </b-form-group>
             </b-col>
           </b-row>
-        </b-form>
-      </template>
-      <hr />
-
-      <b-form>
-        <b-row>
-          <b-col>
-            <h3>Total:</h3>
-          </b-col>
-          <b-col>
-            <b-input-group prepend="$">
-              <b-form-input disabled :value="total" class="text-right"></b-form-input>
-            </b-input-group>
-          </b-col>
-        </b-row>
+          <template v-slot:footer>
+            <b-button
+              type="submit"
+              pill
+              class="mt-2"
+              variant="outline-danger"
+              block
+              >Save Address</b-button
+            >
+          </template>
+        </b-card>
       </b-form>
-      <hr />
-      <addressForm />
-      <b-button pill class="mt-3" variant="outline-danger" block>Cancel</b-button>
-      <b-button
-        pill
-        onclick="refresh()"
-        class="mt-2"
-        variant="outline-warning"
-        block
-        @click="() => $router.push('/thanks')"
-      >Continue</b-button>
+
+      <b-form @submit="onCardSubmit"
+        ><b-card header="payment">
+          <b-form-group
+            id="input-group-1"
+            label="Card Number"
+            label-for="input-1"
+            description="We'll never share your credit information anyone else."
+          >
+            <b-form-input
+              id="input-1"
+              required
+              placeholder="####-####-####-####"
+              v-cardformat:formatCardNumber
+            ></b-form-input>
+          </b-form-group>
+          <b-row>
+            <b-col>
+              <b-form-group
+                id="input-group-1"
+                label="Card Expiration"
+                label-for="input-1"
+              >
+                <b-form-input
+                  id="input-1"
+                  required
+                  placeholder="##/####"
+                  v-cardformat:formatCardExpiry
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group
+                id="input-group-1"
+                label="Card CVS"
+                label-for="input-1"
+              >
+                <b-form-input
+                  id="input-1"
+                  required
+                  placeholder="####"
+                  v-cardformat:formatCardCVC
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+
+          <template v-slot:footer>
+            <b-button
+              type="submit"
+              pill
+              class="mt-2"
+              variant="outline-danger"
+              block
+              >Save Payment</b-button
+            >
+          </template></b-card
+        >
+      </b-form>
+      <div v-if="counter === 2">
+        <b-button
+          pill
+          onclick="refresh()"
+          class="mt-2"
+          variant="outline-warning"
+          block
+          @click="() => $router.push('/thanks')"
+          >Continue</b-button
+        >
+      </div>
     </b-modal>
 
     <template v-for="product in cart">
@@ -70,16 +194,15 @@
     </template>
   </div>
   <div v-else class="title">
-    <h1>
-      <i class="fa fa-shopping-cart"></i> Your Cart is Empty
-    </h1>
+    <h1><i class="fa fa-shopping-cart"></i> Your Cart is Empty</h1>
     <div class="text-center">
       <a
         pill
         type="button"
         class="btn btn-outline-primary"
         @click="() => $router.push('/Home')"
-      >Add Socks</a>
+        >Add Socks</a
+      >
     </div>
   </div>
 </template>
@@ -87,17 +210,28 @@
 <style scoped></style>
 
 <script>
-import ProductDetails from "../components/product/ProductDetailsCart";
-import AddressForm from "../components/user/AddressForm";
+import ProductDetails from '../components/product/ProductDetailsCart';
+//import AddressForm from "../components/user/AddressForm";
 export default {
   data() {
-    return {
-      cart: this.$store.state.cart
-    };
+    return {counter: 0, cart: this.$store.state.cart};
   },
   components: {
     productDetails: ProductDetails,
-    addressForm: AddressForm
+    //    addressForm: AddressForm
+  },
+  methods: {
+    onAddressSubmit(evt) {
+      evt.preventDefault();
+      this.counter = 1;
+      alert('Address Saved');
+    },
+
+    onCardSubmit(evt) {
+      evt.preventDefault();
+      this.counter = 2;
+      alert('Card Saved');
+    },
   },
   computed: {
     total: function() {
@@ -105,7 +239,7 @@ export default {
         sum += cart.price;
         return sum;
       }, 0);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -25,7 +25,7 @@
               <em>Sign-in</em>
             </template>
             <b-dropdown-item router-link to="/signin">User</b-dropdown-item>
-            <b-dropdown-item router-link to="/admin">Admin</b-dropdown-item>
+            <b-dropdown-item router-link to="/secure">Admin</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item router-link to="/cart">

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
+import VueCardFormat from 'vue-credit-card-validation';
 //custom
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -33,13 +33,16 @@ library.add(
     faSocks,
     faSearch
 );
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VueCardFormat);
 Vue.use(VueCardPayment);
 Vue.config.productionTip = false;
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+
 //Vue.use(router);
 
 new Vue(Vue.util.extend({ router, store }, App)).$mount('#app');

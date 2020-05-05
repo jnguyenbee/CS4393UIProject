@@ -2,7 +2,7 @@
   <div>
     <b-form @submit="checkUser">
       <b-card class="mt-3">
-        <h1>Sign-In</h1>
+        <h1>Admin Sign-In</h1>
         <b-form-group id="input-group-1" label="Username :" label-for="input-1">
           <b-form-input
             id="input-1"
@@ -25,10 +25,6 @@
           <b-button type="submit" variant="primary">Login</b-button>
         </div>
       </b-card>
-      <b-card>
-        Not a member?
-        <router-link v-bind:to="'/'">Sign up</router-link>
-      </b-card>
     </b-form>
   </div>
 </template>
@@ -37,7 +33,6 @@
 export default {
   data() {
     return {
-      truth: '',
       user: {
         userName: '',
         password: '',
@@ -45,32 +40,18 @@ export default {
     };
   },
 
-  created() {
-    this.$store.dispatch('allUsers');
-  },
-
-  computed: {
-    users() {
-      return this.$store.getters.allUsers;
-    },
-  },
   methods: {
     checkUser() {
       var userName = this.user.userName;
       var password = this.user.password;
-      //      alert(" inside check user ");
-      var i = 0;
-      for (i = 0; i < this.users.length; i++) {
-        var uNm = this.users[i].userName;
-        var pw = this.users[i].password;
 
-        if (uNm === userName && pw === password) {
-          this.$router.push('Home');
-          break;
-        }
-      }
-      if (i === this.users.length) {
-        alert('Invalid user account');
+      var uNm = 'Joe';
+      var pw = 'stinks';
+
+      if (uNm === userName && pw === password) {
+        this.$router.push('Admin');
+      } else {
+        alert('You are not the admin');
       }
     },
   },
