@@ -6,10 +6,11 @@ module.exports = {
     devServer: {
         proxy: {
             '^/api/': {
-                target: path.join('http://localhost:', process.env.PORT),
+                //target: 'http://localhost:' + JSON.stringify(5000),
+                target: 'http://localhost:' + JSON.stringify(process.env.PORT),
                 changeOrigin: true,
                 logLevel: 'debug',
-                pathRewrite: { '^/api/': '/api' },
+                pathRewrite: { '^/api': '/' },
             },
         },
     },
