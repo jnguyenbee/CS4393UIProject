@@ -2,6 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const serveStatic = require('serve-static');
+const path = require('path');
+
+app.use('/', serveStatic(path.join(process.cwd(), 'client/dist ')));
+var paths = path.join(process.cwd(), 'client/dist ');
+console.log(paths);
 
 /*const dotenv = require('dotenv').config();
 
