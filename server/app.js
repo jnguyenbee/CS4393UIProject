@@ -29,6 +29,7 @@ const reviewRoutes = require('./api/routes/reviews');
 //.catch((error) => handleError(error));
 mongoose
     .connect(
+        process.env.MONGODB_URI ||
         'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
