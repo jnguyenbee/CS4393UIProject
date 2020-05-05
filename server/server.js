@@ -3,7 +3,7 @@ const app = require('./app');
 const dotenv = require('dotenv').config();
 
 const server = http.createServer(app);
-server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 5000, '127.0.0.1');
 console.log('Express server started on port %s', server.address().port);
 console.log('Express server started on addree %s', server.address().address);
 //var port = process.env.PORT;
