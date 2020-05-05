@@ -23,35 +23,34 @@ import {
 } from './mutation-types';
 
 const dotenv = require('dotenv').config();
+console.log(JSON.stringify(process.env.PORT));
 
 const API_BASE = 'http://localhost:' + JSON.stringify(process.env.PORT);
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
-        axios.get(`${API_BASE}/products/`).then((response) => {
+        axios.get(`/products/`).then((response) => {
             commit(ALL_PRODUCTS_SUCCESS, response.data);
         });
     },
     productById({ commit }, payload) {
         commit(PRODUCT_BY_ID);
-        axios.get(`${API_BASE}/products/${payload}`).then((response) => {
+        axios.get(`/products/${payload}`).then((response) => {
             console.log(payload, response.data);
             commit(PRODUCT_BY_ID_SUCCESS, response.data);
         });
     },
     addProduct({ commit }, payload) {
         commit(ADD_PRODUCT);
-        axios.post(`${API_BASE}/products/`, payload).then((response) => {
+        axios.post(`/products/`, payload).then((response) => {
             commit(ADD_PRODUCT_SUCCESS, response.data);
         });
     },
     updateProduct({ commit }, payload) {
         commit(UPDATE_PRODUCT);
-        axios
-            .patch(`${API_BASE}/products/${payload._id}`, payload)
-            .then((response) => {
-                commit(UPDATE_PRODUCT_SUCCESS, response.data);
-            });
+        axios.patch(`/products/${payload._id}`, payload).then((response) => {
+            commit(UPDATE_PRODUCT_SUCCESS, response.data);
+        });
     },
     removeProduct({ commit }, payload) {
         commit(REMOVE_PRODUCT);
