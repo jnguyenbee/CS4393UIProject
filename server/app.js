@@ -35,7 +35,8 @@ mongoose
             useUnifiedTopology: true,
         }
     )
-    .then(console.log('MongoDB Connected'));
+    .then(console.log('MongoDB Connected'))
+    .catch((e) => console.log('could not connect to mongodb', e));
 
 //app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));
