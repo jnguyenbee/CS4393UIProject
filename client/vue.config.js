@@ -9,7 +9,7 @@ module.exports = {
                 target: path.join('http://localhost:', process.env.PORT),
                 changeOrigin: true,
                 logLevel: 'debug',
-                pathRewrite: { '^/api/': '/' },
+                pathRewrite: { '^/api/': '/api' },
             },
         },
     },
