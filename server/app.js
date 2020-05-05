@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const serveStatic = require('serve-static');
-const path = require('path');
-
-app.use('/', serveStatic(path.join(process.cwd(), 'client/dist ')));
+//const serveStatic = require('serve-static');
+//const path = require('path');
+app.use(express.static('client'));
+//app.use('/', serveStatic(path.join(process.cwd(), 'client/dist ')));
 var paths = path.join(process.cwd(), 'client/dist ');
 console.log(paths);
 
