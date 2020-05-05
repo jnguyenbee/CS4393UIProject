@@ -28,14 +28,27 @@ const reviewRoutes = require('./api/routes/reviews');
 //mongoose.connect(CONNECTION_URI, options)
 //.then(console.log('MongoDB Connected'));
 //.catch((error) => handleError(error));
-
+var options = {
+    server: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000,
+        },
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000,
+        },
+    },
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
 mongoose
     .connect(
         process.env.MONGODB_URI ||
-        'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }
+        'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority',
+        options
     )
     .then(console.log('MongoDB Connected'))
     .catch((e) => console.log('could not connect to mongodb', e));
