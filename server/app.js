@@ -7,7 +7,7 @@ const path = require('path');
 var paths = path.join(process.cwd(), '/client/dist');
 //app.use(express.static(paths));
 app.use('/', serveStatic(paths));
-
+console.log('lelo path');
 console.log(paths);
 
 /*const dotenv = require('dotenv').config();
