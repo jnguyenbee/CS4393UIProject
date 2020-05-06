@@ -21,7 +21,7 @@
             width="100%"
             height="700px"
             src="http://localhost:5000/uploads/bagged.jpg"
-            alt="image slot"
+            alt="Order Recieved"
           />
         </template>
       </b-carousel-slide>
@@ -32,7 +32,7 @@
             width="50%"
             height="700px"
             src="http://localhost:5000/uploads/thanks.png"
-            alt="image slot"
+            alt="Thank you for purchasing"
           />
         </template>
       </b-carousel-slide>
