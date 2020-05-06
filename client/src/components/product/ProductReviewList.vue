@@ -30,25 +30,27 @@ export default {
   data() {
     //const reviews = this.$store.getters.reviewById(this.$route.params['id']);
     return {
+      items: {}
       // product: {},
       //reviews: this.$store.getters.reviewById(this.$route.params['id'])
       // model: this.$store.getters.productById(this.$route.params['id']),
+      //reviews: this.$store.dispatch("reviewById", this.product._id)
     };
   },
   props: ["product"],
   components: {
     //  'product-review': ProductReview
   },
-  created() {
-    if (this.reviews.length >= 0) {
-      this.$store.dispatch("reviewById", this.product._id);
-      //if (this.reviews.length >= 0) {
-    }
-  },
   computed: {
     reviews() {
-      return this.$store.getters.allReviews;
+      var items = [];
+      this.$store.dispatch("reviewById", this.product._id);
+      items = this.$store.state.review;
+      return items;
     }
+  },
+  mounted() {
+    this.$store.getters.allReviews;
   }
 };
 </script>

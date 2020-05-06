@@ -1,6 +1,6 @@
 const path = require('path');
 const dotenv = require('dotenv').config();
-
+/*
 module.exports = {
     outputDir: path.resolve(__dirname, '../server/public'),
 
@@ -16,7 +16,7 @@ module.exports = {
                 logLevel: 'debug',
                 secure: false,
             },
-            '^/users/': {
+            '^/users': {
                 target: 'http://localhost:5000', //||
                 // 'https://gentle-stream-93479.herokuapp.com',
 
@@ -25,7 +25,7 @@ module.exports = {
                 changeOrigin: true,
                 logLevel: 'debug',
             },
-            '^/reviews/': {
+            '^/reviews': {
                 target: 'http://localhost:5000', // ||
                 //'https://gentle-stream-93479.herokuapp.com',
                 //target: 'http://localhost:' + JSON.stringify(5000),
@@ -35,4 +35,4 @@ module.exports = {
             },
         },
     },
-};
+};*/

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button v-if="isAdding" class="button" @click="addToCart">
+    <button
+      v-if="isAdding"
+      title="Add to Cart"
+      class="button"
+      @click="addToCart"
+    >
       <i class="fa fa-cart-plus"></i> Add to Cart
     </button>
     <button

@@ -5,7 +5,6 @@
         <img
           class="img-responsive"
           v-bind:src="'http://localhost:5000/' + product.productImage"
-          alt="product.name"
         />
       </div>
       <div class="product__description">

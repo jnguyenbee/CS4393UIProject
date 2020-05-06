@@ -35,7 +35,7 @@ router.post('/', (req, res, next) => {
                 },
                 request: {
                     type: 'GET',
-                    url: 'http://localhost:3000/reviews/' + result._id,
+                    url: 'http://localhost:5000/reviews/' + result._id,
                 },
             });
         })
