@@ -19,7 +19,7 @@
         "card-info": "^1.2.4",
         "core-js": "^3.6.4",
         "heroku-proxy": "^2.1.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "multer": "^1.4.2",
         "normalizr": "^3.6.0",
         "save": "^2.4.0",
