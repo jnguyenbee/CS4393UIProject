@@ -34,9 +34,9 @@ export default {
   data() {
     return {
       user: {
-        userName: '',
-        password: '',
-      },
+        userName: "",
+        password: ""
+      }
     };
   },
 
@@ -45,20 +45,20 @@ export default {
       var userName = this.user.userName;
       var password = this.user.password;
 
-      var uNm = 'Joe';
-      var pw = 'stinks';
+      var uNm = "Kimchi";
+      var pw = "Ramen";
 
       if (uNm === userName && pw === password) {
-        this.$router.push('Admin');
+        this.$router.push("Admin");
       } else {
-        alert('You are not the admin');
+        alert("You are not the admin");
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
-@import '../../../../client/static/app.css';
+@import "../../../../client/static/app.css";
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
