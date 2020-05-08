@@ -22,7 +22,7 @@
           ></b-form-input>
         </b-form-group>
         <div class="text-center">
-          <b-button type="submit" variant="primary" @click="() => $router.push('Home')">Login</b-button>
+          <b-button type="submit" variant="primary">Login</b-button>
         </div>
       </b-card>
       <b-card>
@@ -44,7 +44,17 @@ export default {
       },
     };
   },
-
+  mounted() {
+    if (localStorage.getItem('reloaded')) {
+      // The page was just reloaded. Clear the value from local storage
+      // so that it will reload the next time this page is visited.
+      localStorage.removeItem('reloaded');
+    } else {
+      // Set a flag so that we know not to reload the page twice.
+      localStorage.setItem('reloaded', '1');
+      location.reload();
+    }
+  },
   created() {
     this.$store.dispatch('allUsers');
   },
@@ -58,21 +68,19 @@ export default {
     checkUser() {
       var userName = this.user.userName;
       var password = this.user.password;
-//      alert(" inside check user ");
-
-      for (let i = 0; i < this.users.length; i++) {
+      //      alert(" inside check user ");
+      var i = 0;
+      for (i = 0; i < this.users.length; i++) {
         var uNm = this.users[i].userName;
         var pw = this.users[i].password;
 
         if (uNm === userName && pw === password) {
-          alert(i);
-          this.truth = "truth";
+          this.$router.push('Home');
           break;
-        } else {
-          alert('UserName ' + uNm + ' vs ' + userName);
-          alert('Password ' + pw + ' vs ' + password);
-          this.truth = "notruth";
         }
+      }
+      if (i === this.users.length) {
+        alert('Invalid user account');
       }
     },
   },

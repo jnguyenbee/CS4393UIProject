@@ -2,6 +2,21 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
+/*var herokuProxy = require('heroku-proxy');
+app.use(
+    herokuProxy({
+        hostname: 'localhost',
+        port: 5000,
+        protocol: 'http',
+    })
+);*/
+
+//const serveStatic = require('serve-static');
+//const path = require('path');
+//var paths = path.join(process.cwd(), '/client/dist');
+//app.use(express.static(paths));
+//here we are configuring dist to serve app files
 
 /*const dotenv = require('dotenv').config();
 
@@ -22,15 +37,20 @@ const reviewRoutes = require('./api/routes/reviews');
 //mongoose.connect(CONNECTION_URI, options)
 //.then(console.log('MongoDB Connected'));
 //.catch((error) => handleError(error));
+var options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
 mongoose
     .connect(
-        'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }
+        process.env.MONGODB_URI ||
+        'mongodb+srv://User:User123@cs4393uiproject-2vcga.mongodb.net/test?retryWrites=true&w=majority',
+        options
     )
-    .then(console.log('MongoDB Connected'));
+    .then(console.log('MongoDB Connected'))
+    .catch((e) => console.log('could not connect to mongodb', e));
 
+//app.use('/', serveStatic(paths));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -46,6 +66,14 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+// Handle Production
+if (process.env.NODE_ENV === 'production') {
+    //static folder
+    app.use(express.static(__dirname + '/public/'));
+    // handle single page application
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
 
 app.use('/uploads', express.static('uploads'));
 app.use('/products', productRoutes);
@@ -69,5 +97,10 @@ app.use((error, req, res, next) => {
         },
     });
 });
+
+// this * route is to serve project on different page routes except root `/`
+//app.get(/.*/, function(req, res) {
+//    res.sendFile(path.join(paths, '/index.html'));
+//});
 
 module.exports = app;

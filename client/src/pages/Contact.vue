@@ -64,7 +64,7 @@
   <p></p>
   <h2 class="display-4">Send us a message:</h2>
   <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form >
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -92,15 +92,15 @@
       <b-form-group id="input-group-3" label="Message:" label-for="input-3">
         <b-form-textarea
           id="textarea"
-          v-model="text"
+          v-model="form.text"
           placeholder="Enter something..."
           rows="3"
           max-rows="6"
         ></b-form-textarea>
       </b-form-group>
       <b-button-group>
-        <b-button type="submit" variant="primary">Send</b-button>
-        <b-button type="reset" variant="danger">Clear</b-button>
+        <b-button @click="onSubmit" type="submit" variant="primary">Send</b-button>
+        <b-button @click="onReset" type="reset" variant="danger">Clear</b-button>
       </b-button-group>
     </b-form>
   </div>
@@ -110,6 +110,7 @@
 
 <script>
 export default {
+  show: false,
   name: 'Contact',
   data() {
       return {
@@ -118,25 +119,18 @@ export default {
           name: '',
           text: ''
         },
-        show: true
       }
     },
     methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-      //  alert(JSON.stringify(this.form))
+      onSubmit() {
+        alert("Message Sent. We will get back to you within 3 business days.");
       },
-      onReset(evt) {
-        evt.preventDefault()
+      onReset() {
         // Reset our form values
         this.form.email = ''
         this.form.name = ''
         this.form.text = ''
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
+        this.show = false;
       }
     }
 };

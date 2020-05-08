@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="light" variant="light">
       <img
-        src="http://localhost:3000/uploads/Logo.jpeg"
+        src="http://localhost:5000/uploads/Logo.jpeg"
         class="d-inline-block align-top"
         style="width:30px; height:30px"
         alt="mango"
@@ -25,7 +25,7 @@
               <em>Sign-in</em>
             </template>
             <b-dropdown-item router-link to="/signin">User</b-dropdown-item>
-            <b-dropdown-item router-link to="/admin">Admin</b-dropdown-item>
+            <b-dropdown-item router-link to="/secure">Admin</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item router-link to="/cart">

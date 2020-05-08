@@ -6,27 +6,26 @@
       style="max-width: 800px;max-height:100%"
     >
       <b-breadcrumb>
-        <b-breadcrumb-item href="http://localhost:8080/?#/Home/">
+        <b-breadcrumb-item @click="() => $router.push('/Home')">
           <b-badge variant="dark">RAINBOW MANGOS COMPANY</b-badge>
         </b-breadcrumb-item>
         <b-breadcrumb-item active>
           <b-badge variant="warning">{{ product.name }}</b-badge>
         </b-breadcrumb-item>
-        <a
-          class="button"
-          href="http://localhost:8080/?#/Home/"
+        <b-button
+          @click="() => $router.push('/Home')"
           style="background:  #17a2b8;color:#fff; border: 1px solid  #17a2b8;border-radius: 20px;
     padding: 10px 15px;position: absolute; right: 10px;padding: 0px 15px"
         >
           <i class="fa fa-socks"></i> Back to Socks
-        </a>
+        </b-button>
       </b-breadcrumb>
       <b-row no-gutters>
         <b-col md="6">
           <b-card-img
             fluid
             style="height:100%; width:400px"
-            v-bind:src="'http://localhost:3000/' + product.productImage"
+            v-bind:src="'http://localhost:5000/' + product.productImage"
             alt="Image"
             class="rounded-0"
           ></b-card-img>
@@ -56,7 +55,7 @@
             </b-button>
           </b-card-header>
           <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-            <b-form @submit="saveReview">
+            <b-form ref="reviewForm" @submit="saveReview">
               <div class="row">
                 <div class="col">
                   <div class="col">
@@ -124,12 +123,13 @@
       <b-row>
         <b-col>
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" variant="dark" v-b-toggle.accordion-1>
+            <b-button block href="#" variant="dark" v-b-toggle.accordion>
               <b>CUSTOMER REVIEWS</b>
             </b-button>
           </b-card-header>
           <b-collapse
-            id="accordion-1"
+            id="accordion"
+            ref="accordion"
             visible
             accordion="my-accordion"
             role="tabpanel"
@@ -150,8 +150,9 @@ export default {
     return {
       review: {
         username: '',
-        iption: '',
+        option: '',
         rating: '',
+        description: '',
         productId: this.product._id,
       },
       options: [
@@ -171,7 +172,11 @@ export default {
   },
   methods: {
     saveReview() {
-      this.$store.dispatch('addReview', this.review);
+      var saveReview = this.review;
+      this.$store.dispatch('addReview', saveReview);
+      this.$refs.reviewForm.reset();
+      alert('Thank you for posting a review');
+      this.$refs.accordion.$forceUpdate();
     },
   },
 };
@@ -198,4 +203,3 @@ export default {
   font-weight: bold;
 }
 </style>
->

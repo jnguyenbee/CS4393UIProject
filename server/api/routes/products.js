@@ -100,24 +100,24 @@ router.patch('/:productId', upload.single('productImage'), (req, res, next) => {
             });
         });
     /*
-            for (const ops of req.body) {
-                updateOps[ops.propName] = ops.value;
-                console.log('Stuck');
-                console.log(ops.value);
-            }
-            Product.update({ _id: id }, { $set: updateOps })
-                .exec()
-                .then((result) => {
-                    console.log(result);
-                    res.status(200).json(result);
-                })
-                .catch((err) => {
-                    console.log(err);
-                    res.status(500).json({
-                        error: err,
+                for (const ops of req.body) {
+                    updateOps[ops.propName] = ops.value;
+                    console.log('Stuck');
+                    console.log(ops.value);
+                }
+                Product.update({ _id: id }, { $set: updateOps })
+                    .exec()
+                    .then((result) => {
+                        console.log(result);
+                        res.status(200).json(result);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(500).json({
+                            error: err,
+                        });
                     });
-                });
-            */
+                */
 });
 
 router.delete('/:productId', (req, res, next) => {

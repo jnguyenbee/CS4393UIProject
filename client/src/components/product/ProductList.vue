@@ -7,6 +7,7 @@
             <b-col>
               Search:
               <b-form-input
+                title="Search Bar"
                 style="width:500px"
                 class="mr-sm-0"
                 type="text"

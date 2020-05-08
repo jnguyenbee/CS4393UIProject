@@ -19,10 +19,15 @@ import {
     REVIEW_BY_ID,
     REVIEW_BY_ID_SUCCESS,
     ALL_USERS,
-    ALL_USERS_SUCCESS
+    ALL_USERS_SUCCESS,
 } from './mutation-types';
 
-const API_BASE = 'http://localhost:3000';
+//const dotenv = require('dotenv').config();
+//console.log(JSON.stringify(process.env.PORT));
+
+//const API_BASE = 'https://localhost:5000'
+//const API_BASE = 'http://localhost:' + JSON.stringify(process.env.PORT);
+const API_BASE = 'http://localhost:5000';
 export const productActions = {
     allProducts({ commit }) {
         commit(ALL_PRODUCTS);
@@ -71,12 +76,11 @@ export const userActions = {
     checkUser({ commit }, payload) {
         commit(ADD_USER);
         axios.post(`${API_BASE}/users/login`, payload).then(response => {
-
             commit(ADD_USER_SUCCESS, response.data);
         });
     },*/
     allUsers({ commit }) {
-//        alert('called');
+        //        alert('called');
         commit(ALL_USERS);
         axios.get(`${API_BASE}/users/`).then(response => {
             commit(ALL_USERS_SUCCESS, response.data);
@@ -87,7 +91,7 @@ export const userActions = {
 
 export const reviewActions = {
     addReview({ commit }, payload) {
-       // alert('reach');
+        // alert('reach');
         commit(ADD_REVIEW);
         axios.post(`${API_BASE}/reviews`, payload).then(response => {
             commit(ADD_REVIEW_SUCCESS, response.data);
@@ -104,7 +108,7 @@ export const reviewActions = {
 
     allReviewByProdId({ commit }, payload) {
         commit(ALL_REVIEWS);
-//        alert('called' + payload);
+        //        alert('called' + payload);
         axios.get(`${API_BASE}/reviews/${payload}`).then(response => {
             commit(ALL_REVIEWS_SUCCESS, response.data);
         });
